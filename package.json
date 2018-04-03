@@ -1,5 +1,37 @@
 {
   "name": "sound-macleod",
-  "private": true,
-  "dependencies": {}
+  "version": "1.0.0",
+  "description":
+    "This README would normally document whatever steps are necessary to get the application up and running.",
+  "main": "webpack.config.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ian-MacLeod/sound-macleod.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ian-MacLeod/sound-macleod/issues"
+  },
+  "homepage": "https://github.com/Ian-MacLeod/sound-macleod#readme",
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
+    "redux": "^3.7.2",
+    "webpack": "^4.4.1"
+  }
 }

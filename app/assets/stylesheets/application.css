@@ -13,3 +13,35 @@
  *= require_tree .
  *= require_self
  */
+
+html {
+  font-size: 62.5%;
+}
+
+header {
+  height: 4.6rem;
+  background: #333;
+}
+
+.modal-bg {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  display: none;
+  background: rgba(200, 200, 200, 0.5);
+}
+
+.modal-bg.open {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-holder {
+  background: white;
+  padding: 4rem;
+  border-radius: 2rem;
+}

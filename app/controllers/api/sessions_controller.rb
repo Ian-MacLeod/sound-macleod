@@ -13,7 +13,7 @@ class Api::SessionsController < ApplicationController
   end
 
   def destroy
-    return render json ["You are already signed out"] unless logged_in?
+    return render json: ["You are already signed out"] unless logged_in?
     log_out
     render json: ["Successfully logged out"]
   end

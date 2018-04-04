@@ -43,10 +43,12 @@ nav,
 section,
 summary,
 audio,
-button {
+button,
+input {
   margin: 0;
   padding: 0;
-  border: 0;
+  border: none;
+  outline: none;
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
@@ -73,6 +75,7 @@ body {
   font-size: 1.43rem;
   line-height: 1.4;
   font-weight: 300;
+  color: #222;
 }
 ol,
 ul {

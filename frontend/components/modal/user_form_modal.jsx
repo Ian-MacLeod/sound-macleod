@@ -16,34 +16,40 @@ class SignInModal extends React.Component {
     this.props
       .action(Object.assign({}, this.state))
       .then(() => this.props.closeModal());
+    this.setState({ password: "" });
   }
 
   render() {
     return (
       <div>
         <h2>{this.props.formType}</h2>
-        <a onClick={this.props.closeModal} href="#">
-          Close Modal
+        <a className="close" onClick={this.props.closeModal} href="#">
+          &times;
         </a>
+        {this.props.errors.length > 0 ? (
+          <div className="errors">
+            <ul>
+              {this.props.errors.map(error => <li key={error}>{error}</li>)}
+            </ul>
+          </div>
+        ) : (
+          ""
+        )}
         <form onSubmit={this.handleSubmit}>
-          <div>
-            <label htmlFor="username">Username:</label>
-            <input
-              onChange={this.handleInput("username")}
-              type="text"
-              name="username"
-              value={this.state.username}
-            />
-          </div>
-          <div>
-            <label htmlFor="password">Password:</label>
-            <input
-              onChange={this.handleInput("password")}
-              type="password"
-              name="password"
-              value={this.state.password}
-            />
-          </div>
+          <input
+            onChange={this.handleInput("username")}
+            type="text"
+            name="username"
+            value={this.state.username}
+            placeholder="Username"
+          />
+          <input
+            onChange={this.handleInput("password")}
+            type="password"
+            name="password"
+            value={this.state.password}
+            placeholder="Password"
+          />
           <input type="submit" value={this.props.formType} />
         </form>
       </div>

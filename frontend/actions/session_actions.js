@@ -11,19 +11,19 @@ const receiveCurrentUser = user => ({
 export const signIn = user => dispatch =>
   SessionAPIUtil.signIn(user).then(
     currentUser => dispatch(receiveCurrentUser(currentUser)),
-    err => dispatch(receiveSessionFormErrors(err.responseJSON))
+    error => dispatch(receiveSessionFormErrors(error.responseJSON))
   );
 
 export const signOut = () => dispatch =>
   SessionAPIUtil.signOut().then(
     () => dispatch(receiveCurrentUser(null)),
-    err => console.sign(err)
+    error => console.log(error)
   );
 
 export const signUp = user => dispatch =>
   SessionAPIUtil.signUp(user).then(
     currentUser => dispatch(receiveCurrentUser(currentUser)),
-    err => dispatch(receiveSessionFormErrors(err.responseJSON))
+    error => dispatch(receiveSessionFormErrors(error.responseJSON))
   );
 
 const demoUser = { username: "demo_user", password: "password" };

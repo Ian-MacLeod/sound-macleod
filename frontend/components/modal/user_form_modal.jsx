@@ -20,6 +20,26 @@ class SignInModal extends React.Component {
   }
 
   render() {
+    let switchModal;
+    if (this.props.formType === "Sign In") {
+      switchModal = (
+        <p>
+          New to SoundMacLeod?{" "}
+          <a onClick={this.props.switchModal} href="#">
+            Sign Up
+          </a>
+        </p>
+      );
+    } else {
+      switchModal = (
+        <p>
+          Already a member?{" "}
+          <a onClick={this.props.switchModal} href="#">
+            Sign In
+          </a>
+        </p>
+      );
+    }
     return (
       <div>
         <h2>{this.props.formType}</h2>
@@ -52,6 +72,8 @@ class SignInModal extends React.Component {
           />
           <input type="submit" value={this.props.formType} />
         </form>
+        {switchModal}
+        <p />
       </div>
     );
   }

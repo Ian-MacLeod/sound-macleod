@@ -25,3 +25,7 @@ export const signUp = user => dispatch =>
     currentUser => dispatch(receiveCurrentUser(currentUser)),
     err => dispatch(receiveSessionFormErrors(err.responseJSON))
   );
+
+const demoUser = { username: "demo_user", password: "password" };
+
+export const signInDemoUser = () => signIn(demoUser);

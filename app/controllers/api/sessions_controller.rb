@@ -6,7 +6,7 @@ class Api::SessionsController < ApplicationController
     )
     if @user
       log_in(@user)
-      render "api/users/show"
+      render "api/users/show-alone"
     else
       render json: ["Invalid Login"], status: 403
     end

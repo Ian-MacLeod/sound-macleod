@@ -34,4 +34,4 @@ const mapStateToProps = state => {
 
 export const AuthRoute = withRouter(connect(mapStateToProps)(Auth));
 export const ProtectedRoute = withRouter(connect(mapStateToProps)(Protected));
-export const BooleanComponent = connect(mapStateToProps)(Bool);
+export const BooleanComponent = withRouter(connect(mapStateToProps)(Bool));

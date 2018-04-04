@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 import configureStore from "./store";
 import Root from "./components/root";
 
-import { signOut } from "./actions/session_actions";
+import { matchPath } from "react-router-dom";
 
 document.addEventListener("DOMContentLoaded", () => {
   let preloadedState;
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const store = configureStore(preloadedState);
 
   window.store = store;
-  window.signOut = signOut;
+  window.matchPath = matchPath;
 
   const rootEl = document.getElementById("root");
   ReactDOM.render(<Root store={store} />, rootEl);

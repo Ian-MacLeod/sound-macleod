@@ -19,7 +19,36 @@ header .content {
   align-items: center;
 }
 
+header .session-buttons {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
 header .session-buttons button {
   margin-left: 1.6rem;
   color: white;
+}
+
+header a {
+  display: block;
+  color: #ccc;
+  padding: 0 1.6rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+header #logo a {
+  color: white;
+}
+
+header a.active {
+  background-color: #111;
+  color: white;
+}
+
+header a:hover {
+  color: white;
+  text-decoration: none;
 }

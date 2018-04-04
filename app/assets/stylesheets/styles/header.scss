@@ -1,0 +1,25 @@
+header {
+  height: $header-height;
+  background: $dark-grey;
+}
+
+header #logo {
+  background: $primary-orange;
+  height: 100%;
+  width: 15rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header .content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .session-buttons button {
+  margin-left: 1.6rem;
+  color: white;
+}

@@ -2,8 +2,10 @@ import React from "react";
 
 const Footer = () => (
   <footer>
-    <a href="">Github</a>
-    <a href="">LinkedIn</a>
+    <div className="content">
+      <a href="">Github</a>
+      <a href="">LinkedIn</a>
+    </div>
   </footer>
 );
 

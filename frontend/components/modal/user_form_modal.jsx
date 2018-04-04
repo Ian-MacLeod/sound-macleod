@@ -21,6 +21,7 @@ class SignInModal extends React.Component {
   render() {
     return (
       <div>
+        <h2>{this.props.formType}</h2>
         <a onClick={this.props.closeModal} href="#">
           Close Modal
         </a>
@@ -43,9 +44,8 @@ class SignInModal extends React.Component {
               value={this.state.password}
             />
           </div>
-          <input type="submit" value="Sign In" />
+          <input type="submit" value={this.props.formType} />
         </form>
-        {this.props.testProp}
       </div>
     );
   }

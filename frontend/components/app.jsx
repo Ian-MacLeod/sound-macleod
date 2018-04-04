@@ -1,12 +1,18 @@
 import React from "react";
-import Header from "./header/header";
+
+import LoggedInHeader from "./header/logged_in_header";
+import LoggedOutHeader from "./header/logged_out_header";
 import Main from "./main/main";
 import Footer from "./footer/footer";
 import ModalHolder from "./modal/modal_holder_container";
+import { BooleanComponent } from "../utils/auth_utils";
 
 const App = () => (
-  <div>
-    <Header />
+  <div className="app">
+    <BooleanComponent
+      loggedInComponent={LoggedInHeader}
+      loggedOutComponent={LoggedOutHeader}
+    />
     <Main />
     <Footer />
     <ModalHolder />

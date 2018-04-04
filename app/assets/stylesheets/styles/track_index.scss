@@ -1,0 +1,68 @@
+.track-index {
+  .tracks li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.7rem;
+    border-radius: 0.3rem;
+  }
+
+  .tracks li:hover {
+    background: #eee;
+    cursor: pointer;
+  }
+
+  .tracks li.title {
+    color: #999;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 1rem;
+  }
+
+  .tracks li.title:hover {
+    background: inherit;
+    cursor: inherit;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  .left {
+    display: flex;
+  }
+
+  .number {
+    width: 10rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .number p {
+    width: 1rem;
+    font-size: 1.8rem;
+  }
+
+  .track-img {
+    height: 5rem;
+    width: 5rem;
+    margin-left: 2rem;
+    background: $primary-orange;
+  }
+
+  .username {
+    font-size: 1.3rem;
+    color: #666;
+  }
+  .username:hover {
+    color: black;
+  }
+
+  .track-title {
+    font-size: 1.5rem;
+  }
+
+  .length {
+    color: #666;
+    display: flex;
+    align-items: center;
+  }
+}

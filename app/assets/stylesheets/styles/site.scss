@@ -1,6 +1,5 @@
 body {
   background: #f2f2f2;
-  font-family: $body-font-stack;
 }
 
 .content {
@@ -15,6 +14,8 @@ main {
 
 main .content {
   background: white;
+  padding: $site-padding;
+  box-sizing: border-box;
 }
 
 button {

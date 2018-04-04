@@ -75,7 +75,12 @@ class SignInModal extends React.Component {
           <input type="submit" value={this.props.formType} />
         </form>
         {switchModal}
-        <p />
+        <p>
+          Just want to try it out?{" "}
+          <a onClick={this.props.signInDemoUser} href="#">
+            Demo account
+          </a>
+        </p>
       </div>
     );
   }

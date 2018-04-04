@@ -22,61 +22,71 @@
   border-radius: 1rem;
   box-shadow: rgba(0, 0, 0, 0.5) 0px 0.2rem 1rem;
   position: relative;
-}
 
-.modal-holder .close {
-  position: absolute;
-  top: 0.4rem;
-  right: 1.6rem;
-  color: $primary-orange;
-  font-size: 3rem;
-}
+  .close {
+    position: absolute;
+    top: 0.4rem;
+    right: 1.6rem;
+    color: $primary-orange;
+    font-size: 3rem;
+  }
 
-.modal-holder .close:hover {
-  text-decoration: none;
-}
+  .close:hover {
+    text-decoration: none;
+  }
 
-.modal-holder h2 {
-  font-size: 2.2em;
-  font-weight: 700;
-  color: #444;
-  margin-bottom: 1.5rem;
-}
+  h2 {
+    font-size: 2.2em;
+    font-weight: 700;
+    color: #444;
+    margin-bottom: 1.5rem;
+  }
 
-.modal-holder input {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 1rem 1.4rem;
-  margin-bottom: 0.8rem;
-  font-size: 1.6rem;
-  border-radius: 0.3rem;
-  border: 1px solid #aaa;
-}
-.modal-holder input[type="text"]:focus,
-.modal-holder input[type="password"]:focus {
-  border: 1px solid rgba(255, 85, 0, 0.7);
-}
+  input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1rem 1.4rem;
+    margin-bottom: 0.8rem;
+    font-size: 1.6rem;
+    border-radius: 0.3rem;
+    border: 1px solid #aaa;
+  }
+  input[type="text"]:focus,
+  input[type="password"]:focus {
+    border: 1px solid rgba(255, 85, 0, 0.7);
+  }
 
-.modal-holder input::placeholder {
-  color: #888;
-}
+  input::placeholder {
+    color: #888;
+  }
 
-.modal-holder input[type="submit"] {
-  color: white;
-  border: none;
-  background: $primary-orange;
-  margin-bottom: 2rem;
-}
+  input[type="submit"] {
+    color: white;
+    border: none;
+    background: $primary-orange;
+    margin-bottom: 2rem;
+  }
 
-.modal-holder input[type="submit"]:hover {
-  cursor: pointer;
-}
+  input[type="submit"]:hover {
+    cursor: pointer;
+  }
 
-div.errors {
-  color: #f04;
-  font-weight: 700;
-  margin-bottom: 2rem;
-}
-div.errors li {
-  margin-bottom: 0.4rem;
+  div.errors {
+    color: #f04;
+    font-weight: 700;
+    margin-bottom: 2rem;
+  }
+
+  div.errors li {
+    margin-bottom: 0.4rem;
+  }
+
+  p {
+    margin-top: 1rem;
+
+    a {
+      font-weight: 700;
+      color: $primary-orange;
+    }
+  }
 }

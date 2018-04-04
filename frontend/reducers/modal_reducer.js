@@ -1,6 +1,7 @@
 import React from "react";
 
 import { OPEN_MODAL, CLOSE_MODAL } from "../actions/modal_actions";
+import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
 
 const EmptyComponent = () => <div />;
 
@@ -15,6 +16,8 @@ const modalReducer = (state = closedModal, action) => {
         childProps: action.childProps
       };
     case CLOSE_MODAL:
+      return Object.assign({}, state, { isOpen: false });
+    case RECEIVE_CURRENT_USER:
       return Object.assign({}, state, { isOpen: false });
     default:
       return state;

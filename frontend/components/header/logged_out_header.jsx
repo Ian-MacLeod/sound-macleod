@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const LoggedOutHeader = ({ openSignInModal, openSignUpModal }) => (
+const LoggedOutHeader = ({
+  openSignInModal,
+  openSignUpModal,
+  signInDemoUser
+}) => (
   <header className="splash">
     <div className="content">
       <div id="logo">
@@ -10,6 +14,9 @@ const LoggedOutHeader = ({ openSignInModal, openSignUpModal }) => (
       <div className="session-buttons">
         <button className="light" onClick={openSignInModal}>
           Sign in
+        </button>
+        <button className="light" onClick={signInDemoUser}>
+          Demo account
         </button>
         <button className="colored" onClick={openSignUpModal}>
           Create account

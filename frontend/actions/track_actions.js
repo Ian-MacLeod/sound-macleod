@@ -3,14 +3,14 @@ import * as TrackAPIUtils from "../utils/track_api_utils";
 export const RECEIVE_TRACK = "RECEIVE_TRACK";
 export const RECEIVE_TRACKS = "RECEIVE_TRACKS";
 
-const receiveTrack = track => ({
+const receiveTrack = payload => ({
   type: RECEIVE_TRACK,
-  track
+  payload
 });
 
-const receiveTracks = tracks => ({
+const receiveTracks = payload => ({
   type: RECEIVE_TRACKS,
-  tracks
+  payload
 });
 
 export const fetchTrack = id => dispatch =>

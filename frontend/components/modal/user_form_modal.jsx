@@ -15,8 +15,10 @@ class SignInModal extends React.Component {
     e.preventDefault();
     this.props
       .action(Object.assign({}, this.state))
-      .then(() => this.props.closeModal());
-    this.setState({ password: "" });
+      .then(
+        () => this.props.closeModal(),
+        () => this.setState({ password: "" })
+      );
   }
 
   render() {

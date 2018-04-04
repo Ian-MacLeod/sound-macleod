@@ -4,7 +4,9 @@ import TrackIndexItemContainer from "./track_index_item_container";
 
 class TrackIndex extends React.Component {
   componentWillMount() {
-    this.props.fetchTracks();
+    if (this.props.fetchTracks !== undefined) {
+      this.props.fetchTracks();
+    }
   }
 
   render() {

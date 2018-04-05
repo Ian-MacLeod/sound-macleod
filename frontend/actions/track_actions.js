@@ -1,4 +1,5 @@
 import * as TrackAPIUtils from "../utils/track_api_utils";
+import { receiveTrackFormErrors } from "./error_actions";
 
 export const RECEIVE_TRACK = "RECEIVE_TRACK";
 export const RECEIVE_TRACKS = "RECEIVE_TRACKS";
@@ -34,4 +35,10 @@ export const fetchTracks = () => dispatch =>
 export const deleteTrack = id => dispatch =>
   TrackAPIUtils.deleteTrack(id).then(trackId =>
     dispatch(removeTrack(trackId), error => console.log(error))
+  );
+
+export const createTrack = track => dispatch =>
+  TrackAPIUtils.createTrack(track).then(
+    newTrack => dispatch(receiveTrack(newTrack)),
+    error => dispatch(receiveTrackFormErrors(error.responseJSON))
   );

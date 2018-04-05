@@ -13,7 +13,9 @@
 #
 
 class Track < ApplicationRecord
-  validates :title, :user_id, :length, :blob_url, presence: true
+  validates :title, :user_id, :length, presence: true
+
+  mount_uploader :data, AvatarUploader
 
   belongs_to :user
 end

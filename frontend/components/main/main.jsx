@@ -12,7 +12,6 @@ const Main = () => (
     <div className="content">
       <Switch>
         <ProtectedRoute path="/tracks" component={TrackIndex} />
-        <ProtectedRoute path="/tracks/:trackId" component={TrackShow} />
         <ProtectedRoute path="/upload" component={TrackForm} />
         <ProtectedRoute path="/users/:userId" component={UserProfile} />
         <AuthRoute path="/" component={Home} />

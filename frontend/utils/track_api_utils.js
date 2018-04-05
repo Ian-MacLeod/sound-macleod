@@ -10,12 +10,18 @@ export const fetchTrack = id =>
     method: "GET"
   });
 
-export const createTrack = track =>
-  $.ajax({
+export const createTrack = track => {
+  const formData = new FormData();
+  formData.append("track[title]", track.title);
+  formData.append("track[data]", track.dataFile);
+  return $.ajax({
     url: "/api/tracks",
-    method: "POST",
-    data: { track }
+    data: formData,
+    processData: false,
+    contentType: false,
+    type: "POST"
   });
+};
 
 export const deleteTrack = id =>
   $.ajax({

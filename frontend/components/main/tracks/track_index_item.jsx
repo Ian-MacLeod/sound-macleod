@@ -17,6 +17,9 @@ const TrackIndexItem = ({ track, user, idx }) => (
         <p className="track-title">
           <Link to={`/tracks/${track.id}`}>{track.title}</Link>
         </p>
+        <audio controls>
+          <source src={track.data.url} />
+        </audio>
       </div>
     </div>
     <div className="length">

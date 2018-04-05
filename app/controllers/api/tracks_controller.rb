@@ -10,10 +10,12 @@ class Api::TracksController < ApplicationController
 
   def create
     @track = Track.new(track_params)
+    @track.user = current_user
+    @track.length ||= 123
     if @track.save
       render "api/tracks/show"
     else
-      render json: @track.errors.full_messages
+      render json: @track.errors.full_messages, status: 422
     end
   end
 
@@ -31,7 +33,7 @@ class Api::TracksController < ApplicationController
 
   def track_params
     params.require(:track).permit(
-      :title, :user_id, :image_url, :length, :blob_url
+      :title, :user_id, :image, :length, :data
     )
   end
 end

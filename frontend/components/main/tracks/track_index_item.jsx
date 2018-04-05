@@ -2,13 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { formatDuration } from "../../../utils/time_utils";
+import ImageDefault from "../../image_default";
 
 const TrackIndexItem = ({ track, user, idx, deleteTrack }) => (
   <li>
     <div className="left">
       <div className="number">
         <p>{idx}</p>
-        <div className="track-img" />
+        <div className="track-img">
+          <ImageDefault src={track.image.url} />
+        </div>
       </div>
       <div className="info">
         <p className="username">

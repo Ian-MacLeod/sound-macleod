@@ -5,10 +5,18 @@ class TrackForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.blankState();
+    this.handleFileChange = this.handleFileChange.bind(this);
   }
 
   blankState() {
-    return { title: "", dataFile: null, dataUrl: null, redirect: false };
+    return {
+      title: "",
+      imageFile: null,
+      imageUrl: null,
+      dataFile: null,
+      dataUrl: null,
+      redirect: false
+    };
   }
 
   handleSubmit(e) {
@@ -19,21 +27,25 @@ class TrackForm extends React.Component {
     }
 
     this.props.action(this.state).then(action => {
-      console.log(action);
       this.setState({ redirect: action.payload.track.id });
     });
   }
 
-  handleFileChange(e) {
-    const file = e.currentTarget.files[0];
-    const fileReader = new FileReader();
-    fileReader.onloadend = function() {
-      this.setState({ dataFile: file, dataUrl: fileReader.result });
-    }.bind(this);
+  handleFileChange(key) {
+    return e => {
+      const file = e.currentTarget.files[0];
+      const fileReader = new FileReader();
+      fileReader.onloadend = () => {
+        this.setState({
+          [`${key}File`]: file,
+          [`${key}Url`]: fileReader.result
+        });
+      };
 
-    if (file) {
-      fileReader.readAsDataURL(file);
-    }
+      if (file) {
+        fileReader.readAsDataURL(file);
+      }
+    };
   }
 
   handleInput(key) {
@@ -57,11 +69,17 @@ class TrackForm extends React.Component {
             value={this.state.title}
             onChange={this.handleInput("title")}
           />
+          <label htmlFor="image">Image</label>
+          <input
+            type="file"
+            name="image"
+            onChange={this.handleFileChange("image")}
+          />
           <label htmlFor="data">Upload</label>
           <input
             type="file"
             name="data"
-            onChange={this.handleFileChange.bind(this)}
+            onChange={this.handleFileChange("data")}
           />
           <input type="submit" value="Create track" />
         </form>

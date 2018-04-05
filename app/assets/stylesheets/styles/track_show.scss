@@ -27,19 +27,34 @@
     width: 36rem;
     position: relative;
     .img {
-      background: $primary-orange;
       position: absolute;
       top: 2rem;
       right: 2rem;
       bottom: 2rem;
       left: 0;
+
+      img {
+        max-width: 100%;
+      }
     }
   }
 
   .play-button {
-    color: $primary-orange;
-    font-size: 6rem;
+    background: $primary-orange;
+    color: white;
+    border-radius: 100%;
+    font-size: 3rem;
     float: left;
+    height: 6rem;
+    width: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .play-button:before {
+    position: relative;
+    left: 0.3rem;
   }
 
   .play-button:hover {

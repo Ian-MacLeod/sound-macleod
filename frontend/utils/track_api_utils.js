@@ -14,6 +14,9 @@ export const createTrack = track => {
   const formData = new FormData();
   formData.append("track[title]", track.title);
   formData.append("track[data]", track.dataFile);
+  if (track.imageFile) {
+    formData.append("track[image]", track.imageFile);
+  }
   return $.ajax({
     url: "/api/tracks",
     data: formData,

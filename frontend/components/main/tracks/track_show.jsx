@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import ImageDefault from "../../image_default";
+
 class TrackShow extends React.Component {
   componentWillMount() {
     this.props.fetchTrack();
@@ -11,6 +13,7 @@ class TrackShow extends React.Component {
     if (!track || !user) {
       return <div className="loading" />;
     }
+    console.log(track);
     return (
       <div className="track-show">
         <div className="track-splash">
@@ -31,7 +34,9 @@ class TrackShow extends React.Component {
             </div>
           </div>
           <div className="splash-right">
-            <div className="img" />
+            <div className="img">
+              <ImageDefault src={track.image.url} />
+            </div>
           </div>
         </div>
       </div>

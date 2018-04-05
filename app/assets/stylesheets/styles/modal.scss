@@ -42,35 +42,6 @@
     margin-bottom: 1.5rem;
   }
 
-  input {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 1rem 1.4rem;
-    margin-bottom: 0.8rem;
-    font-size: 1.6rem;
-    border-radius: 0.3rem;
-    border: 1px solid #aaa;
-  }
-  input[type="text"]:focus,
-  input[type="password"]:focus {
-    border: 1px solid rgba(255, 85, 0, 0.7);
-  }
-
-  input::placeholder {
-    color: #888;
-  }
-
-  input[type="submit"] {
-    color: white;
-    border: none;
-    background: $primary-orange;
-    margin-bottom: 2rem;
-  }
-
-  input[type="submit"]:hover {
-    cursor: pointer;
-  }
-
   div.errors {
     color: #f04;
     font-weight: 700;

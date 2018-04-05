@@ -2,6 +2,7 @@ import * as TrackAPIUtils from "../utils/track_api_utils";
 
 export const RECEIVE_TRACK = "RECEIVE_TRACK";
 export const RECEIVE_TRACKS = "RECEIVE_TRACKS";
+export const REMOVE_TRACK = "REMOVE_TRACK";
 
 const receiveTrack = payload => ({
   type: RECEIVE_TRACK,
@@ -11,6 +12,11 @@ const receiveTrack = payload => ({
 const receiveTracks = payload => ({
   type: RECEIVE_TRACKS,
   payload
+});
+
+const removeTrack = id => ({
+  type: REMOVE_TRACK,
+  id
 });
 
 export const fetchTrack = id => dispatch =>
@@ -23,4 +29,9 @@ export const fetchTracks = () => dispatch =>
   TrackAPIUtils.fetchTracks().then(
     tracks => dispatch(receiveTracks(tracks)),
     error => console.log(error)
+  );
+
+export const deleteTrack = id => dispatch =>
+  TrackAPIUtils.deleteTrack(id).then(trackId =>
+    dispatch(removeTrack(trackId), error => console.log(error))
   );

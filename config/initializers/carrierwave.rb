@@ -4,9 +4,9 @@ CarrierWave.configure do |config|
     provider: 'AWS',
     aws_access_key_id: ENV['aws_access_key_id'],
     aws_secret_access_key: ENV['aws_secret_access_key'],
-    region: 'us-west-1'
+    region: ENV['aws_region']
   }
-  config.fog_directory = 'soundmacleod-dev'
+  config.fog_directory = ENV['s3_bucket']
   config.fog_public = false
   # config.fog_attributes = { cache_control: "public, max-age=#{365.days.to_i}" }
 

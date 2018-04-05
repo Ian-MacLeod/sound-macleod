@@ -1,6 +1,8 @@
 header {
   height: $header-height;
   background: $dark-grey;
+  position: fixed;
+  width: 100%;
 }
 
 header #logo {

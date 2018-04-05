@@ -12,9 +12,12 @@ class UserProfile extends React.Component {
       return <div className="loading" />;
     }
     return (
-      <div>
+      <div class="user-profile">
         <div className="profile-splash">
-          <h1>{this.props.user.username}</h1>
+          <div class="img" />
+          <h1>
+            <span class="highlight">{this.props.user.username}</span>
+          </h1>
         </div>
         <TrackIndex tracks={this.props.tracks} />
       </div>

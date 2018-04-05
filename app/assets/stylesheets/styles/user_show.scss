@@ -1,0 +1,28 @@
+.user-profile {
+  .profile-splash {
+    background: linear-gradient(to right, #57b, #bce);
+    margin: (-$site-padding) (-$site-padding) 0;
+    height: 26rem;
+    padding: 3rem;
+    display: flex;
+    box-sizing: border-box;
+  }
+
+  .img {
+    border-radius: 100%;
+    width: 20rem;
+    background: $primary-orange;
+  }
+
+  h1 {
+    font-size: 2.4rem;
+    margin-left: 2.5rem;
+  }
+
+  .highlight {
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    display: inline-block;
+    padding: 0.5rem 0.6rem 0.3rem;
+  }
+}

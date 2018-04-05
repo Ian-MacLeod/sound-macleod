@@ -4,12 +4,13 @@ body {
 
 .content {
   height: 100%;
-  max-width: 100rem;
+  max-width: 120rem;
   margin: 0 auto;
 }
 
 main {
   flex: 1;
+  margin-top: $header-height;
 }
 
 main .content {

@@ -1,0 +1,82 @@
+.track-show {
+  .track-splash {
+    background: linear-gradient(to left, #57b, #bce);
+    margin: (-$site-padding) (-$site-padding) 0;
+    height: 38rem;
+    display: flex;
+  }
+
+  .splash-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 3rem;
+
+    .top-info {
+      display: flex;
+      justify-content: space-between;
+
+      .play-info {
+        flex: 1;
+      }
+    }
+  }
+
+  .splash-right {
+    width: 36rem;
+    position: relative;
+    .img {
+      background: $primary-orange;
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      bottom: 2rem;
+      left: 0;
+    }
+  }
+
+  .play-button {
+    color: $primary-orange;
+    font-size: 6rem;
+    float: left;
+  }
+
+  .play-button:hover {
+    cursor: pointer;
+  }
+
+  .highlight {
+    background: rgba(0, 0, 0, 0.75);
+    display: inline-block;
+    margin: 0 0 0.6rem 1.4rem;
+  }
+
+  .username {
+    font-size: 1.8rem;
+    color: #ccc;
+
+    .highlight {
+      padding: 0.1rem 0.6rem 0;
+    }
+
+    a:hover {
+      text-decoration: none;
+      color: white;
+    }
+  }
+
+  .title {
+    font-size: 2.2rem;
+    color: white;
+
+    .highlight {
+      padding: 0.5rem 0.6rem 0.3rem;
+    }
+  }
+
+  .created-at {
+    color: white;
+    font-size: 1.8rem;
+  }
+}

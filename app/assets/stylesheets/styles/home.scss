@@ -3,7 +3,7 @@ header.splash {
   background: transparent;
   position: relative;
   z-index: 1;
-  margin-bottom: -7rem;
+  margin-bottom: -(7rem + $header-height);
 }
 
 header.splash button {

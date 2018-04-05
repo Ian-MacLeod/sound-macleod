@@ -21,11 +21,13 @@ class Api::TracksController < ApplicationController
 
   def destroy
     @track = Track.find(params[:id])
-    if @track
-      @track.destroy!
-      render json: "Track deleted".to_json
-    else
+    if !@track
       render json: "Track does not exist".to_json, status: 404
+    elsif current_user != @track.user
+      render json: "You don't own that track".to_json, status: 422
+    else
+      @track.destroy!
+      render json: @track.id.to_json
     end
   end
 

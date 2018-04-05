@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { formatDuration } from "../../../utils/time_utils";
 
-const TrackIndexItem = ({ track, user, idx }) => (
+const TrackIndexItem = ({ track, user, idx, deleteTrack }) => (
   <li>
     <div className="left">
       <div className="number">
@@ -23,6 +23,7 @@ const TrackIndexItem = ({ track, user, idx }) => (
       </div>
     </div>
     <div className="length">
+      <i onClick={deleteTrack} className="fa fa-trash" />
       <p>{formatDuration(track.length)}</p>
     </div>
   </li>

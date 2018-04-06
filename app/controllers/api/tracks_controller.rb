@@ -27,7 +27,7 @@ class Api::TracksController < ApplicationController
       render json: "You don't own that track".to_json, status: 422
     else
       @track.destroy!
-      render json: @track.id.to_json
+      render "api/tracks/show"
     end
   end
 

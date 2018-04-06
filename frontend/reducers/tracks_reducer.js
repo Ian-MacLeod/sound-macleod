@@ -18,7 +18,7 @@ const trackReducer = (state = {}, action) => {
       return Object.assign({}, action.payload.tracks, state);
     case REMOVE_TRACK:
       newState = Object.assign({}, state);
-      delete newState[action.id];
+      delete newState[action.track.id];
       return newState;
     default:
       return state;

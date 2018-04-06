@@ -127,4 +127,32 @@
       width: 8px;
     }
   }
+
+  .track-details {
+    display: flex;
+    align-items: center;
+    width: 28rem;
+
+    .track-image {
+      width: 3rem;
+      height: 3rem;
+    }
+
+    .info {
+      margin-left: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .title {
+      color: #666;
+    }
+
+    .username {
+      color: #999;
+    }
+
+    a:hover {
+      color: black;
+    }
+  }
 }

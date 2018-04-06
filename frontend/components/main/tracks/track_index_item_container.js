@@ -10,7 +10,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   deleteTrack: () => dispatch(deleteTrack(ownProps.track.id)),
-  playTrack: url => dispatch(playTrack(url))
+  playTrack: trackId => dispatch(playTrack(trackId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TrackIndexItem);

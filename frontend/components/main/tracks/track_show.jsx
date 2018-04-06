@@ -20,7 +20,7 @@ class TrackShow extends React.Component {
           <div className="splash-left">
             <div className="top-info">
               <div className="play-info">
-                <PlayPauseButton trackUrl={track.data.url} />
+                <PlayPauseButton trackId={track.id} />
                 <div className="username">
                   <Link className="highlight" to={`/api/users/${user.id}`}>
                     {user.username}

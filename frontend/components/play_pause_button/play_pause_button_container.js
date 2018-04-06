@@ -8,7 +8,7 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  playTrack: () => dispatch(playTrack(ownProps.trackUrl)),
+  playTrack: () => dispatch(playTrack(ownProps.trackId)),
   pausePlayer: () => dispatch(pausePlayer())
 });
 

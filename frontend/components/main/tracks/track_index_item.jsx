@@ -5,7 +5,7 @@ import { formatDuration } from "../../../utils/time_utils";
 import ImageDefault from "../../image_default";
 
 const TrackIndexItem = ({ track, user, idx, deleteTrack, playTrack }) => (
-  <li onClick={() => playTrack(track.data.url)}>
+  <li onClick={() => playTrack(track.id)}>
     <div className="left">
       <div className="number">
         <p>{idx}</p>
@@ -23,7 +23,7 @@ const TrackIndexItem = ({ track, user, idx, deleteTrack, playTrack }) => (
       </div>
     </div>
     <div className="length">
-      <i onClick={deleteTrack} className="fa fa-trash" />
+      <a onClick={deleteTrack} className="delete" />
       <p>{formatDuration(track.length)}</p>
     </div>
   </li>

@@ -4,6 +4,7 @@ import ReactPlayer from "react-player";
 
 import { formatDuration } from "../../utils/time_utils";
 import PlayPauseButton from "../play_pause_button/play_pause_button_container";
+import PlayerTrackDetails from "./player_track_details_container";
 
 class Player extends React.Component {
   constructor(props) {
@@ -66,11 +67,14 @@ class Player extends React.Component {
   render() {
     console.log(this.props);
     const { played, duration, volume, muted, loaded } = this.state;
+    if (this.props.track === undefined) {
+      return "";
+    }
     return (
       <div className="player">
         <ReactPlayer
           ref={this.ref}
-          url={this.props.trackUrl}
+          url={this.props.track.data.url}
           playing={this.props.playing}
           width="0"
           height="0"
@@ -79,11 +83,11 @@ class Player extends React.Component {
           onEnded={this.onEnded}
           onProgress={this.onProgress}
           onDuration={this.onDuration}
-          progressInterval="50"
+          progressInterval={50}
         />
         <div className="player-content content">
           <div className="play-controls">
-            <PlayPauseButton trackUrl={this.props.trackUrl} />
+            <PlayPauseButton trackId={this.props.trackId} />
           </div>
           <div className="progress-controls">
             <p className="played">{formatDuration(played * duration)}</p>
@@ -117,7 +121,7 @@ class Player extends React.Component {
                 onClick={this.toggleMuted}
               />
               <div className="volume-wrap">
-                <div class="volume-pad">
+                <div className="volume-pad">
                   <div className="groove">
                     <div
                       className="fullness-bar"
@@ -139,6 +143,7 @@ class Player extends React.Component {
               </div>
             </div>
           </div>
+          <PlayerTrackDetails track={this.props.track} />
         </div>
       </div>
     );

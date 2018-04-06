@@ -2,9 +2,9 @@ export const START_PLAYER = "START_PLAYER";
 export const PAUSE_PLAYER = "PAUSE_PLAYER";
 export const PLAY_TRACK = "PLAY_TRACK";
 
-export const playTrack = url => ({
+export const playTrack = trackId => ({
   type: PLAY_TRACK,
-  url
+  trackId
 });
 
 export const startPlayer = () => ({

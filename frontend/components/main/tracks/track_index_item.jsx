@@ -14,10 +14,10 @@ const TrackIndexItem = ({ track, user, idx, deleteTrack, playTrack }) => (
         </div>
       </div>
       <div className="info">
-        <p className="username">
+        <p className="username" onClick={e => e.stopPropagation()}>
           {user ? <Link to={`/users/${user.id}`}>{user.username}</Link> : ""}
         </p>
-        <p className="track-title">
+        <p className="track-title" onClick={e => e.stopPropagation()}>
           <Link to={`/tracks/${track.id}`}>{track.title}</Link>
         </p>
       </div>

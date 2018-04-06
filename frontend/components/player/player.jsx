@@ -30,6 +30,10 @@ class Player extends React.Component {
     this.ref = this.ref.bind(this);
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.props.player !== nextProps.player || this.state !== nextState;
+  }
+
   setVolume(e) {
     this.setState({ volume: parseFloat(e.target.value), muted: false });
   }
@@ -47,17 +51,14 @@ class Player extends React.Component {
     this.player.seekTo(parseFloat(e.target.value));
   }
   onProgress(state) {
-    console.log("onProgress", state);
     if (!this.state.seeking) {
       this.setState(state);
     }
   }
   onEnded() {
-    console.log("onEnded");
     this.setState({ playing: this.state.loop });
   }
   onDuration(duration) {
-    console.log("onDuration", duration);
     this.setState({ duration });
   }
   ref(player) {
@@ -65,7 +66,6 @@ class Player extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     const { played, duration, volume, muted, loaded } = this.state;
     if (this.props.track === undefined) {
       return "";
@@ -75,7 +75,7 @@ class Player extends React.Component {
         <ReactPlayer
           ref={this.ref}
           url={this.props.track.data.url}
-          playing={this.props.playing}
+          playing={this.props.player.playing}
           width="0"
           height="0"
           volume={volume}
@@ -87,7 +87,7 @@ class Player extends React.Component {
         />
         <div className="player-content content">
           <div className="play-controls">
-            <PlayPauseButton trackId={this.props.trackId} />
+            <PlayPauseButton trackId={this.props.player.trackId} />
           </div>
           <div className="progress-controls">
             <p className="played">{formatDuration(played * duration)}</p>

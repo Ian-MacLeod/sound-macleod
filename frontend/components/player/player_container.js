@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 import { startPlayer, pausePlayer } from "../../actions/player_actions";
 import Player from "./player";
 
-const mapStateToProps = state =>
-  Object.assign({}, state.ui.player, {
-    track: state.entities.tracks[state.ui.player.trackId]
-  });
+const mapStateToProps = state => ({
+  player: state.ui.player,
+  track: state.entities.tracks[state.ui.player.trackId]
+});
 
 const mapDispatchToProps = dispatch => ({
   startPlayer: () => dispatch(startPlayer()),

@@ -57,7 +57,7 @@ class TrackForm extends React.Component {
       return <Redirect to={`/api/tracks/${this.state.redirect}`} />;
     }
     return (
-      <div>
+      <div className="track-form">
         <ul className="errors">
           {this.props.errors.map(error => <li key={error}>{error}</li>)}
         </ul>

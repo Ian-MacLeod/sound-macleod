@@ -39,26 +39,10 @@
     }
   }
 
-  .play-button {
-    background: $primary-orange;
-    color: white;
-    border-radius: 100%;
-    font-size: 3rem;
+  .play-pause-button {
     float: left;
     height: 6rem;
     width: 6rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .play-button:before {
-    position: relative;
-    left: 0.3rem;
-  }
-
-  .play-button:hover {
-    cursor: pointer;
   }
 
   .highlight {

@@ -72,3 +72,24 @@ input[type="submit"] {
 input[type="submit"]:hover {
   cursor: pointer;
 }
+
+.play-pause-button {
+  background: $primary-orange;
+  border-radius: 100%;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: 40%;
+}
+
+.play-pause-button:hover {
+  cursor: pointer;
+}
+
+.play-pause-button.play {
+  background-image: url(https://a-v2.sndcdn.com/assets/images/buttons/hero/play-69601b9.svg);
+  background-position: 55% 50%;
+}
+
+.play-pause-button.pause {
+  background-image: url(https://a-v2.sndcdn.com/assets/images/buttons/hero/pause-1f3f227.svg);
+}

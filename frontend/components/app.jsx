@@ -6,6 +6,7 @@ import Main from "./main/main";
 import Footer from "./footer/footer";
 import ModalHolder from "./modal/modal_holder_container";
 import { BooleanComponent } from "../utils/auth_utils";
+import Player from "./player/player_container";
 
 const App = () => (
   <div className="app">
@@ -15,6 +16,7 @@ const App = () => (
     />
     <Main />
     <Footer />
+    <Player />
     <ModalHolder />
   </div>
 );

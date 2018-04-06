@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import ImageDefault from "../../image_default";
+import PlayPauseButton from "../../play_pause_button_container";
 
 class TrackShow extends React.Component {
   componentWillMount() {
@@ -9,18 +10,17 @@ class TrackShow extends React.Component {
   }
 
   render() {
-    const { track, user } = this.props;
+    const { track, user, playing, playPause } = this.props;
     if (!track || !user) {
       return <div className="loading" />;
     }
-    console.log(track);
     return (
       <div className="track-show">
         <div className="track-splash">
           <div className="splash-left">
             <div className="top-info">
               <div className="play-info">
-                <i className="play-button fas fa-play" />
+                <PlayPauseButton trackUrl={track.data.url} />
                 <div className="username">
                   <Link className="highlight" to={`/api/users/${user.id}`}>
                     {user.username}

@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import { formatDuration } from "../../../utils/time_utils";
 import ImageDefault from "../../image_default";
 
-const TrackIndexItem = ({ track, user, idx, deleteTrack }) => (
-  <li>
+const TrackIndexItem = ({ track, user, idx, deleteTrack, playTrack }) => (
+  <li onClick={() => playTrack(track.data.url)}>
     <div className="left">
       <div className="number">
         <p>{idx}</p>
@@ -20,9 +20,6 @@ const TrackIndexItem = ({ track, user, idx, deleteTrack }) => (
         <p className="track-title">
           <Link to={`/tracks/${track.id}`}>{track.title}</Link>
         </p>
-        <audio controls>
-          <source src={track.data.url} />
-        </audio>
       </div>
     </div>
     <div className="length">

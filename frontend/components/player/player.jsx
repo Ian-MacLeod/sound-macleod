@@ -2,6 +2,9 @@ import React from "react";
 
 import ReactPlayer from "react-player";
 
+import { formatDuration } from "../../utils/time_utils";
+import PlayPauseButton from "../play_pause_button/play_pause_button_container";
+
 class Player extends React.Component {
   constructor(props) {
     super(props);
@@ -27,7 +30,7 @@ class Player extends React.Component {
   }
 
   setVolume(e) {
-    this.setState({ volume: parseFloat(e.target.value) });
+    this.setState({ volume: parseFloat(e.target.value), muted: false });
   }
   toggleMuted() {
     this.setState({ muted: !this.state.muted });
@@ -44,7 +47,6 @@ class Player extends React.Component {
   }
   onProgress(state) {
     console.log("onProgress", state);
-    // We only want to update time slider if we are not currently seeking
     if (!this.state.seeking) {
       this.setState(state);
     }
@@ -63,11 +65,9 @@ class Player extends React.Component {
 
   render() {
     console.log(this.props);
-    const { played, volume, muted, loaded } = this.state;
+    const { played, duration, volume, muted, loaded } = this.state;
     return (
-      <div class="player">
-        <div onClick={this.props.startPlayer}>Play</div>
-        <div onClick={this.props.pausePlayer}>Pause</div>
+      <div className="player">
         <ReactPlayer
           ref={this.ref}
           url={this.props.trackUrl}
@@ -79,40 +79,67 @@ class Player extends React.Component {
           onEnded={this.onEnded}
           onProgress={this.onProgress}
           onDuration={this.onDuration}
+          progressInterval="50"
         />
-        <h1>Hello</h1>
-        <div class="progress-wrap">
-          <div class="progress-bar" style={{ width: `${played * 100}%` }}>
-            <div class="thumb" />
+        <div className="player-content content">
+          <div className="play-controls">
+            <PlayPauseButton trackUrl={this.props.trackUrl} />
           </div>
-          <input
-            class="progress"
-            type="range"
-            min={0}
-            max={1}
-            step="any"
-            value={played}
-            onMouseDown={this.onSeekMouseDown}
-            onChange={this.onSeekChange}
-            onMouseUp={this.onSeekMouseUp}
-          />
+          <div className="progress-controls">
+            <p className="played">{formatDuration(played * duration)}</p>
+            <div className="progress-wrap">
+              <div className="groove">
+                <div
+                  className="fullness-bar"
+                  style={{ width: `${played * 100}%` }}
+                >
+                  <div className="thumb" />
+                </div>
+              </div>
+              <input
+                className="hidden-input"
+                type="range"
+                min={0}
+                max={1}
+                step="any"
+                value={played}
+                onMouseDown={this.onSeekMouseDown}
+                onChange={this.onSeekChange}
+                onMouseUp={this.onSeekMouseUp}
+              />
+            </div>
+            <p className="duration">{formatDuration(duration)}</p>
+          </div>
+          <div className="volume-controls">
+            <div className="outer-wrap">
+              <div
+                className={"volume-button " + (muted ? "muted" : "")}
+                onClick={this.toggleMuted}
+              />
+              <div className="volume-wrap">
+                <div class="volume-pad">
+                  <div className="groove">
+                    <div
+                      className="fullness-bar"
+                      style={{ width: `${muted ? 0 : volume * 100}%` }}
+                    >
+                      <div className="thumb" />
+                    </div>
+                  </div>
+                  <input
+                    className="hidden-input"
+                    type="range"
+                    min={0}
+                    max={1}
+                    step="any"
+                    value={volume}
+                    onChange={this.setVolume}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <input
-          type="range"
-          min={0}
-          max={1}
-          step="any"
-          value={volume}
-          onChange={this.setVolume}
-        />
-        <input
-          id="muted"
-          type="checkbox"
-          checked={muted}
-          onChange={this.toggleMuted}
-        />
-        <progress max={1} value={played} />
-        <progress max={1} value={loaded} />
       </div>
     );
   }

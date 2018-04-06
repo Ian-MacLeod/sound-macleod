@@ -111,6 +111,7 @@ input[type="range"] {
   width: 100%; /* Specific width is required for Firefox. */
   background: transparent; /* Otherwise white in Chrome */
   border: 0;
+  margin: 0;
   outline: 0;
 }
 

@@ -9,11 +9,15 @@ const trackReducer = (state = {}, action) => {
   let newState;
   switch (action.type) {
     case RECEIVE_TRACK:
-      return Object.assign({}, state, {
-        [action.payload.track.id]: action.payload.track
-      });
+      return Object.assign(
+        {},
+        {
+          [action.payload.track.id]: action.payload.track
+        },
+        state
+      );
     case RECEIVE_TRACKS:
-      return Object.assign({}, state, action.payload.tracks);
+      return Object.assign({}, action.payload.tracks, state);
     case RECEIVE_USER:
       return Object.assign({}, action.payload.tracks, state);
     case REMOVE_TRACK:

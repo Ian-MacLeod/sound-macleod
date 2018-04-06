@@ -13,16 +13,19 @@ class UserProfile extends React.Component {
       return <div className="loading" />;
     }
     return (
-      <div class="user-profile">
+      <div className="user-profile">
         <div className="profile-splash">
-          <div class="img">
+          <div className="img">
             <ImageDefault src={this.props.user.profilePic.url} />
           </div>
           <h1>
-            <span class="highlight">{this.props.user.username}</span>
+            <span className="highlight">{this.props.user.username}</span>
           </h1>
         </div>
-        <TrackIndex tracks={this.props.tracks} />
+        <TrackIndex
+          tracks={this.props.tracks}
+          showDelete={this.props.isOwnProfile}
+        />
       </div>
     );
   }

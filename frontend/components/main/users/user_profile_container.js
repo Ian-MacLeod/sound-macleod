@@ -11,7 +11,9 @@ const mapStateToProps = (state, ownProps) => {
   }
   return {
     user,
-    tracks
+    tracks,
+    isOwnProfile:
+      state.session.currentUser.id.toString() === ownProps.match.params.userId
   };
 };
 

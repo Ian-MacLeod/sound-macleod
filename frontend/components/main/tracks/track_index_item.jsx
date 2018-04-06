@@ -4,7 +4,14 @@ import { Link } from "react-router-dom";
 import { formatDuration } from "../../../utils/time_utils";
 import ImageDefault from "../../image_default";
 
-const TrackIndexItem = ({ track, user, idx, deleteTrack, playTrack }) => (
+const TrackIndexItem = ({
+  track,
+  user,
+  idx,
+  showDelete,
+  deleteTrack,
+  playTrack
+}) => (
   <li onClick={() => playTrack(track.id)}>
     <div className="left">
       <div className="number">
@@ -23,9 +30,13 @@ const TrackIndexItem = ({ track, user, idx, deleteTrack, playTrack }) => (
       </div>
     </div>
     <div className="length">
-      <div onClick={e => e.stopPropagation()}>
-        <a onClick={deleteTrack} className="delete" />
-      </div>
+      {showDelete ? (
+        <div onClick={e => e.stopPropagation()}>
+          <a onClick={deleteTrack} className="delete" />
+        </div>
+      ) : (
+        ""
+      )}
       <p>{formatDuration(track.length)}</p>
     </div>
   </li>

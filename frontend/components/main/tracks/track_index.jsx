@@ -25,6 +25,7 @@ class TrackIndex extends React.Component {
               key={track.id}
               track={track}
               idx={idx + 1}
+              showDelete={this.props.showDelete}
             />
           ))}
         </ol>

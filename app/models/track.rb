@@ -16,6 +16,8 @@ class Track < ApplicationRecord
   validates :title, :user_id, :length, presence: true
 
   mount_uploader :data, AudioUploader
+  validates_integrity_of :data
+
   mount_uploader :image, ImageUploader
 
   belongs_to :user

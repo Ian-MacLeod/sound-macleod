@@ -57,6 +57,9 @@ class Player extends React.Component {
   }
   onEnded() {
     this.setState({ playing: this.state.loop });
+    if (!this.state.loop) {
+      this.props.pausePlayer();
+    }
   }
   onDuration(duration) {
     this.setState({ duration });

@@ -41,6 +41,24 @@
     height: 5rem;
     width: 5rem;
     margin-left: 2rem;
+    position: relative;
+  }
+
+  .play-pause-button {
+    height: 3rem;
+    width: 3rem;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    display: none;
+  }
+
+  .tracks li.playing .play-pause-button {
+    display: block;
+  }
+
+  .tracks li:hover .play-pause-button {
+    display: block;
   }
 
   .username {

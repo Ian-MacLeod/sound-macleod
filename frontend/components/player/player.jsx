@@ -30,10 +30,6 @@ class Player extends React.Component {
     this.ref = this.ref.bind(this);
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return this.props.player !== nextProps.player || this.state !== nextState;
-  }
-
   setVolume(e) {
     this.setState({ volume: parseFloat(e.target.value), muted: false });
   }
@@ -74,79 +70,82 @@ class Player extends React.Component {
       return "";
     }
     return (
-      <div className="player">
-        <ReactPlayer
-          ref={this.ref}
-          url={this.props.track.data.url}
-          playing={this.props.player.playing}
-          width="0"
-          height="0"
-          volume={volume}
-          muted={muted}
-          onEnded={this.onEnded}
-          onProgress={this.onProgress}
-          onDuration={this.onDuration}
-          progressInterval={50}
-        />
-        <div className="player-content content">
-          <div className="play-controls">
-            <PlayPauseButton trackId={this.props.player.trackId} />
-          </div>
-          <div className="progress-controls">
-            <p className="played">{formatDuration(played * duration)}</p>
-            <div className="progress-wrap">
-              <div className="groove">
-                <div
-                  className="fullness-bar"
-                  style={{ width: `${played * 100}%` }}
-                >
-                  <div className="thumb" />
-                </div>
-              </div>
-              <input
-                className="hidden-input"
-                type="range"
-                min={0}
-                max={1}
-                step="any"
-                value={played}
-                onMouseDown={this.onSeekMouseDown}
-                onChange={this.onSeekChange}
-                onMouseUp={this.onSeekMouseUp}
-              />
+      <div>
+        <div className="player-spacer" />
+        <div className="player">
+          <ReactPlayer
+            ref={this.ref}
+            url={this.props.track.data.url}
+            playing={this.props.player.playing}
+            width="0"
+            height="0"
+            volume={volume}
+            muted={muted}
+            onEnded={this.onEnded}
+            onProgress={this.onProgress}
+            onDuration={this.onDuration}
+            progressInterval={50}
+          />
+          <div className="player-content content">
+            <div className="play-controls">
+              <PlayPauseButton trackId={this.props.player.trackId} />
             </div>
-            <p className="duration">{formatDuration(duration)}</p>
-          </div>
-          <div className="volume-controls">
-            <div className="outer-wrap">
-              <div
-                className={"volume-button " + (muted ? "muted" : "")}
-                onClick={this.toggleMuted}
-              />
-              <div className="volume-wrap">
-                <div className="volume-pad">
-                  <div className="groove">
-                    <div
-                      className="fullness-bar"
-                      style={{ width: `${muted ? 0 : volume * 100}%` }}
-                    >
-                      <div className="thumb" />
-                    </div>
+            <div className="progress-controls">
+              <p className="played">{formatDuration(played * duration)}</p>
+              <div className="progress-wrap">
+                <div className="groove">
+                  <div
+                    className="fullness-bar"
+                    style={{ width: `${played * 100}%` }}
+                  >
+                    <div className="thumb" />
                   </div>
-                  <input
-                    className="hidden-input"
-                    type="range"
-                    min={0}
-                    max={1}
-                    step="any"
-                    value={volume}
-                    onChange={this.setVolume}
-                  />
+                </div>
+                <input
+                  className="hidden-input"
+                  type="range"
+                  min={0}
+                  max={1}
+                  step="any"
+                  value={played}
+                  onMouseDown={this.onSeekMouseDown}
+                  onChange={this.onSeekChange}
+                  onMouseUp={this.onSeekMouseUp}
+                />
+              </div>
+              <p className="duration">{formatDuration(duration)}</p>
+            </div>
+            <div className="volume-controls">
+              <div className="outer-wrap">
+                <div
+                  className={"volume-button " + (muted ? "muted" : "")}
+                  onClick={this.toggleMuted}
+                />
+                <div className="volume-wrap">
+                  <div className="volume-pad">
+                    <div className="groove">
+                      <div
+                        className="fullness-bar"
+                        style={{ width: `${muted ? 0 : volume * 100}%` }}
+                      >
+                        <div className="thumb" />
+                      </div>
+                    </div>
+                    <input
+                      className="hidden-input"
+                      type="range"
+                      min={0}
+                      max={1}
+                      step="any"
+                      value={volume}
+                      onChange={this.setVolume}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
+            <PlayerTrackDetails track={this.props.track} />
           </div>
-          <PlayerTrackDetails track={this.props.track} />
         </div>
       </div>
     );

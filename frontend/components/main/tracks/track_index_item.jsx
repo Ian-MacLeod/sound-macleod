@@ -11,43 +11,41 @@ const TrackIndexItem = ({
   idx,
   showDelete,
   deleteTrack,
-  playTrack,
+  playPausePlayer,
   isPlaying
-}) => {
-  return (
-    <li
-      className={isPlaying ? "playing" : ""}
-      onClick={() => playTrack(track.id)}
-    >
-      <div className="left">
-        <div className="number">
-          <p>{idx}</p>
-          <div className="track-img">
-            <ImageDefault src={track.image.url} />
-            <PlayPauseButton />
-          </div>
-        </div>
-        <div className="info">
-          <p className="username" onClick={e => e.stopPropagation()}>
-            {user ? <Link to={`/users/${user.id}`}>{user.username}</Link> : ""}
-          </p>
-          <p className="track-title" onClick={e => e.stopPropagation()}>
-            <Link to={`/tracks/${track.id}`}>{track.title}</Link>
-          </p>
+}) => (
+  <li
+    className={isPlaying ? "playing" : ""}
+    onClick={() => playPausePlayer(track.id)}
+  >
+    <div className="left">
+      <div className="number">
+        <p>{idx}</p>
+        <div className="track-img">
+          <ImageDefault src={track.image.url} />
+          <PlayPauseButton trackId={track.id} />
         </div>
       </div>
-      <div className="length">
-        {showDelete ? (
-          <div onClick={e => e.stopPropagation()}>
-            <a onClick={deleteTrack} className="delete" />
-          </div>
-        ) : (
-          ""
-        )}
-        <p>{formatDuration(track.length)}</p>
+      <div className="info">
+        <p className="username" onClick={e => e.stopPropagation()}>
+          {user ? <Link to={`/users/${user.id}`}>{user.username}</Link> : ""}
+        </p>
+        <p className="track-title" onClick={e => e.stopPropagation()}>
+          <Link to={`/tracks/${track.id}`}>{track.title}</Link>
+        </p>
       </div>
-    </li>
-  );
-};
+    </div>
+    <div className="length">
+      {showDelete ? (
+        <div onClick={e => e.stopPropagation()}>
+          <a onClick={deleteTrack} className="delete" />
+        </div>
+      ) : (
+        ""
+      )}
+      <p>{formatDuration(track.length)}</p>
+    </div>
+  </li>
+);
 
 export default TrackIndexItem;

@@ -1,7 +1,7 @@
 import React from "react";
 
 import TrackIndex from "../tracks/track_index";
-import ImageDefault from "../../image_default";
+import ImageDefault from "../image_default";
 
 class UserProfile extends React.Component {
   componentWillMount() {

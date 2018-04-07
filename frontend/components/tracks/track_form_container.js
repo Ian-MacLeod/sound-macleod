@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 
-import { createTrack } from "../../../actions/track_actions";
-import { receiveTrackFormErrors } from "../../../actions/error_actions";
+import { createTrack } from "../../actions/track_actions";
+import { receiveTrackFormErrors } from "../../actions/error_actions";
 import TrackForm from "./track_form";
 
 const mapStateToProps = state => ({

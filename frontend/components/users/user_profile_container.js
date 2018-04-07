@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 
-import { fetchUser } from "../../../actions/user_actions";
+import { fetchUser } from "../../actions/user_actions";
 import UserProfile from "./user_profile";
 
 const mapStateToProps = (state, ownProps) => {

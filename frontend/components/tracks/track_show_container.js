@@ -1,8 +1,8 @@
 import { connect } from "react-redux";
 
 import TrackShow from "./track_show";
-import { fetchTrack } from "../../../actions/track_actions";
-import { playTrack, pausePlayer } from "../../../actions/player_actions";
+import { fetchTrack } from "../../actions/track_actions";
+import { playTrack, pausePlayer } from "../../actions/player_actions";
 
 const mapStateToProps = (state, ownProps) => {
   const track = state.entities.tracks[ownProps.match.params.trackId];

@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { formatDuration } from "../../../utils/time_utils";
-import ImageDefault from "../../image_default";
-import PlayPauseButton from "../../play_pause_button/play_pause_button_container";
+import { formatDuration } from "../../utils/time_utils";
+import ImageDefault from "../image_default";
+import PlayPauseButton from "../play_pause_button/play_pause_button_container";
 
 const TrackIndexItem = ({
   track,

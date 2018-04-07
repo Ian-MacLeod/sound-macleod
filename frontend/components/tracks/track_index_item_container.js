@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 
-import { deleteTrack } from "../../../actions/track_actions";
-import { playPausePlayer } from "../../../actions/player_actions";
+import { deleteTrack } from "../../actions/track_actions";
+import { playPausePlayer } from "../../actions/player_actions";
 import TrackIndexItem from "./track_index_item";
 
 const mapStateToProps = (state, ownProps) => ({

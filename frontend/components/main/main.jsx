@@ -3,10 +3,10 @@ import { Switch, Route } from "react-router-dom";
 
 import { AuthRoute, ProtectedRoute } from "../../utils/auth_utils";
 import Home from "./home_container";
-import TrackIndex from "./tracks/track_index_container";
-import TrackForm from "./tracks/track_form_container";
-import TrackShow from "./tracks/track_show_container";
-import UserProfile from "./users/user_profile_container";
+import TrackIndex from "../tracks/track_index_container";
+import TrackForm from "../tracks/track_form_container";
+import TrackShow from "../tracks/track_show_container";
+import UserProfile from "../users/user_profile_container";
 
 const Main = () => (
   <main>

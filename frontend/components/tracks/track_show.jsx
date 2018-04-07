@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import ImageDefault from "../../image_default";
-import PlayPauseButton from "../../play_pause_button/play_pause_button_container";
+import ImageDefault from "../image_default";
+import PlayPauseButton from "../play_pause_button/play_pause_button_container";
 
 class TrackShow extends React.Component {
   componentWillMount() {

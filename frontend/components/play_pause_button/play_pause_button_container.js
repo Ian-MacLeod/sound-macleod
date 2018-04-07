@@ -1,6 +1,10 @@
 import { connect } from "react-redux";
 
-import { pausePlayer, playTrack } from "../../actions/player_actions";
+import {
+  pausePlayer,
+  playTrack,
+  playPausePlayer
+} from "../../actions/player_actions";
 import PlayPauseButton from "./play_pause_button";
 
 const mapStateToProps = (state, ownProps) => ({
@@ -8,19 +12,7 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  playTrack: () => dispatch(playTrack(ownProps.trackId)),
-  pausePlayer: () => dispatch(pausePlayer())
+  playPausePlayer: () => dispatch(playPausePlayer(ownProps.trackId))
 });
 
-const mergeProps = (stateProps, dispatchProps, ownProps) => {
-  return Object.assign({}, ownProps, stateProps, {
-    handleClick:
-      stateProps.type === "play"
-        ? dispatchProps.playTrack
-        : dispatchProps.pausePlayer
-  });
-};
-
-export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(
-  PlayPauseButton
-);
+export default connect(mapStateToProps, mapDispatchToProps)(PlayPauseButton);

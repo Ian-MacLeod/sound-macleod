@@ -1,5 +1,6 @@
 import { RECEIVE_COMMENT, REMOVE_COMMENT } from "../actions/comment_actions";
 import { RECEIVE_TRACK } from "../actions/track_actions";
+import { RECEIVE_USER } from "../actions/user_actions";
 
 const commentsReducer = (state = {}, action) => {
   let newState;
@@ -12,6 +13,8 @@ const commentsReducer = (state = {}, action) => {
       newState = Object.assign({}, state);
       delete newState[action.id];
       return newState;
+    case RECEIVE_USER:
+      return Object.assign({}, state, action.payload.comments);
     default:
       return state;
   }

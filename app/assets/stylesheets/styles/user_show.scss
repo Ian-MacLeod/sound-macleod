@@ -26,4 +26,15 @@
     display: inline-block;
     padding: 0.5rem 0.6rem 0.3rem;
   }
+
+  .info {
+    display: flex;
+    > section {
+      flex: 1;
+    }
+
+    > aside {
+      width: 30rem;
+    }
+  }
 }

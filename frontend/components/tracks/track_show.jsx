@@ -22,7 +22,7 @@ class TrackShow extends React.Component {
               <div className="play-info">
                 <PlayPauseButton trackId={track.id} />
                 <div className="username">
-                  <Link className="highlight" to={`/api/users/${user.id}`}>
+                  <Link className="highlight" to={`/users/${user.id}`}>
                     {user.username}
                   </Link>
                 </div>

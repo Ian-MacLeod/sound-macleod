@@ -1,7 +1,46 @@
 .image-upload-form {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   input {
-    position: absolute;
     top: 50%;
-    left: 20%;
+    left: 50%;
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
   }
+
+  label {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 1;
+  }
+
+  .instructions {
+    display: none;
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.3rem;
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    background: white;
+  }
+
+  label:hover {
+    cursor: pointer;
+  }
+}
+.image-upload-form:hover .instructions {
+  display: block;
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Switch, Route, NavLink } from "react-router-dom";
 
 import TrackIndex from "../tracks/track_index";
 import ImageDefault from "../image_default";
@@ -9,6 +9,12 @@ import CommentIndex from "../comments/comment_index";
 class UserProfile extends React.Component {
   componentWillMount() {
     this.props.fetchUser();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.match.params.userId !== nextProps.match.params.userId) {
+      nextProps.fetchUser();
+    }
   }
 
   updateImage(image) {
@@ -36,17 +42,46 @@ class UserProfile extends React.Component {
         </div>
         <nav className="user-nav">
           <ul>
-            <li>All</li>
-            <li>Tracks</li>
-            <li>Comments</li>
+            <li>
+              <NavLink to={`/users/${this.props.user.id}/tracks`}>
+                Tracks
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to={`/users/${this.props.user.id}/comments`}>
+                Comments
+              </NavLink>
+            </li>
           </ul>
         </nav>
-        <div className="info">
+        <div className="main">
           <section>
-            <TrackIndex
-              tracks={this.props.tracks}
-              showDelete={this.props.isOwnProfile}
-            />
+            <Switch>
+              <Route
+                path={`/users/${this.props.user.id}/tracks`}
+                render={() => (
+                  <TrackIndex
+                    tracks={this.props.tracks}
+                    showDelete={this.props.isOwnProfile}
+                  />
+                )}
+              />
+              <Route
+                path={`/users/${this.props.user.id}/comments`}
+                render={() => (
+                  <CommentIndex commentIds={this.props.user.commentIds} />
+                )}
+              />
+              <Route
+                path={`/users/${this.props.user.id}`}
+                render={() => (
+                  <TrackIndex
+                    tracks={this.props.tracks}
+                    showDelete={this.props.isOwnProfile}
+                  />
+                )}
+              />
+            </Switch>
           </section>
           <aside>
             <CommentIndex

@@ -33,6 +33,15 @@ header .session-buttons button {
   color: white;
 }
 
+header .profile-pic {
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 100%;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 0 0 1px inset;
+  display: inline-block;
+  margin-right: 1rem;
+}
+
 header a {
   display: block;
   color: #ccc;

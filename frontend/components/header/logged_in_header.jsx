@@ -1,6 +1,8 @@
 import React from "react";
 import { Link, matchPath } from "react-router-dom";
 
+import ImageDefault from "../image_default";
+
 const LoggedInHeader = ({ location, currentUser, signOut }) => (
   <header>
     <div className="content">
@@ -24,6 +26,10 @@ const LoggedInHeader = ({ location, currentUser, signOut }) => (
           }
           to={`/users/${currentUser.id}`}
         >
+          <ImageDefault
+            className="profile-pic"
+            src={currentUser.profilePic.url}
+          />
           {currentUser.username}
         </Link>
         <button onClick={signOut}>Sign Out</button>

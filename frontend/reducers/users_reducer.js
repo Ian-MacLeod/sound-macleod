@@ -3,6 +3,7 @@ import {
   RECEIVE_TRACKS,
   REMOVE_TRACK
 } from "../actions/track_actions";
+import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
 import { RECEIVE_USER } from "../actions/user_actions";
 
 const usersReducer = (state = {}, action) => {
@@ -10,6 +11,10 @@ const usersReducer = (state = {}, action) => {
     case RECEIVE_USER:
       return Object.assign({}, state, {
         [action.payload.user.id]: action.payload.user
+      });
+    case RECEIVE_CURRENT_USER:
+      return Object.assign({}, state, {
+        [action.user.id]: action.user
       });
     case RECEIVE_TRACK:
       return Object.assign({}, state, {

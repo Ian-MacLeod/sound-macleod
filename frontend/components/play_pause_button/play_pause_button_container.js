@@ -8,7 +8,10 @@ import {
 import PlayPauseButton from "./play_pause_button";
 
 const mapStateToProps = (state, ownProps) => ({
-  type: state.ui.player.playing ? "pause" : "play"
+  type:
+    state.ui.player.playing && ownProps.trackId === state.ui.player.trackId
+      ? "pause"
+      : "play"
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

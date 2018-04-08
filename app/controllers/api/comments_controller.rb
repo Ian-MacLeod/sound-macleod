@@ -3,7 +3,7 @@ class Api::CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.user = current_user
     if @comment.save
-      render json: @comment
+      render "api/comments/show"
     else
       render json: @comment.errors.full_messages, status: 422
     end
@@ -17,7 +17,7 @@ class Api::CommentsController < ApplicationController
       render json: "You don't own that comment".to_json, status: 422
     else
       @comment.destroy!
-      render json: @comment
+      render "api/comments/show"
     end
   end
 

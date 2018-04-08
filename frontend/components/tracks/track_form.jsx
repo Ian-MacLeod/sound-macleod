@@ -54,7 +54,7 @@ class TrackForm extends React.Component {
 
   render() {
     if (this.state.redirect) {
-      return <Redirect to={`/api/tracks/${this.state.redirect}`} />;
+      return <Redirect to={`/tracks/${this.state.redirect}`} />;
     }
     return (
       <div className="track-form">

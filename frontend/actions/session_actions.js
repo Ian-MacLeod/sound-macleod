@@ -3,7 +3,7 @@ import { receiveSessionFormErrors } from "./error_actions";
 
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 
-const receiveCurrentUser = user => ({
+export const receiveCurrentUser = user => ({
   type: RECEIVE_CURRENT_USER,
   user
 });

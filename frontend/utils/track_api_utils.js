@@ -22,7 +22,7 @@ export const createTrack = track => {
     data: formData,
     processData: false,
     contentType: false,
-    type: "POST"
+    method: "POST"
   });
 };
 

@@ -1,7 +1,7 @@
 import { RECEIVE_TRACK_FORM_ERRORS } from "../actions/error_actions";
 import { RECEIVE_TRACK } from "../actions/track_actions";
 
-const tracksErrorsReducer = (state = [], action) => {
+const trackErrorsReducer = (state = [], action) => {
   switch (action.type) {
     case RECEIVE_TRACK_FORM_ERRORS:
       return action.errors;
@@ -12,4 +12,4 @@ const tracksErrorsReducer = (state = [], action) => {
   }
 };
 
-export default tracksErrorsReducer;
+export default trackErrorsReducer;

@@ -21,6 +21,10 @@ class User < ApplicationRecord
   mount_uploader :profile_pic, ImageUploader
 
   has_many :tracks
+  has_many :comments
+  has_many :commented_tracks,
+           through: :comments,
+           source: :track
 
   def self.find_by_credentials(username, password)
     user = self.find_by(username: username)

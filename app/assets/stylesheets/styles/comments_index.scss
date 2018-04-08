@@ -1,0 +1,42 @@
+.comments-index {
+  .comment-icon {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+c3RhdHNfY29tbWVudDwvdGl0bGU+PHBhdGggZD0iTTUgM2MtMS4xMDUgMC0yIC44ODctMiAyLjAwNnYyLjk4OEMzIDkuMTAyIDMuODg3IDEwIDUgMTBoNmMxLjEwNSAwIDItLjg4NyAyLTIuMDA2VjUuMDA2QTEuOTk4IDEuOTk4IDAgMCAwIDExIDNINXptMCA3djNsMy0zSDV6IiBmaWxsPSIjOTk5IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz48L3N2Zz4=);
+    width: 3rem;
+    height: 3rem;
+    background-size: 2.2rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+    color: #999;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid $very-light-border;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    color: #999;
+    padding: 1rem 1rem 1rem 0;
+
+    img {
+      border-radius: 100%;
+      width: 4rem;
+      height: 4rem;
+      margin-right: 1rem;
+      box-shadow: rgba(0, 0, 0, 0.1) 0 0 0 1px inset;
+    }
+
+    .comment-contents {
+      flex: 1;
+
+      p {
+        color: #333;
+      }
+    }
+
+    .created-at {
+    }
+  }
+}

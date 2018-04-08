@@ -1,0 +1,34 @@
+.comments-form {
+  display: flex;
+  margin-bottom: 1rem;
+
+  img {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  form {
+    border: 1px solid $light-border;
+    border-left: none;
+    padding: 0.6rem;
+    height: 4rem;
+    flex: 1;
+    box-sizing: border-box;
+    background-color: $very-light-border;
+  }
+
+  input {
+    border-radius: 0.4rem;
+    height: 2.7rem;
+    padding: 0 0.9rem;
+    font-size: 1.4rem;
+    box-sizing: border-box;
+    border: 1px solid $light-border;
+    background-color: white;
+    color: #333;
+  }
+
+  input:focus {
+    border-color: #999;
+  }
+}

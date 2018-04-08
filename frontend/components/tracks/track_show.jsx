@@ -41,8 +41,11 @@ class TrackShow extends React.Component {
             </div>
           </div>
         </div>
-        <CommentForm trackId={track.id} />
-        <CommentIndex commentIds={commentIds} />
+        <section className="details">
+          <CommentForm trackId={track.id} />
+          <div className="actions" />
+          <CommentIndex commentIds={commentIds} />
+        </section>
       </div>
     );
   }

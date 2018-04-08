@@ -16,15 +16,17 @@ class CommentForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createComment({
-      body: this.state.body,
-      track_id: this.props.trackId
-    });
+    this.props
+      .createComment({
+        body: this.state.body,
+        track_id: this.props.trackId
+      })
+      .then(this.setState({ body: "" }));
   }
 
   render() {
     return (
-      <section>
+      <section className="comments-form">
         <ImageDefault src={this.props.currentUser.profilePic.url} />
         <form onSubmit={this.handleSubmit}>
           <input

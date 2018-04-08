@@ -4,6 +4,11 @@
     margin: (-$site-padding) (-$site-padding) 0;
     height: 38rem;
     display: flex;
+
+    .created-at {
+      color: white;
+      font-size: 1.8rem;
+    }
   }
 
   .splash-left {
@@ -73,8 +78,13 @@
     }
   }
 
-  .created-at {
-    color: white;
-    font-size: 1.8rem;
+  .details {
+    padding: 2rem 0;
+  }
+
+  .actions {
+    padding: 0.5rem;
+    height: 2rem;
+    border-bottom: 1px solid #f2f2f2;
   }
 }

@@ -6,10 +6,14 @@ import ImageDefault from "../image_default";
 const CommentIndexItem = ({ comment, user }) => {
   return (
     <li>
-      <ImageDefault src={user.profilePic.url} />
-      <Link to={`users/${user.id}`}>{user.username}</Link>
-      <p>{comment.body}</p>
-      <p>{comment.createdAt} ago</p>
+      <Link to={`/users/${user.id}`}>
+        <ImageDefault src={user.profilePic.url} />
+      </Link>
+      <section className="comment-contents">
+        <Link to={`users/${user.id}`}>{user.username}</Link>
+        <p>{comment.body}</p>
+      </section>
+      <p className="created-at">{comment.createdAt} ago</p>
     </li>
   );
 };

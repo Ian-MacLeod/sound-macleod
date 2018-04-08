@@ -19,6 +19,12 @@ main .content {
   box-sizing: border-box;
 }
 
+i.icon {
+  display: inline-block;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
 button {
   border-radius: 0.3rem;
   padding: 0.2rem 1rem;

@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 import ImageDefault from "../image_default";
 import PlayPauseButton from "../play_pause_button/play_pause_button_container";
+import CommentForm from "../comments/comment_form_container.js";
+import CommentIndex from "../comments/comment_index";
 
 class TrackShow extends React.Component {
   componentWillMount() {
@@ -10,7 +12,7 @@ class TrackShow extends React.Component {
   }
 
   render() {
-    const { track, user, playing, playPause } = this.props;
+    const { track, user, commentIds } = this.props;
     if (!track || !user) {
       return <div className="loading" />;
     }
@@ -39,6 +41,8 @@ class TrackShow extends React.Component {
             </div>
           </div>
         </div>
+        <CommentForm trackId={track.id} />
+        <CommentIndex commentIds={commentIds} />
       </div>
     );
   }

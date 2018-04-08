@@ -4,6 +4,7 @@ import {
   REMOVE_TRACK
 } from "../actions/track_actions";
 import { RECEIVE_USER } from "../actions/user_actions";
+import { RECEIVE_COMMENT } from "../actions/comment_actions";
 
 const trackReducer = (state = {}, action) => {
   let newState;
@@ -24,6 +25,15 @@ const trackReducer = (state = {}, action) => {
       newState = Object.assign({}, state);
       delete newState[action.track.id];
       return newState;
+    case RECEIVE_COMMENT:
+      const track = state[action.comment.trackId];
+      if (track) {
+        const newTrack = Object.assign({}, track, {
+          commentIds: [action.comment.id].concat(track.commentIds)
+        });
+        return Object.assign({}, state, { [newTrack.id]: newTrack });
+      }
+      return state;
     default:
       return state;
   }

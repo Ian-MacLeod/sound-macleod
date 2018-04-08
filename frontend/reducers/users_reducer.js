@@ -17,9 +17,7 @@ const usersReducer = (state = {}, action) => {
         [action.user.id]: action.user
       });
     case RECEIVE_TRACK:
-      return Object.assign({}, state, {
-        [action.payload.user.id]: action.payload.user
-      });
+      return Object.assign({}, state, action.payload.users);
     case RECEIVE_TRACKS:
       return Object.assign({}, state, action.payload.users);
     case REMOVE_TRACK:

@@ -43,12 +43,18 @@ class UserProfile extends React.Component {
         <nav className="user-nav">
           <ul>
             <li>
-              <NavLink to={`/users/${this.props.user.id}/tracks`}>
+              <NavLink
+                activeClassName="selected"
+                to={`/users/${this.props.user.id}/tracks`}
+              >
                 Tracks
               </NavLink>
             </li>
             <li>
-              <NavLink to={`/users/${this.props.user.id}/comments`}>
+              <NavLink
+                activeClassName="selected"
+                to={`/users/${this.props.user.id}/comments`}
+              >
                 Comments
               </NavLink>
             </li>

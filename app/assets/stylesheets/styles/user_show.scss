@@ -38,4 +38,31 @@
       margin-left: 5rem;
     }
   }
+
+  .user-nav ul {
+    display: flex;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid $very-light-border;
+
+    a {
+      display: block;
+      padding: 1rem 0;
+      margin: 0 2rem 0 0;
+      border-bottom: 1px solid transparent;
+      margin-bottom: -1px;
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    a:hover {
+      border-bottom: 1px solid #333;
+      box-sizing: border-box;
+    }
+
+    a.selected {
+      color: $primary-orange;
+      border-bottom: 1px solid $primary-orange;
+    }
+  }
 }

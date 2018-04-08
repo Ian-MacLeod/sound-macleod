@@ -44,6 +44,52 @@
     }
   }
 
+  .details {
+    display: flex;
+  }
+
+  .comments-details {
+    flex: 1;
+  }
+
+  .user-details {
+    width: 12rem;
+    margin-right: 3rem;
+
+    a.image {
+      border-radius: 100%;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    img {
+      border-radius: 100%;
+      width: 100%;
+      box-sizing: border-box;
+      box-shadow: rgba(0, 0, 0, 0.3) 0 0 0 1px inset;
+    }
+
+    .num-tracks {
+      color: #999;
+
+      a {
+      }
+    }
+
+    .tracks-icon {
+      background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyOCIgaGVpZ2h0PSIyOCI+PHBhdGggZmlsbD0iIzIyMiIgZD0iTTUgMTJoMnY0SDV6TTIxIDEyaDJ2NGgtMnpNMTcgMTBoMnY4aC0yek05IDhoMnYxMkg5ek0xMyA1aDJ2MThoLTJ6Ii8+PC9zdmc+);
+      background-size: 1.6rem 1.6rem;
+      width: 1.6rem;
+      height: 1.6rem;
+      vertical-align: top;
+      margin-right: 0.4rem;
+    }
+
+    .num-tracks:hover {
+      color: #333;
+    }
+  }
+
   .play-pause-button {
     float: left;
     height: 6rem;

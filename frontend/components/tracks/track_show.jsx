@@ -42,9 +42,25 @@ class TrackShow extends React.Component {
           </div>
         </div>
         <section className="details">
-          <CommentForm trackId={track.id} />
-          <div className="actions" />
-          <CommentIndex commentIds={commentIds} />
+          <section className="user-details">
+            <Link className="image" to={`/users/${user.id}`}>
+              <ImageDefault src={user.profilePic.url} />
+            </Link>
+            <p>
+              <Link to={`/users/${user.id}`}>{user.username}</Link>
+            </p>
+            <p className="num-tracks">
+              <Link to={`/users/${user.id}/tracks`}>
+                <i className="icon tracks-icon" />
+                {user.numTracks} tracks
+              </Link>
+            </p>
+          </section>
+          <section className="comments-details">
+            <CommentForm trackId={track.id} />
+            <div className="actions" />
+            <CommentIndex commentIds={commentIds} />
+          </section>
         </section>
       </div>
     );

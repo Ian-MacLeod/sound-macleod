@@ -14,7 +14,7 @@ json.comments do
 end
 
 json.users do
-  @track.commenters.each do |user|
+  @track.commenters.includes(:tracks).each do |user|
     json.set! user.id do
       json.partial! "api/users/user", user: user
     end

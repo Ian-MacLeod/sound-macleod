@@ -26,19 +26,21 @@ class UserProfile extends React.Component {
       return <div className="loading" />;
     }
 
+    const { user, isOwnProfile, tracks } = this.props;
+
     return (
       <div className="user-profile">
         <div className="profile-splash">
           <div className="img">
-            <ImageDefault src={this.props.user.profilePic.url} />
-            {this.props.isOwnProfile ? (
+            <ImageDefault src={user.profilePic.url} />
+            {isOwnProfile ? (
               <ImageUploadForm action={this.updateImage.bind(this)} />
             ) : (
               ""
             )}
           </div>
           <h1>
-            <span className="highlight">{this.props.user.username}</span>
+            <span className="highlight">{user.username}</span>
           </h1>
         </div>
         <nav className="user-nav">
@@ -46,7 +48,7 @@ class UserProfile extends React.Component {
             <li>
               <NavLink
                 activeClassName="selected"
-                to={`/users/${this.props.user.id}/tracks`}
+                to={`/users/${user.id}/tracks`}
               >
                 Tracks
               </NavLink>
@@ -54,7 +56,7 @@ class UserProfile extends React.Component {
             <li>
               <NavLink
                 activeClassName="selected"
-                to={`/users/${this.props.user.id}/comments`}
+                to={`/users/${user.id}/comments`}
               >
                 Comments
               </NavLink>
@@ -65,43 +67,33 @@ class UserProfile extends React.Component {
           <section>
             <Switch>
               <Route
-                path={`/users/${this.props.user.id}/tracks`}
+                path={`/users/${user.id}/tracks`}
                 render={() => (
-                  <BigTrackIndex
-                    tracks={this.props.tracks}
-                    isOwnTrack={this.props.isOwnProfile}
-                  />
+                  <BigTrackIndex tracks={tracks} isOwnTrack={isOwnProfile} />
                 )}
               />
               <Route
-                path={`/users/${this.props.user.id}/comments`}
-                render={() => (
-                  <CommentIndex commentIds={this.props.user.commentIds} />
-                )}
+                path={`/users/${user.id}/comments`}
+                render={() => <CommentIndex commentIds={user.commentIds} />}
               />
               <Route
-                path={`/users/${this.props.user.id}`}
+                path={`/users/${user.id}`}
                 render={() => (
-                  <BigTrackIndex
-                    tracks={this.props.tracks}
-                    isOwnTrack={this.props.isOwnProfile}
-                  />
+                  <BigTrackIndex tracks={tracks} isOwnTrack={isOwnProfile} />
                 )}
               />
             </Switch>
           </section>
           <aside>
-            <CommentIndex
-              commentIds={this.props.user.commentIds}
-              numToShow={5}
-            />
-            {this.props.user.commentIds.length > 0 && (
-              <p>
-                <Link to={`/users/${this.props.user.id}/comments`}>
-                  See all comments
-                </Link>
-              </p>
-            )}
+            <CommentIndex commentIds={user.commentIds} numToShow={5} />
+            {user.commentIds &&
+              user.commentIds.length > 0 && (
+                <p>
+                  <Link to={`/users/${user.id}/comments`}>
+                    See all comments
+                  </Link>
+                </p>
+              )}
           </aside>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 
+import { removeFromNextUp } from "../../actions/player_actions";
 import NextUpIndexItem from "./next_up_index_item";
 
 const mapStateToProps = (state, ownProps) => {
@@ -8,4 +9,8 @@ const mapStateToProps = (state, ownProps) => {
   return { track, user };
 };
 
-export default connect(mapStateToProps)(NextUpIndexItem);
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  removeFromNextUp: () => dispatch(removeFromNextUp(ownProps.idx))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(NextUpIndexItem);

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import PlayPauseButton from "../play_pause_button/play_pause_button_container";
 import ImageDefault from "../image_default";
 
-const NextUpIndexItem = SortableElement(({ track, user }) => (
+const NextUpIndexItem = SortableElement(({ track, user, removeFromNextUp }) => (
   <li className="next-up-list-item">
     <div className="image">
       <ImageDefault src={track.image.url} />
@@ -23,7 +23,9 @@ const NextUpIndexItem = SortableElement(({ track, user }) => (
         </Link>
       </p>
     </div>
-    <a className="remove">×</a>
+    <a onClick={removeFromNextUp} className="remove">
+      ×
+    </a>
   </li>
 ));
 

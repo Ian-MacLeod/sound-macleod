@@ -7,6 +7,7 @@
   .next-up-icon {
     width: 2.4rem;
     height: 2.4rem;
+    cursor: pointer;
   }
 
   .next-up-box {
@@ -71,7 +72,8 @@
     }
   }
 
-  ul {
+  ul:hover {
+    cursor: pointer;
   }
 }
 
@@ -100,6 +102,7 @@ li.next-up-list-item {
 
   .info {
     margin-left: 1rem;
+    flex: 1;
   }
 
   .username {
@@ -134,7 +137,6 @@ li.next-up-list-item {
   }
 }
 li.next-up-list-item:hover {
-  cursor: pointer;
   background-color: #eee;
 }
 

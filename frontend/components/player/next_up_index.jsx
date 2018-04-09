@@ -10,7 +10,7 @@ const NextUpList = SortableContainer(({ trackIds }) => {
   return (
     <ul>
       {trackIds.map((id, index) => (
-        <NextUpIndexItem key={index} index={index} trackId={id} />
+        <NextUpIndexItem key={index} index={index} idx={index} trackId={id} />
       ))}
     </ul>
   );
@@ -26,14 +26,18 @@ class NextUpComponent extends React.Component {
     const newTrackIds = arrayMove(this.props.trackIds, oldIndex, newIndex);
     this.props.newNextUp(newTrackIds);
   }
+
   render() {
-    const { user, track, trackIds } = this.props;
+    if (!this.props.showing) return "";
+    const { user, track, trackIds, toggleShow, clearNextUp } = this.props;
     return (
       <div className="next-up-box">
         <header>
-          <h2>Next Up</h2>
-          <button>Clear</button>
-          <a className="close">×</a>
+          <h2 onClick={toggleShow}>Next Up</h2>
+          <button onClick={clearNextUp}>Clear</button>
+          <a onClick={toggleShow} className="close">
+            ×
+          </a>
         </header>
         <div className="scroll-container">
           <div className="currently-playing next-up-list-item">
@@ -54,7 +58,11 @@ class NextUpComponent extends React.Component {
               </p>
             </div>
           </div>
-          <NextUpList trackIds={trackIds} onSortEnd={this.onSortEnd} />
+          <NextUpList
+            distance={2}
+            trackIds={trackIds}
+            onSortEnd={this.onSortEnd}
+          />
         </div>
       </div>
     );

@@ -8,7 +8,9 @@ import {
   WAVE_FORM_SEEK,
   SET_PLAYER_REF,
   ADD_TO_NEXT_UP,
+  REMOVE_FROM_NEXT_UP,
   NEW_NEXT_UP,
+  CLEAR_NEXT_UP,
   TRACK_END
 } from "../actions/player_actions";
 
@@ -58,6 +60,12 @@ const playerReducer = (state = defaultState, action) => {
       return Object.assign({}, state, {
         nextUp: state.nextUp.concat(action.trackIds)
       });
+    case REMOVE_FROM_NEXT_UP:
+      return Object.assign({}, state, {
+        nextUp: state.nextUp
+          .slice(0, action.idx)
+          .concat(state.nextUp.slice(action.idx + 1))
+      });
     case TRACK_END:
       if (state.nextUp.length === 0) {
         return Object.assign({}, state, { playing: !state.playing });
@@ -70,6 +78,8 @@ const playerReducer = (state = defaultState, action) => {
       });
     case NEW_NEXT_UP:
       return Object.assign({}, state, { nextUp: action.trackIds });
+    case CLEAR_NEXT_UP:
+      return Object.assign({}, state, { nextUp: [] });
     default:
       return state;
   }

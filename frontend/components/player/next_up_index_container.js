@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 
-import { newNextUp } from "../../actions/player_actions";
+import { newNextUp, clearNextUp } from "../../actions/player_actions";
 import NextUpIndex from "./next_up_index";
 
 const mapStateToProps = state => ({
@@ -8,7 +8,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  newNextUp: trackIds => dispatch(newNextUp(trackIds))
+  newNextUp: trackIds => dispatch(newNextUp(trackIds)),
+  clearNextUp: () => dispatch(clearNextUp())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NextUpIndex);

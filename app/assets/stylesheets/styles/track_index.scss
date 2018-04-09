@@ -155,9 +155,14 @@
       cursor: pointer;
     }
 
+    .action-buttons {
+      display: flex;
+    }
+
     button {
       padding: 0.3rem 1rem 0.2rem 0.6rem;
       height: 2.2rem;
+      margin-right: 0.6rem;
       font-size: 1.2rem;
       line-height: 0;
       display: flex;

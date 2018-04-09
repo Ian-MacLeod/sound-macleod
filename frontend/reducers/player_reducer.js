@@ -7,7 +7,8 @@ import {
   PLAYER_SEEK,
   WAVE_FORM_SEEK,
   SET_PLAYER_REF,
-  ADD_TO_NEXT_UP
+  ADD_TO_NEXT_UP,
+  TRACK_END
 } from "../actions/player_actions";
 
 const defaultState = {
@@ -55,6 +56,16 @@ const playerReducer = (state = defaultState, action) => {
     case ADD_TO_NEXT_UP:
       return Object.assign({}, state, {
         nextUp: state.nextUp.concat(action.trackIds)
+      });
+    case TRACK_END:
+      if (state.nextUp.length === 0) {
+        return Object.assign({}, state, { playing: !state.playing });
+      }
+      return Object.assign({}, state, {
+        trackId: state.nextUp[0],
+        nextUp: state.nextUp.slice(1),
+        lastPlayerSeek: 0,
+        lastWaveFormSeek: 0
       });
     default:
       return state;

@@ -32,7 +32,6 @@ class WaveForm extends React.Component {
 
       this.wavesurfer.on("seek", progress => {
         this.props.waveFormSeek(progress);
-        console.log("this is happening");
         if (!this.props.playing) {
           this.props.playPausePlayer(this.props.track.id);
         }

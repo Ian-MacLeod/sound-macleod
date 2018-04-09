@@ -118,7 +118,26 @@
       width: 3.6rem;
       height: 3.6rem;
       float: left;
+      margin-right: 0.6rem;
     }
+
+    .username {
+      margin-bottom: -0.3rem;
+    }
+
+    .username a {
+      font-size: 1.2rem;
+      color: #999;
+    }
+
+    .username a:hover {
+      color: #333;
+    }
+
+    .track-title {
+      font-size: 15px;
+    }
+
     .created-at {
       float: right;
       color: #999;
@@ -127,7 +146,12 @@
     .waveform {
       margin-bottom: 1rem;
       height: 6rem;
-      background: #eee;
+      opacity: 0.75;
+      transition: opacity 0.2s;
+    }
+
+    .waveform:hover {
+      opacity: 1;
     }
 
     button {

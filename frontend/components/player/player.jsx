@@ -16,9 +16,11 @@ class Player extends React.Component {
       played: 0,
       loaded: 0,
       duration: 0,
-      seeking: false
+      seeking: false,
+      startTime: null
     };
 
+    this.rememberProgress = this.rememberProgress.bind(this);
     this.setVolume = this.setVolume.bind(this);
     this.toggleMuted = this.toggleMuted.bind(this);
     this.onSeekMouseDown = this.onSeekMouseDown.bind(this);
@@ -31,10 +33,22 @@ class Player extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
+    if (!prevProps.track) return;
+    if (this.props.track.id !== prevProps.track.id) {
+      this.setState({ startTime: this.props.player.lastWaveFormSeek });
+    }
     if (
       this.props.player.lastWaveFormSeek !== prevProps.player.lastWaveFormSeek
     ) {
       this.player.seekTo(this.props.player.lastWaveFormSeek);
+    }
+  }
+
+  rememberProgress() {
+    if (this.state.startTime !== null) {
+      const startTime = this.state.startTime;
+      this.setState({ startTime: null });
+      this.player.seekTo(startTime);
     }
   }
 
@@ -72,6 +86,7 @@ class Player extends React.Component {
   }
   ref(player) {
     this.player = player;
+    this.props.setPlayerRef(player);
   }
 
   render() {
@@ -95,6 +110,7 @@ class Player extends React.Component {
             onProgress={this.onProgress}
             onDuration={this.onDuration}
             progressInterval={50}
+            onReady={this.rememberProgress}
             config={{ file: { forceAudio: true } }}
           />
           <div className="player-content content">

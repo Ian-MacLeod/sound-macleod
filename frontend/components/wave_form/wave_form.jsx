@@ -12,7 +12,8 @@ class WaveForm extends React.Component {
     if (this.props.playing !== this.wavesurfer.isPlaying()) {
       this.wavesurfer.playPause();
     }
-    if (this.props.playing && this.props.lastSeek !== prevProps.lastSeek) {
+    if (!this.props.playing) return;
+    if (this.props.lastSeek !== prevProps.lastSeek) {
       this.wavesurfer.seekTo(this.props.lastSeek);
     }
   }
@@ -23,7 +24,8 @@ class WaveForm extends React.Component {
       waveColor: "#666",
       progressColor: "#f50",
       barWidth: 2,
-      height: 60
+      height: 60,
+      cursorWidth: 0
     });
     this.wavesurfer.setMute(true);
     this.wavesurfer.load(this.props.track.data.url);
@@ -35,7 +37,7 @@ class WaveForm extends React.Component {
   }
 
   render() {
-    return <div className={`waveform-${this.props.track.id}`} />;
+    return <div className={`waveform waveform-${this.props.track.id}`} />;
   }
 }
 

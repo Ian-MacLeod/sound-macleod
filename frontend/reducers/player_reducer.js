@@ -1,16 +1,21 @@
+import { merge } from "lodash";
+
 import {
   PAUSE_PLAYER,
   PLAY_TRACK,
   PLAY_PAUSE_PLAYER,
   PLAYER_SEEK,
-  WAVE_FORM_SEEK
+  WAVE_FORM_SEEK,
+  SET_PLAYER_REF
 } from "../actions/player_actions";
 
 const defaultState = {
   trackId: null,
   playing: false,
   lastPlayerSeek: 0,
-  lastWaveFormSeek: 0
+  lastWaveFormSeek: 0,
+  progressByTrackId: {},
+  playerRef: null
 };
 
 const playerReducer = (state = defaultState, action) => {
@@ -19,16 +24,26 @@ const playerReducer = (state = defaultState, action) => {
       return Object.assign({}, state, { playing: false });
     case PLAY_PAUSE_PLAYER:
       if (action.trackId !== state.trackId) {
-        return {
+        return Object.assign({}, state, {
           trackId: action.trackId,
-          playing: true
-        };
+          playing: true,
+          lastPlayerSeek: state.progressByTrackId[action.trackId] || 0,
+          lastWaveFormSeek: state.progressByTrackId[action.trackId] || 0
+        });
+      }
+      if (state.playing) {
+        return merge({}, state, {
+          playing: false,
+          progressByTrackId: { [action.trackId]: action.progress }
+        });
       }
       return Object.assign({}, state, { playing: !state.playing });
     case PLAYER_SEEK:
       return Object.assign({}, state, { lastPlayerSeek: action.progress });
     case WAVE_FORM_SEEK:
       return Object.assign({}, state, { lastWaveFormSeek: action.progress });
+    case SET_PLAYER_REF:
+      return Object.assign({}, state, { playerRef: action.playerRef });
     default:
       return state;
   }

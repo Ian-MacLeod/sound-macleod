@@ -1,4 +1,4 @@
-header {
+.site-header {
   height: $header-height;
   background: $dark-grey;
   position: fixed;
@@ -6,7 +6,7 @@ header {
   z-index: 1;
 }
 
-header #logo {
+.site-header #logo {
   background: $primary-orange;
   height: 100%;
   width: 15rem;
@@ -16,24 +16,24 @@ header #logo {
   justify-content: center;
 }
 
-header .content {
+.site-header .content {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-header .session-buttons {
+.site-header .session-buttons {
   display: flex;
   height: 100%;
   align-items: center;
 }
 
-header .session-buttons button {
+.site-header .session-buttons button {
   margin-left: 1.6rem;
   color: white;
 }
 
-header .profile-pic {
+.site-header .profile-pic {
   width: 2.6rem;
   height: 2.6rem;
   border-radius: 100%;
@@ -42,7 +42,7 @@ header .profile-pic {
   margin-right: 1rem;
 }
 
-header a {
+.site-header a {
   display: block;
   color: #ccc;
   padding: 0 1.6rem;
@@ -51,15 +51,15 @@ header a {
   align-items: center;
 }
 
-header #logo a {
+.site-header #logo a {
   color: white;
 }
 
-header a.active {
+.site-header a.active {
   background-color: #111;
   color: white;
 }
 
-header a:hover {
+.site-header a:hover {
   color: white;
 }

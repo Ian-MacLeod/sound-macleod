@@ -26,7 +26,11 @@ class NextUpComponent extends React.Component {
   render() {
     return (
       <div className="next-up-box">
-        <h2>Next Up</h2>
+        <header>
+          <h2>Next Up</h2>
+          <button>Clear</button>
+          <a className="close">×</a>
+        </header>
         <NextUpList trackIds={this.props.trackIds} onSortEnd={this.onSortEnd} />
       </div>
     );

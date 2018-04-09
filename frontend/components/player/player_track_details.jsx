@@ -20,7 +20,12 @@ const PlayerTrackDetails = ({ track, user, nextUp }) => (
     </div>
     <div className="buttons">
       <div className="next-up">
-        <i className="icon next-up-icon" />
+        <svg className="next-up-icon">
+          <path
+            fill="#333"
+            d="M6 11h12v2H6zM6 7h8v2H6zM6 15h12v2H6zM16 3v6l4-3z"
+          />
+        </svg>
         <NextUpIndex />
       </div>
     </div>

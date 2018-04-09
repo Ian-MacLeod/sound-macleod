@@ -4,7 +4,7 @@ import { Link, matchPath } from "react-router-dom";
 import ImageDefault from "../image_default";
 
 const LoggedInHeader = ({ location, currentUser, signOut }) => (
-  <header>
+  <header className="site-header">
     <div className="content">
       <div id="logo">
         <Link to="/tracks">SoundMacLeod</Link>

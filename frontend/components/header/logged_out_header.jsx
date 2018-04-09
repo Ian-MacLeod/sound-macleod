@@ -6,7 +6,7 @@ const LoggedOutHeader = ({
   openSignUpModal,
   signInDemoUser
 }) => (
-  <header className="splash">
+  <header className="site-header splash">
     <div className="content">
       <div id="logo">
         <Link to="/">SoundMacLeod</Link>

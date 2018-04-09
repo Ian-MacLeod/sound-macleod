@@ -148,11 +148,15 @@
       height: 6rem;
       opacity: 0.75;
       transition: opacity 0.2s;
+      z-index: 0;
     }
 
     .waveform:hover {
       opacity: 1;
       cursor: pointer;
+    }
+    wave {
+      z-index: 0;
     }
 
     .action-buttons {

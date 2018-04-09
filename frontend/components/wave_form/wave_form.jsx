@@ -7,17 +7,6 @@ class WaveForm extends React.Component {
     this.state = { lastSeek: 0 };
   }
 
-  componentDidUpdate(prevProps) {
-    if (!this.wavesurfer) return;
-    if (this.props.playing !== this.wavesurfer.isPlaying()) {
-      this.wavesurfer.playPause();
-    }
-    if (!this.props.playing) return;
-    if (this.props.lastSeek !== prevProps.lastSeek) {
-      this.wavesurfer.seekTo(this.props.lastSeek);
-    }
-  }
-
   componentDidMount() {
     this.wavesurfer = WaveSurfer.create({
       container: `.waveform-${this.props.track.id}`,
@@ -29,12 +18,36 @@ class WaveForm extends React.Component {
     });
     this.wavesurfer.setMute(true);
     this.wavesurfer.load(this.props.track.data.url);
-    this.wavesurfer.on("seek", progress => {
-      this.props.waveFormSeek(progress);
-      if (!this.props.playing) {
-        this.props.playPausePlayer(this.props.track.id);
-      }
+    let startAt;
+    if (this.props.playerRef && this.props.playing) {
+      startAt =
+        this.props.playerRef.getCurrentTime() /
+        this.props.playerRef.getDuration();
+    } else {
+      startAt = this.props.previousProgress || 0;
+    }
+    this.wavesurfer.on("ready", () => {
+      this.wavesurfer.seekTo(startAt);
+      this.forceUpdate();
+
+      this.wavesurfer.on("seek", progress => {
+        this.props.waveFormSeek(progress);
+        if (!this.props.playing) {
+          this.props.playPausePlayer(this.props.track.id);
+        }
+      });
     });
+  }
+
+  componentDidUpdate(prevProps) {
+    if (!this.wavesurfer) return;
+    if (this.props.playing !== this.wavesurfer.isPlaying()) {
+      this.wavesurfer.playPause();
+    }
+    if (!this.props.playing) return;
+    if (this.props.lastSeek !== prevProps.lastSeek) {
+      this.wavesurfer.seekTo(this.props.lastSeek);
+    }
   }
 
   componentWillUnMount() {

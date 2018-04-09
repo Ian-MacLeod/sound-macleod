@@ -6,7 +6,9 @@ import WaveForm from "./wave_form";
 const mapStateToProps = (state, ownProps) => ({
   playing:
     state.ui.player.playing && state.ui.player.trackId === ownProps.track.id,
-  lastSeek: state.ui.player.lastPlayerSeek
+  lastSeek: state.ui.player.lastPlayerSeek,
+  playerRef: state.ui.player.playerRef,
+  previousProgress: state.ui.player.progressByTrackId[ownProps.track.id]
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

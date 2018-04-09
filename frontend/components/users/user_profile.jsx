@@ -25,6 +25,7 @@ class UserProfile extends React.Component {
     if (this.props.user === undefined) {
       return <div className="loading" />;
     }
+
     return (
       <div className="user-profile">
         <div className="profile-splash">
@@ -94,11 +95,13 @@ class UserProfile extends React.Component {
               commentIds={this.props.user.commentIds}
               numToShow={5}
             />
-            <p>
-              <Link to={`/users/${this.props.user.id}/comments`}>
-                See all comments
-              </Link>
-            </p>
+            {this.props.user.commentIds.length > 0 && (
+              <p>
+                <Link to={`/users/${this.props.user.id}/comments`}>
+                  See all comments
+                </Link>
+              </p>
+            )}
           </aside>
         </div>
       </div>

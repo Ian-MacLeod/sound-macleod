@@ -31,12 +31,24 @@
     .comment-contents {
       flex: 1;
 
+      .title {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .created-at {
+        color: #ccc;
+      }
+
       p {
         color: #333;
       }
-    }
-
-    .created-at {
+      p > span > a {
+        color: #999;
+      }
+      p > span > a:hover {
+        color: #333;
+      }
     }
   }
 }

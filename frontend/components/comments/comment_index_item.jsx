@@ -10,15 +10,17 @@ const CommentIndexItem = ({ comment, user, track }) => {
         <ImageDefault src={user.profilePic.url} />
       </Link>
       <section className="comment-contents">
-        <p>
-          <Link to={`/users/${user.id}`}>{user.username}</Link>{" "}
-          <span>
-            on <Link to={`/tracks/${track.id}`}>{track.title}</Link>
-          </span>
-        </p>
+        <div className="title">
+          <p>
+            <Link to={`/users/${user.id}`}>{user.username}</Link>{" "}
+            <span>
+              on <Link to={`/tracks/${track.id}`}>{track.title}</Link>
+            </span>
+          </p>
+          <p className="created-at">{comment.createdAt}</p>
+        </div>
         <p>{comment.body}</p>
       </section>
-      <p className="created-at">{comment.createdAt} ago</p>
     </li>
   );
 };

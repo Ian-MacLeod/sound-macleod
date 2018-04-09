@@ -49,6 +49,24 @@
       p > span > a:hover {
         color: #333;
       }
+
+      .title {
+        font-size: 1.2rem;
+        color: #ccc;
+      }
+
+      .title a {
+        font-size: 1.3rem;
+        color: #999;
+      }
+
+      .title a:hover {
+        color: #333;
+      }
+
+      p.body {
+        font-size: 1.3;
+      }
     }
   }
 }

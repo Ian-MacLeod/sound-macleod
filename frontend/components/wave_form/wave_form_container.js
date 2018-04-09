@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 
-import { waveFormSeek } from "../../actions/player_actions";
+import { waveFormSeek, playPausePlayer } from "../../actions/player_actions";
 import WaveForm from "./wave_form";
 
 const mapStateToProps = (state, ownProps) => ({
@@ -9,8 +9,9 @@ const mapStateToProps = (state, ownProps) => ({
   lastSeek: state.ui.player.lastPlayerSeek
 });
 
-const mapDispatchToProps = dispatch => ({
-  waveFormSeek: progress => dispatch(waveFormSeek(progress))
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  waveFormSeek: progress => dispatch(waveFormSeek(progress, ownProps.track.id)),
+  playPausePlayer: trackId => dispatch(playPausePlayer(trackId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(WaveForm);

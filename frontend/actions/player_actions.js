@@ -19,9 +19,10 @@ export const playerSeek = progress => ({
   progress
 });
 
-export const waveFormSeek = progress => ({
+export const waveFormSeek = (progress, trackId) => ({
   type: WAVE_FORM_SEEK,
-  progress
+  progress,
+  trackId
 });
 
 export const setPlayerRef = playerRef => ({

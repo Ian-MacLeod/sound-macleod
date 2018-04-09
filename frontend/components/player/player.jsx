@@ -36,8 +36,7 @@ class Player extends React.Component {
     if (!prevProps.track) return;
     if (this.props.track.id !== prevProps.track.id) {
       this.setState({ startTime: this.props.player.lastWaveFormSeek });
-    }
-    if (
+    } else if (
       this.props.player.lastWaveFormSeek !== prevProps.player.lastWaveFormSeek
     ) {
       this.player.seekTo(this.props.player.lastWaveFormSeek);

@@ -41,6 +41,11 @@ const playerReducer = (state = defaultState, action) => {
     case PLAYER_SEEK:
       return Object.assign({}, state, { lastPlayerSeek: action.progress });
     case WAVE_FORM_SEEK:
+      if (action.trackId && action.trackId !== state.trackId) {
+        return merge({}, state, {
+          progressByTrackId: { [action.trackId]: action.progress }
+        });
+      }
       return Object.assign({}, state, { lastWaveFormSeek: action.progress });
     case SET_PLAYER_REF:
       return Object.assign({}, state, { playerRef: action.playerRef });

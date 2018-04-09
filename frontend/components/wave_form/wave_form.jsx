@@ -29,7 +29,12 @@ class WaveForm extends React.Component {
     });
     this.wavesurfer.setMute(true);
     this.wavesurfer.load(this.props.track.data.url);
-    this.wavesurfer.on("seek", progress => this.props.waveFormSeek(progress));
+    this.wavesurfer.on("seek", progress => {
+      this.props.waveFormSeek(progress);
+      if (!this.props.playing) {
+        this.props.playPausePlayer(this.props.track.id);
+      }
+    });
   }
 
   componentWillUnMount() {

@@ -26,7 +26,7 @@ const PlayerTrackDetails = ({ track, user, nextUp }) => (
             d="M6 11h12v2H6zM6 7h8v2H6zM6 15h12v2H6zM16 3v6l4-3z"
           />
         </svg>
-        <NextUpIndex />
+        <NextUpIndex track={track} user={user} />
       </div>
     </div>
   </div>

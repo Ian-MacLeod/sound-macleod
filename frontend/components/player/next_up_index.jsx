@@ -1,6 +1,9 @@
 import React from "react";
 import { SortableContainer, arrayMove } from "react-sortable-hoc";
+import { Link } from "react-router-dom";
 
+import ImageDefault from "../image_default";
+import PlayPauseButton from "../play_pause_button/play_pause_button_container";
 import NextUpIndexItem from "./next_up_index_item_container";
 
 const NextUpList = SortableContainer(({ trackIds }) => {
@@ -24,6 +27,7 @@ class NextUpComponent extends React.Component {
     this.props.newNextUp(newTrackIds);
   }
   render() {
+    const { user, track, trackIds } = this.props;
     return (
       <div className="next-up-box">
         <header>
@@ -31,7 +35,27 @@ class NextUpComponent extends React.Component {
           <button>Clear</button>
           <a className="close">×</a>
         </header>
-        <NextUpList trackIds={this.props.trackIds} onSortEnd={this.onSortEnd} />
+        <div className="scroll-container">
+          <div className="currently-playing next-up-list-item">
+            <div className="image">
+              <ImageDefault src={track.image.url} />
+              <PlayPauseButton trackId={track.id} />
+            </div>
+            <div className="info">
+              <p>
+                <Link to={`/users/${user.id}`} className="username">
+                  {user.username}
+                </Link>
+              </p>
+              <p>
+                <Link to={`/tracks/${track.id}`} className="title">
+                  {track.title}
+                </Link>
+              </p>
+            </div>
+          </div>
+          <NextUpList trackIds={trackIds} onSortEnd={this.onSortEnd} />
+        </div>
       </div>
     );
   }

@@ -1,5 +1,4 @@
 import {
-  START_PLAYER,
   PAUSE_PLAYER,
   PLAY_TRACK,
   PLAY_PAUSE_PLAYER,
@@ -16,13 +15,6 @@ const defaultState = {
 
 const playerReducer = (state = defaultState, action) => {
   switch (action.type) {
-    case PLAY_TRACK:
-      return {
-        trackId: action.trackId,
-        playing: true
-      };
-    case START_PLAYER:
-      return Object.assign({}, state, { playing: true });
     case PAUSE_PLAYER:
       return Object.assign({}, state, { playing: false });
     case PLAY_PAUSE_PLAYER:

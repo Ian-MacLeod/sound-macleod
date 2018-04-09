@@ -1,10 +1,6 @@
 import { connect } from "react-redux";
 
-import {
-  pausePlayer,
-  playTrack,
-  playPausePlayer
-} from "../../actions/player_actions";
+import { playPausePlayer } from "../../actions/player_actions";
 import PlayPauseButton from "./play_pause_button";
 
 const mapStateToProps = (state, ownProps) => ({

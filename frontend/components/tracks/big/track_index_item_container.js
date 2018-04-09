@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 
 import { deleteTrack } from "../../../actions/track_actions";
-import { playPausePlayer } from "../../../actions/player_actions";
+import { playPausePlayer, addToNextUp } from "../../../actions/player_actions";
 import TrackIndexItem from "./track_index_item";
 
 const mapStateToProps = (state, ownProps) => ({
@@ -12,7 +12,8 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   deleteTrack: () => dispatch(deleteTrack(ownProps.track.id)),
-  playPausePlayer: trackId => dispatch(playPausePlayer(trackId))
+  playPausePlayer: trackId => dispatch(playPausePlayer(trackId)),
+  addToNextUp: trackId => dispatch(addToNextUp([trackId]))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TrackIndexItem);

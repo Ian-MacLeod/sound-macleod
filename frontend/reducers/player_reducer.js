@@ -6,7 +6,8 @@ import {
   PLAY_PAUSE_PLAYER,
   PLAYER_SEEK,
   WAVE_FORM_SEEK,
-  SET_PLAYER_REF
+  SET_PLAYER_REF,
+  ADD_TO_NEXT_UP
 } from "../actions/player_actions";
 
 const defaultState = {
@@ -15,7 +16,8 @@ const defaultState = {
   lastPlayerSeek: 0,
   lastWaveFormSeek: 0,
   progressByTrackId: {},
-  playerRef: null
+  playerRef: null,
+  nextUp: []
 };
 
 const playerReducer = (state = defaultState, action) => {
@@ -50,6 +52,10 @@ const playerReducer = (state = defaultState, action) => {
       return Object.assign({}, state, { lastWaveFormSeek: action.progress });
     case SET_PLAYER_REF:
       return Object.assign({}, state, { playerRef: action.playerRef });
+    case ADD_TO_NEXT_UP:
+      return Object.assign({}, state, {
+        nextUp: state.nextUp.concat(action.trackIds)
+      });
     default:
       return state;
   }

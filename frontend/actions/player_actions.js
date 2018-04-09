@@ -3,6 +3,7 @@ export const PLAY_PAUSE_PLAYER = "PLAY_PAUSE_PLAYER";
 export const PLAYER_SEEK = "PLAYER_SEEK";
 export const WAVE_FORM_SEEK = "WAVE_FORM_SEEK";
 export const SET_PLAYER_REF = "SET_PLAYER_REF";
+export const ADD_TO_NEXT_UP = "ADD_TO_NEXT_UP";
 
 export const pausePlayer = () => ({
   type: PAUSE_PLAYER
@@ -28,4 +29,9 @@ export const waveFormSeek = (progress, trackId) => ({
 export const setPlayerRef = playerRef => ({
   type: SET_PLAYER_REF,
   playerRef
+});
+
+export const addToNextUp = trackIds => ({
+  type: ADD_TO_NEXT_UP,
+  trackIds
 });

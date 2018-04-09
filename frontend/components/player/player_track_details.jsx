@@ -12,7 +12,7 @@ class PlayerTrackDetails extends React.Component {
     this.toggleNextUpShow = this.toggleNextUpShow.bind(this);
   }
 
-  toggleNextUpShow() {
+  toggleNextUpShow(e) {
     this.setState({ nextUpShowing: !this.state.nextUpShowing });
   }
 
@@ -33,7 +33,12 @@ class PlayerTrackDetails extends React.Component {
         </div>
         <div className="buttons">
           <div className="next-up">
-            <svg onClick={this.toggleNextUpShow} className="next-up-icon">
+            <svg
+              onClick={this.toggleNextUpShow}
+              className={
+                "next-up-icon " + (this.state.nextUpShowing && "active")
+              }
+            >
               <path
                 fill="#333"
                 d="M6 11h12v2H6zM6 7h8v2H6zM6 15h12v2H6zM16 3v6l4-3z"

@@ -10,6 +10,10 @@
     cursor: pointer;
   }
 
+  .next-up-icon.active path {
+    fill: #f50;
+  }
+
   .next-up-box {
     position: absolute;
     bottom: $player-height - 0.5rem;
@@ -85,6 +89,10 @@ li.next-up-list-item {
   box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.25);
 }
 
+div.next-up-list-item .play-pause-button {
+  display: block;
+}
+
 .next-up-list-item {
   background: white;
   display: flex;
@@ -119,6 +127,7 @@ li.next-up-list-item {
   }
 
   .play-pause-button {
+    display: none;
     position: absolute;
     width: 2.4rem;
     height: 2.4rem;
@@ -136,8 +145,13 @@ li.next-up-list-item {
     justify-content: center;
   }
 }
+
 li.next-up-list-item:hover {
   background-color: #eee;
+
+  .play-pause-button {
+    display: block;
+  }
 }
 
 .next-up-list-item.currently-playing {

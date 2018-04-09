@@ -8,6 +8,7 @@ import {
   WAVE_FORM_SEEK,
   SET_PLAYER_REF,
   ADD_TO_NEXT_UP,
+  NEW_NEXT_UP,
   TRACK_END
 } from "../actions/player_actions";
 
@@ -67,6 +68,8 @@ const playerReducer = (state = defaultState, action) => {
         lastPlayerSeek: 0,
         lastWaveFormSeek: 0
       });
+    case NEW_NEXT_UP:
+      return Object.assign({}, state, { nextUp: action.trackIds });
     default:
       return state;
   }

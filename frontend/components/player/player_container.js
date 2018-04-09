@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 
-import { startPlayer, pausePlayer } from "../../actions/player_actions";
+import { pausePlayer, playerSeek } from "../../actions/player_actions";
 import Player from "./player";
 
 const mapStateToProps = state => ({
@@ -9,8 +9,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  startPlayer: () => dispatch(startPlayer()),
-  pausePlayer: () => dispatch(pausePlayer())
+  pausePlayer: () => dispatch(pausePlayer()),
+  playerSeek: progress => dispatch(playerSeek(progress))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Player);

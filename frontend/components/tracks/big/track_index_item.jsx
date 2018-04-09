@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { formatDuration } from "../../../utils/time_utils";
 import ImageDefault from "../../image_default";
 import PlayPauseButton from "../../play_pause_button/play_pause_button_container";
+import WaveForm from "../../wave_form/wave_form_container";
 
 const TrackIndexItem = ({
   track,
@@ -28,7 +29,7 @@ const TrackIndexItem = ({
           <Link to={`/tracks/${track.id}`}>{track.title}</Link>
         </p>
       </div>
-      <div className="waveform" />
+      <WaveForm track={track} />
       <div className="action-buttons">
         {isOwnTrack ? (
           <button onClick={deleteTrack} className="delete">

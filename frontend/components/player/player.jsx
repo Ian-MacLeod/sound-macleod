@@ -30,6 +30,14 @@ class Player extends React.Component {
     this.ref = this.ref.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    if (
+      this.props.player.lastWaveFormSeek !== prevProps.player.lastWaveFormSeek
+    ) {
+      this.player.seekTo(this.props.player.lastWaveFormSeek);
+    }
+  }
+
   setVolume(e) {
     this.setState({ volume: parseFloat(e.target.value), muted: false });
   }
@@ -44,7 +52,9 @@ class Player extends React.Component {
   }
   onSeekMouseUp(e) {
     this.setState({ seeking: false });
-    this.player.seekTo(parseFloat(e.target.value));
+    const progress = parseFloat(e.target.value);
+    this.player.seekTo(progress);
+    this.props.playerSeek(progress);
   }
   onProgress(state) {
     if (!this.state.seeking) {
@@ -85,6 +95,7 @@ class Player extends React.Component {
             onProgress={this.onProgress}
             onDuration={this.onDuration}
             progressInterval={50}
+            config={{ file: { forceAudio: true } }}
           />
           <div className="player-content content">
             <div className="play-controls">

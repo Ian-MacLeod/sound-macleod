@@ -2,12 +2,16 @@ import {
   START_PLAYER,
   PAUSE_PLAYER,
   PLAY_TRACK,
-  PLAY_PAUSE_PLAYER
+  PLAY_PAUSE_PLAYER,
+  PLAYER_SEEK,
+  WAVE_FORM_SEEK
 } from "../actions/player_actions";
 
 const defaultState = {
   trackId: null,
-  playing: false
+  playing: false,
+  lastPlayerSeek: 0,
+  lastWaveFormSeek: 0
 };
 
 const playerReducer = (state = defaultState, action) => {
@@ -29,6 +33,10 @@ const playerReducer = (state = defaultState, action) => {
         };
       }
       return Object.assign({}, state, { playing: !state.playing });
+    case PLAYER_SEEK:
+      return Object.assign({}, state, { lastPlayerSeek: action.progress });
+    case WAVE_FORM_SEEK:
+      return Object.assign({}, state, { lastWaveFormSeek: action.progress });
     default:
       return state;
   }

@@ -1,8 +1,27 @@
 import React from "react";
 
 class ModalHolder extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
+  }
+
   handleComponentClick(e) {
     e.stopPropagation();
+  }
+
+  componentDidMount() {
+    document.addEventListener("keydown", this.handleKeyDown);
+  }
+
+  handleKeyDown(e) {
+    if (this.props.isOpen && e.key === "Escape") {
+      this.props.closeModal();
+    }
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.handleKeyDown);
   }
 
   render() {

@@ -85,6 +85,16 @@ class UserProfile extends React.Component {
             </Switch>
           </section>
           <aside>
+            <nav className="user-stats-nav">
+              <Link to={`/users/${user.id}/tracks`}>
+                <span>Tracks</span>
+                <span>{user.numTracks}</span>
+              </Link>
+              <Link to={`/users/${user.id}/comments`}>
+                <span>Comments</span>
+                <span>{user.commentIds ? user.commentIds.length : " "}</span>
+              </Link>
+            </nav>
             <CommentIndex commentIds={user.commentIds} numToShow={5} />
             {user.commentIds &&
               user.commentIds.length > 0 && (

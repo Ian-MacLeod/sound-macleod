@@ -25,8 +25,13 @@ const usersReducer = (state = {}, action) => {
       if (Object.keys(state).includes(action.track.userId.toString())) {
         const user = state[action.track.userId];
         const newTrackIds = user.trackIds.filter(id => id !== action.track.id);
-        const newUser = Object.assign({}, user, { trackIds: newTrackIds });
-
+        const newCommentIds = user.commentIds.filter(
+          id => !action.deletedCommentIds.includes(id)
+        );
+        const newUser = Object.assign({}, user, {
+          trackIds: newTrackIds,
+          commentIds: newCommentIds
+        });
         return Object.assign({}, state, { [action.track.userId]: newUser });
       }
       return state;

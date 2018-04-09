@@ -15,9 +15,10 @@ const receiveTracks = payload => ({
   payload
 });
 
-const removeTrack = ({ track }) => ({
+const removeTrack = ({ track, deletedCommentIds }) => ({
   type: REMOVE_TRACK,
-  track
+  track,
+  deletedCommentIds
 });
 
 export const fetchTrack = id => dispatch =>

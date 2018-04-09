@@ -26,8 +26,9 @@ class Api::TracksController < ApplicationController
     elsif current_user != @track.user
       render json: "You don't own that track".to_json, status: 422
     else
+      @deleted_comment_ids = @track.comments.pluck(:id)
       @track.destroy!
-      render "api/tracks/show"
+      render "api/tracks/destroy"
     end
   end
 

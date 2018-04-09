@@ -1,5 +1,5 @@
 import { RECEIVE_COMMENT, REMOVE_COMMENT } from "../actions/comment_actions";
-import { RECEIVE_TRACK } from "../actions/track_actions";
+import { RECEIVE_TRACK, REMOVE_TRACK } from "../actions/track_actions";
 import { RECEIVE_USER } from "../actions/user_actions";
 
 const commentsReducer = (state = {}, action) => {
@@ -12,6 +12,12 @@ const commentsReducer = (state = {}, action) => {
     case REMOVE_COMMENT:
       newState = Object.assign({}, state);
       delete newState[action.id];
+      return newState;
+    case REMOVE_TRACK:
+      newState = Object.assign({}, state);
+      action.deletedCommentIds.forEach(id => {
+        delete newState[id];
+      });
       return newState;
     case RECEIVE_USER:
       return Object.assign({}, state, action.payload.comments);

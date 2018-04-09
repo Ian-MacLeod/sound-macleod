@@ -26,7 +26,10 @@ class TrackForm extends React.Component {
       return;
     }
 
+    this.setState({ disabled: true });
+
     this.props.action(this.state).then(action => {
+      this.setState({ disabled: false });
       this.setState({ redirect: action.payload.track.id });
     });
   }
@@ -58,30 +61,38 @@ class TrackForm extends React.Component {
     }
     return (
       <div className="track-form">
+        {this.state.disabled && <div className="loading" />}
+
         <ul className="errors">
           {this.props.errors.map(error => <li key={error}>{error}</li>)}
         </ul>
+
         <form onSubmit={this.handleSubmit.bind(this)}>
-          <label htmlFor="title">Title</label>
-          <input
-            type="text"
-            name="title"
-            value={this.state.title}
-            onChange={this.handleInput("title")}
-          />
-          <label htmlFor="image">Image</label>
-          <input
-            type="file"
-            name="image"
-            onChange={this.handleFileChange("image")}
-          />
-          <label htmlFor="data">Upload</label>
-          <input
-            type="file"
-            name="data"
-            onChange={this.handleFileChange("data")}
-          />
-          <input type="submit" value="Create track" />
+          <fieldset disabled={this.state.disabled}>
+            <label htmlFor="title">Title</label>
+            <input
+              type="text"
+              name="title"
+              value={this.state.title}
+              onChange={this.handleInput("title")}
+            />
+
+            <label htmlFor="image">Image</label>
+            <input
+              type="file"
+              name="image"
+              onChange={this.handleFileChange("image")}
+            />
+
+            <label htmlFor="data">Upload</label>
+            <input
+              type="file"
+              name="data"
+              onChange={this.handleFileChange("data")}
+            />
+
+            <input type="submit" value="Create track" />
+          </fieldset>
         </form>
       </div>
     );

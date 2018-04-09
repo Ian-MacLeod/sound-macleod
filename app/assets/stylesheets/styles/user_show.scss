@@ -65,4 +65,39 @@
       border-bottom: 1px solid $primary-orange;
     }
   }
+
+  .user-stats-nav {
+    display: flex;
+    margin-bottom: 2rem;
+
+    a {
+      display: block;
+      flex: 1;
+      box-sizing: border-box;
+      padding: 0.2rem 1.4rem;
+      border-right: 1px solid $very-light-border;
+      color: #999;
+
+      h3 {
+        font-size: 12px;
+      }
+
+      .number {
+        font-size: 2rem;
+      }
+    }
+
+    a:hover {
+      color: #333;
+    }
+
+    a:first-child {
+      padding-left: 0;
+    }
+
+    a:last-child {
+      border-right: none;
+      padding-right: 0;
+    }
+  }
 }

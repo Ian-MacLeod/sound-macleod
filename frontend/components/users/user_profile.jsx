@@ -87,12 +87,14 @@ class UserProfile extends React.Component {
           <aside>
             <nav className="user-stats-nav">
               <Link to={`/users/${user.id}/tracks`}>
-                <span>Tracks</span>
-                <span>{user.numTracks}</span>
+                <h3>Tracks</h3>
+                <p className="number">{user.numTracks}</p>
               </Link>
               <Link to={`/users/${user.id}/comments`}>
-                <span>Comments</span>
-                <span>{user.commentIds ? user.commentIds.length : " "}</span>
+                <h3>Comments</h3>
+                <p className="number">
+                  {user.commentIds ? user.commentIds.length : " "}
+                </p>
               </Link>
             </nav>
             <CommentIndex commentIds={user.commentIds} numToShow={5} />

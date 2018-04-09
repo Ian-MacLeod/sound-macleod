@@ -12,7 +12,7 @@ const CommentIndex = ({ commentIds, numToShow }) => {
     <section className="comments-index">
       <h2>
         <i className="comment-icon icon" />
-        {numComments} Comments
+        {numComments} comments
       </h2>
       <ul>{commentIds.map(id => <CommentIndexItem key={id} id={id} />)}</ul>
     </section>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, Switch, Route, NavLink } from "react-router-dom";
 
-import TrackIndex from "../tracks/track_index";
+import BigTrackIndex from "../tracks/big/track_index";
 import ImageDefault from "../image_default";
 import ImageUploadForm from "../image_upload_form.jsx";
 import CommentIndex from "../comments/comment_index";
@@ -66,9 +66,9 @@ class UserProfile extends React.Component {
               <Route
                 path={`/users/${this.props.user.id}/tracks`}
                 render={() => (
-                  <TrackIndex
+                  <BigTrackIndex
                     tracks={this.props.tracks}
-                    showDelete={this.props.isOwnProfile}
+                    isOwnTrack={this.props.isOwnProfile}
                   />
                 )}
               />
@@ -81,9 +81,9 @@ class UserProfile extends React.Component {
               <Route
                 path={`/users/${this.props.user.id}`}
                 render={() => (
-                  <TrackIndex
+                  <BigTrackIndex
                     tracks={this.props.tracks}
-                    showDelete={this.props.isOwnProfile}
+                    isOwnTrack={this.props.isOwnProfile}
                   />
                 )}
               />

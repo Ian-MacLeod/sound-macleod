@@ -89,3 +89,91 @@
     margin-right: 1rem;
   }
 }
+
+.track-index-detailed {
+  .tracks li {
+    display: flex;
+    margin-bottom: 4rem;
+
+    .track-img {
+      width: 16rem;
+      height: 16rem;
+    }
+
+    .track-img:hover {
+      cursor: pointer;
+    }
+
+    .track-details {
+      flex: 1;
+      margin-left: 1.5rem;
+    }
+
+    .top-info {
+      padding-top: 0.7rem;
+      padding-bottom: 0.6rem;
+    }
+
+    .play-pause-button {
+      width: 3.6rem;
+      height: 3.6rem;
+      float: left;
+    }
+    .created-at {
+      float: right;
+      color: #999;
+    }
+
+    .waveform {
+      margin-bottom: 1rem;
+      height: 6rem;
+      background: #eee;
+    }
+
+    button {
+      padding: 0.3rem 1rem 0.2rem 0.6rem;
+      height: 2.2rem;
+      font-size: 1.2rem;
+      line-height: 0;
+      display: flex;
+      align-items: center;
+      border-color: $light-border;
+      color: #333;
+    }
+
+    button:hover {
+      border-color: #ccc;
+    }
+
+    .delete-icon {
+      position: relative;
+      bottom: 0.1rem;
+      height: 1.4rem;
+      width: 1.4rem;
+      margin-right: 0.3rem;
+      background-size: 1.4rem;
+      background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+SW1wb3J0ZWQgTGF5ZXJzPC90aXRsZT48cGF0aCBkPSJNOS45NjggM2gxLjAxNEMxMyAzIDEzIDUgMTMgNUgzcy4wOS0yIDIuMDg4LTJoLjk0M0M2LjU1MSAyLjM4NSA3LjM1NSAxLjk5OSA4IDEuOTk5Yy42NDMgMCAxLjQ0Ny4zODYgMS45NjggMS4wMDF6TTQgNnY2LjAwMkM0IDEzLjEwNSA0Ljg4NyAxNCA1Ljk5OCAxNGg0LjAwNEExLjk5MyAxLjk5MyAwIDAgMCAxMiAxMi4wMDJWNkg0eiIgZmlsbD0iIzIyMiIgZmlsbC1ydWxlPSJldmVub2RkIi8+PC9zdmc+);
+    }
+  }
+}
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//

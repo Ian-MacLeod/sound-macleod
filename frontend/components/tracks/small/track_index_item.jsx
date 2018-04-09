@@ -1,19 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { formatDuration } from "../../utils/time_utils";
-import ImageDefault from "../image_default";
-import PlayPauseButton from "../play_pause_button/play_pause_button_container";
+import { formatDuration } from "../../../utils/time_utils";
+import ImageDefault from "../../image_default";
+import PlayPauseButton from "../../play_pause_button/play_pause_button_container";
 
-const TrackIndexItem = ({
-  track,
-  user,
-  idx,
-  showDelete,
-  deleteTrack,
-  playPausePlayer,
-  isPlaying
-}) => (
+const TrackIndexItem = ({ track, user, idx, playPausePlayer, isPlaying }) => (
   <li
     className={isPlaying ? "playing" : ""}
     onClick={() => playPausePlayer(track.id)}
@@ -36,13 +28,6 @@ const TrackIndexItem = ({
       </div>
     </div>
     <div className="length">
-      {showDelete ? (
-        <div onClick={e => e.stopPropagation()}>
-          <a onClick={deleteTrack} className="delete" />
-        </div>
-      ) : (
-        ""
-      )}
       <p>{formatDuration(track.length)}</p>
     </div>
   </li>

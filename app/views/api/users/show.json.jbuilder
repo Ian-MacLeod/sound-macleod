@@ -8,7 +8,7 @@ json.users do
       json.array! @user.tracks.pluck(:id)
     end
     json.comment_ids do
-      json.array! comments.order(created_at: :desc).pluck(:id)
+      json.array! comments.order(created_at: :desc).pluck(:id).uniq
     end
     json.liked_track_ids do
       json.array! liked_tracks.order(created_at: :desc).pluck(:id).uniq

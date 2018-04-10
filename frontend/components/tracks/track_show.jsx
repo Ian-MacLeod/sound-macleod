@@ -64,7 +64,6 @@ class TrackShow extends React.Component {
           </section>
           <section className="comments-details">
             <CommentForm trackId={track.id} />
-            <div className="actions" />
             <CommentIndex commentIds={commentIds} forPage="track" />
           </section>
         </section>

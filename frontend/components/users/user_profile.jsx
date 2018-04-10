@@ -98,16 +98,17 @@ class UserProfile extends React.Component {
                 </p>
               </Link>
             </nav>
-            <LikeIndex trackIds={user.likedTrackIds} numToShow={5} />
-            <CommentIndex commentIds={user.commentIds} numToShow={5} />
-            {user.commentIds &&
-              user.commentIds.length > 0 && (
-                <p>
-                  <Link to={`/users/${user.id}/comments`}>
-                    See all comments
-                  </Link>
-                </p>
-              )}
+            <LikeIndex
+              trackIds={user.likedTrackIds}
+              numToShow={5}
+              linkTo={`/users/${user.id}/likes`}
+            />
+            <CommentIndex
+              commentIds={user.commentIds}
+              numToShow={5}
+              forPage={"sidebar"}
+              linkTo={`/users/${user.id}/comments`}
+            />
           </aside>
         </div>
       </div>

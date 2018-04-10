@@ -1,4 +1,121 @@
 .track-form {
-  width: 40rem;
-  margin: 0 auto;
+  .upload-box,
+  .remaining-form {
+    border: 1px solid $very-light-border;
+    text-align: center;
+    max-width: 80rem;
+    box-sizing: border-box;
+    margin: 0 auto;
+    height: 36rem;
+    margin-top: 4rem;
+    box-shadow: 0 0.2rem 1.2rem -0.5rem rgba(0, 0, 0, 0.1);
+    border-radius: 0.3rem;
+  }
+
+  .loading {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+
+  h1 {
+    margin-top: 8rem;
+    font-size: 2.5rem;
+    margin-bottom: 5rem;
+  }
+
+  .upload-button {
+    background: $primary-orange;
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 0.3rem;
+    font-size: 1.6rem;
+  }
+
+  .upload-button:hover {
+    cursor: pointer;
+  }
+
+  .file-input {
+    top: 50%;
+    left: 50%;
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+
+  .remaining-form {
+    padding: 2rem;
+    display: flex;
+    align-items: flex-start;
+    text-align: left;
+    height: auto;
+    position: relative;
+  }
+
+  .errors {
+    color: $error-color;
+    position: absolute;
+    bottom: 100%;
+    left: 2rem;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .buttons {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+
+    input[type="submit"],
+    button {
+      margin: 0 0 0 1rem;
+      width: auto;
+      padding: 1rem 1.4rem;
+      font-size: 1.6rem;
+      box-sizing: border-box;
+    }
+
+    button {
+      border-color: #999;
+    }
+
+    button:hover {
+      border-color: #333;
+    }
+  }
+
+  .preview {
+    width: 26rem;
+    height: 26rem;
+    margin-right: 2rem;
+  }
+
+  .fields {
+    flex: 1;
+  }
+}
+
+.track-form.has-file {
+  .upload-box {
+    border: none;
+    box-shadow: none;
+    margin-top: -2rem;
+    height: 8rem;
+    transition: height 0.4s, margin 0.4s;
+  }
+
+  .upload-button {
+    display: none;
+  }
 }

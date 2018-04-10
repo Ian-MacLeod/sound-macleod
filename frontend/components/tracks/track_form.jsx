@@ -1,10 +1,13 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 
+import ImageDefault from "../image_default";
+
 class TrackForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.blankState();
+    this.clearForm = this.clearForm.bind(this);
     this.handleFileChange = this.handleFileChange.bind(this);
   }
 
@@ -15,8 +18,14 @@ class TrackForm extends React.Component {
       imageUrl: null,
       dataFile: null,
       dataUrl: null,
-      redirect: false
+      redirect: false,
+      hasFileStart: false
     };
+  }
+
+  clearForm(e) {
+    e.preventDefault();
+    this.setState(this.blankState);
   }
 
   handleSubmit(e) {
@@ -27,15 +36,20 @@ class TrackForm extends React.Component {
     }
 
     this.setState({ disabled: true });
-
-    this.props.action(this.state).then(action => {
-      this.setState({ disabled: false });
-      this.setState({ redirect: action.payload.track.id });
-    });
+    setTimeout(() => {
+      this.props.action(this.state).then(
+        action => {
+          this.setState({ disabled: false });
+          this.setState({ redirect: action.payload.track.id });
+        },
+        () => this.setState({ disabled: false })
+      );
+    }, 5000);
   }
 
   handleFileChange(key) {
     return e => {
+      this.setState({ hasFileStart: true });
       const file = e.currentTarget.files[0];
       const fileReader = new FileReader();
       fileReader.onloadend = () => {
@@ -60,38 +74,61 @@ class TrackForm extends React.Component {
       return <Redirect to={`/tracks/${this.state.redirect}`} />;
     }
     return (
-      <div className="track-form">
-        {this.state.disabled && <div className="loading" />}
-
-        <ul className="errors">
-          {this.props.errors.map(error => <li key={error}>{error}</li>)}
-        </ul>
-
+      <div className={"track-form " + (this.state.hasFileStart && "has-file")}>
         <form onSubmit={this.handleSubmit.bind(this)}>
           <fieldset disabled={this.state.disabled}>
-            <label htmlFor="title">Title</label>
-            <input
-              type="text"
-              name="title"
-              value={this.state.title}
-              onChange={this.handleInput("title")}
-            />
+            <div className="upload-box">
+              <h1>Upload to SoundMacLeod</h1>
+              <label className="upload-button" htmlFor="data">
+                Choose a file to upload
+              </label>
+              <input
+                className="file-input"
+                type="file"
+                name="data"
+                id="data"
+                onChange={this.handleFileChange("data")}
+              />
+            </div>
+            <div className="remaining-form">
+              <ul className="errors">
+                {this.props.errors.map(error => <li key={error}>{error}</li>)}
+              </ul>
+              {this.state.disabled && (
+                <div className="loading">
+                  <div className="spinner">
+                    <div className="rect1" />
+                    <div className="rect2" />
+                    <div className="rect3" />
+                    <div className="rect4" />
+                    <div className="rect5" />
+                  </div>
+                </div>
+              )}
+              <div className="preview">
+                <ImageDefault src={this.state.imageUrl} />
+              </div>
+              <div className="fields">
+                <label htmlFor="title">Title</label>
+                <input
+                  type="text"
+                  name="title"
+                  value={this.state.title}
+                  onChange={this.handleInput("title")}
+                />
 
-            <label htmlFor="image">Image</label>
-            <input
-              type="file"
-              name="image"
-              onChange={this.handleFileChange("image")}
-            />
-
-            <label htmlFor="data">Upload</label>
-            <input
-              type="file"
-              name="data"
-              onChange={this.handleFileChange("data")}
-            />
-
-            <input type="submit" value="Create track" />
+                <label htmlFor="image">Update Image</label>
+                <input
+                  type="file"
+                  name="image"
+                  onChange={this.handleFileChange("image")}
+                />
+                <div className="buttons">
+                  <button onClick={this.clearForm}>Cancel</button>
+                  <input type="submit" value="Create track" />
+                </div>
+              </div>
+            </div>
           </fieldset>
         </form>
       </div>

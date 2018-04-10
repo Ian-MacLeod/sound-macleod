@@ -29,7 +29,15 @@ class NextUpComponent extends React.Component {
 
   render() {
     if (!this.props.showing) return "";
-    const { user, track, trackIds, toggleShow, clearNextUp } = this.props;
+    const {
+      user,
+      track,
+      trackIds,
+      toggleShow,
+      clearNextUp,
+      likeTrack,
+      unlikeTrack
+    } = this.props;
     return (
       <div className="next-up-box">
         <header>
@@ -57,6 +65,11 @@ class NextUpComponent extends React.Component {
                 </Link>
               </p>
             </div>
+            {track.isLiked ? (
+              <i className={"icon like-icon liked"} onClick={unlikeTrack} />
+            ) : (
+              <i className={"icon like-icon"} onClick={likeTrack} />
+            )}
           </div>
           <NextUpList
             distance={2}

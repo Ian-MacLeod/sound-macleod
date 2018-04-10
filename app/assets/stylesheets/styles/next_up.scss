@@ -156,4 +156,9 @@ li.next-up-list-item:hover {
 
 .next-up-list-item.currently-playing {
   background-color: #fec;
+
+  .like-icon {
+    cursor: pointer;
+    padding: 0.5rem;
+  }
 }

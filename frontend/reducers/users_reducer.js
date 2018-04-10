@@ -1,3 +1,5 @@
+import { mapValues } from "lodash";
+
 import {
   RECEIVE_TRACK,
   RECEIVE_TRACKS,
@@ -5,6 +7,30 @@ import {
 } from "../actions/track_actions";
 import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
 import { RECEIVE_USER } from "../actions/user_actions";
+import { RECEIVE_LIKE, REMOVE_LIKE } from "../actions/like_actions";
+
+const userReducer = (state = {}, action) => {
+  switch (action.type) {
+    case RECEIVE_LIKE:
+      if (state.id === action.like.userId) {
+        return Object.assign({}, state, {
+          likedTrackIds: [action.like.trackId].concat(state.likedTrackIds)
+        });
+      }
+      return state;
+    case REMOVE_LIKE:
+      if (state.id === action.like.userId) {
+        return Object.assign({}, state, {
+          likedTrackIds: state.likedTrackIds.filter(
+            id => id !== action.like.trackId
+          )
+        });
+      }
+      return state;
+    default:
+      return state;
+  }
+};
 
 const usersReducer = (state = {}, action) => {
   switch (action.type) {
@@ -33,6 +59,10 @@ const usersReducer = (state = {}, action) => {
         return Object.assign({}, state, { [action.track.userId]: newUser });
       }
       return state;
+    case RECEIVE_LIKE:
+      return mapValues(state, user => userReducer(user, action));
+    case REMOVE_LIKE:
+      return mapValues(state, user => userReducer(user, action));
     default:
       return state;
   }

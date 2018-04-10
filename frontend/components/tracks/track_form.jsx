@@ -107,6 +107,16 @@ class TrackForm extends React.Component {
               )}
               <div className="preview">
                 <ImageDefault src={this.state.imageUrl} />
+                <div className="image-upload-area">
+                  <div className="instructions">Update Image</div>
+                  <label htmlFor="image" />
+                  <input
+                    type="file"
+                    name="image"
+                    id="image"
+                    onChange={this.handleFileChange("image")}
+                  />
+                </div>
               </div>
               <div className="fields">
                 <label htmlFor="title">Title</label>
@@ -115,13 +125,6 @@ class TrackForm extends React.Component {
                   name="title"
                   value={this.state.title}
                   onChange={this.handleInput("title")}
-                />
-
-                <label htmlFor="image">Update Image</label>
-                <input
-                  type="file"
-                  name="image"
-                  onChange={this.handleFileChange("image")}
                 />
                 <div className="buttons">
                   <button onClick={this.clearForm}>Cancel</button>

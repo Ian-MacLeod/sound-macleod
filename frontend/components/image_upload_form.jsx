@@ -21,7 +21,7 @@ class ImageUploadForm extends React.Component {
 
   render() {
     return (
-      <form className="image-upload-form">
+      <form className="image-upload-area">
         <label htmlFor="image-file" />
         <input
           ref={this.input}

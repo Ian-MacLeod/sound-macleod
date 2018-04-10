@@ -99,6 +99,13 @@
     width: 26rem;
     height: 26rem;
     margin-right: 2rem;
+    position: relative;
+
+    .instructions {
+      display: block;
+      position: relative;
+      top: 30%;
+    }
   }
 
   .fields {

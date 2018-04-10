@@ -83,9 +83,6 @@
     display: block;
     height: 2rem;
     width: 2rem;
-    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+SW1wb3J0ZWQgTGF5ZXJzPC90aXRsZT48cGF0aCBkPSJNOS45NjggM2gxLjAxNEMxMyAzIDEzIDUgMTMgNUgzcy4wOS0yIDIuMDg4LTJoLjk0M0M2LjU1MSAyLjM4NSA3LjM1NSAxLjk5OSA4IDEuOTk5Yy42NDMgMCAxLjQ0Ny4zODYgMS45NjggMS4wMDF6TTQgNnY2LjAwMkM0IDEzLjEwNSA0Ljg4NyAxNCA1Ljk5OCAxNGg0LjAwNEExLjk5MyAxLjk5MyAwIDAgMCAxMiAxMi4wMDJWNkg0eiIgZmlsbD0iIzIyMiIgZmlsbC1ydWxlPSJldmVub2RkIi8+PC9zdmc+);
-    background-position: center center;
-    background-repeat: no-repeat;
     margin-right: 1rem;
   }
 }
@@ -179,14 +176,18 @@
       border-color: #ccc;
     }
 
-    .delete-icon {
+    button.liked {
+      border-color: $primary-orange;
+      color: $primary-orange;
+    }
+
+    .icon {
       position: relative;
       bottom: 0.1rem;
       height: 1.4rem;
       width: 1.4rem;
       margin-right: 0.3rem;
       background-size: 1.4rem;
-      background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+SW1wb3J0ZWQgTGF5ZXJzPC90aXRsZT48cGF0aCBkPSJNOS45NjggM2gxLjAxNEMxMyAzIDEzIDUgMTMgNUgzcy4wOS0yIDIuMDg4LTJoLjk0M0M2LjU1MSAyLjM4NSA3LjM1NSAxLjk5OSA4IDEuOTk5Yy42NDMgMCAxLjQ0Ny4zODYgMS45NjggMS4wMDF6TTQgNnY2LjAwMkM0IDEzLjEwNSA0Ljg4NyAxNCA1Ljk5OCAxNGg0LjAwNEExLjk5MyAxLjk5MyAwIDAgMCAxMiAxMi4wMDJWNkg0eiIgZmlsbD0iIzIyMiIgZmlsbC1ydWxlPSJldmVub2RkIi8+PC9zdmc+);
     }
   }
 }

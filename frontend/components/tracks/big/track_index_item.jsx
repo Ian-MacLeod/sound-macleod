@@ -11,9 +11,10 @@ const TrackIndexItem = ({
   user,
   isOwnTrack,
   deleteTrack,
-  playPausePlayer,
   isPlaying,
-  addToNextUp
+  addToNextUp,
+  likeTrack,
+  unlikeTrack
 }) => (
   <li className={isPlaying ? "playing" : ""}>
     <Link to={`/tracks/${track.id}`}>
@@ -32,7 +33,18 @@ const TrackIndexItem = ({
       </div>
       <WaveForm track={track} />
       <div className="action-buttons">
-        <button onClick={() => addToNextUp(track.id)}>Add to Next Up</button>
+        {track.isLiked ? (
+          <button className="liked" onClick={unlikeTrack}>
+            <i className="icon like-icon" />
+            {track.numLikes}
+          </button>
+        ) : (
+          <button onClick={likeTrack}>
+            <i className="icon like-icon" />
+            {track.numLikes}
+          </button>
+        )}
+        <button onClick={addToNextUp}>Add to Next Up</button>
         {isOwnTrack ? (
           <button onClick={deleteTrack}>
             <i className="icon delete-icon" />

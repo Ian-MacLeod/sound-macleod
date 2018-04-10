@@ -5,6 +5,7 @@ import ImageDefault from "../image_default";
 import PlayPauseButton from "../play_pause_button/play_pause_button_container";
 import CommentForm from "../comments/comment_form_container.js";
 import CommentIndex from "../comments/comment_index";
+import WaveForm from "../wave_form/wave_form_container";
 
 class TrackShow extends React.Component {
   componentWillMount() {
@@ -40,6 +41,7 @@ class TrackShow extends React.Component {
               </div>
               <div className="created-at">{track.createdAt} ago</div>
             </div>
+            <WaveForm track={track} height={100} waveColor="#fff" />
           </div>
           <div className="splash-right">
             <div className="img">

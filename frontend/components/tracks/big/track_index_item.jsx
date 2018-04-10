@@ -31,7 +31,7 @@ const TrackIndexItem = ({
           <Link to={`/tracks/${track.id}`}>{track.title}</Link>
         </p>
       </div>
-      <WaveForm track={track} />
+      <WaveForm track={track} height={60} waveColor="#666" />
       <div className="action-buttons">
         {track.isLiked ? (
           <button className="liked" onClick={unlikeTrack}>

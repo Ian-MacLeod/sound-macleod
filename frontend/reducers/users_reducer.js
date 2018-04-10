@@ -9,12 +9,12 @@ import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
 import { RECEIVE_USER } from "../actions/user_actions";
 import { RECEIVE_LIKE, REMOVE_LIKE } from "../actions/like_actions";
 
-const userReducer = (state = {}, action) => {
+const userReducer = (state, action) => {
   switch (action.type) {
     case RECEIVE_LIKE:
       if (state.id === action.like.userId) {
         return Object.assign({}, state, {
-          likedTrackIds: [action.like.trackId].concat(state.likedTrackIds)
+          likedTrackIds: [action.like.trackId].concat(state.likedTrackIds || [])
         });
       }
       return state;

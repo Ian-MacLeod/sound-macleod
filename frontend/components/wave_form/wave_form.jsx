@@ -52,7 +52,7 @@ class WaveForm extends React.Component {
     }
   }
 
-  componentWillUnMount() {
+  componentWillUnmount() {
     this.wavesurfer.destroy();
   }
 

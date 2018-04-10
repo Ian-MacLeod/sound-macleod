@@ -25,4 +25,8 @@ class Track < ApplicationRecord
   has_many :commenters,
            through: :comments,
            source: :user
+  has_many :likes
+  has_many :likers,
+           through: :likes,
+           source: :user
 end

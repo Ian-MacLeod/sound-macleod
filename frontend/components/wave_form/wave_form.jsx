@@ -14,6 +14,8 @@ class WaveForm extends React.Component {
       progressColor: "#f50",
       barWidth: 2,
       height: 60,
+      normalize: true,
+      responsive: true,
       cursorWidth: 0
     });
     this.wavesurfer.setMute(true);

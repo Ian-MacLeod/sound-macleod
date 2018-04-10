@@ -25,6 +25,10 @@ class User < ApplicationRecord
   has_many :commented_tracks,
            through: :comments,
            source: :track
+  has_many :likes
+  has_many :liked_tracks,
+           through: :likes,
+           source: :track
 
   def self.find_by_credentials(username, password)
     user = self.find_by(username: username)

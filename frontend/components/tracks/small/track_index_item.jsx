@@ -5,30 +5,38 @@ import { formatDuration } from "../../../utils/time_utils";
 import ImageDefault from "../../image_default";
 import PlayPauseButton from "../../play_pause_button/play_pause_button_container";
 
-const TrackIndexItem = ({ track, user, idx, playPausePlayer, isPlaying }) => (
-  <li
-    className={isPlaying ? "playing" : ""}
-    onClick={() => playPausePlayer(track.id)}
-  >
-    <div className="left">
-      <div className="number">
-        <p>{idx}</p>
-        <div className="track-img">
-          <ImageDefault src={track.image.url} />
-          <PlayPauseButton trackId={track.id} />
+const TrackIndexItem = ({
+  track,
+  user,
+  isOwnTrack,
+  deleteTrack,
+  isPlaying,
+  addToNextUp,
+  likeTrack,
+  unlikeTrack
+}) => (
+  <li className={isPlaying ? "playing" : ""}>
+    <div className="track-img">
+      <ImageDefault src={track.image.url} />
+      <PlayPauseButton trackId={track.id} />
+    </div>
+    <div className="track-details">
+      <p className="username" onClick={e => e.stopPropagation()}>
+        {user ? <Link to={`/users/${user.id}`}>{user.username}</Link> : ""}
+      </p>
+      <p className="track-title" onClick={e => e.stopPropagation()}>
+        <Link to={`/tracks/${track.id}`}>{track.title}</Link>
+      </p>
+      <div className="stats">
+        <div className="single-stat">
+          <i className="icon like-icon grey" />
+          {track.numLikes}
+        </div>
+        <div className="single-stat">
+          <i className="icon comment-icon grey" />
+          {track.numComments}
         </div>
       </div>
-      <div className="info">
-        <p className="username" onClick={e => e.stopPropagation()}>
-          {user ? <Link to={`/users/${user.id}`}>{user.username}</Link> : ""}
-        </p>
-        <p className="track-title" onClick={e => e.stopPropagation()}>
-          <Link to={`/tracks/${track.id}`}>{track.title}</Link>
-        </p>
-      </div>
-    </div>
-    <div className="length">
-      <p>{formatDuration(track.length)}</p>
     </div>
   </li>
 );

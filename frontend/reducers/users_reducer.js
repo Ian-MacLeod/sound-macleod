@@ -9,9 +9,7 @@ import { RECEIVE_USER } from "../actions/user_actions";
 const usersReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_USER:
-      return Object.assign({}, state, {
-        [action.payload.user.id]: action.payload.user
-      });
+      return Object.assign({}, state, action.payload.users);
     case RECEIVE_CURRENT_USER:
       if (action.user === null) return state;
       return Object.assign({}, state, {

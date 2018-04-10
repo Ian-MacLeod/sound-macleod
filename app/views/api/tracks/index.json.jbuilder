@@ -1,5 +1,5 @@
 json.tracks do
-  @tracks.includes(:likes).each do |track|
+  @tracks.includes(:likes, :comments).each do |track|
     json.set! track.id do
       json.partial! "api/tracks/track", track: track
     end

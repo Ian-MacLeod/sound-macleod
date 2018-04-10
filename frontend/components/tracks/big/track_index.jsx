@@ -12,7 +12,7 @@ class TrackIndex extends React.Component {
   render() {
     return (
       <div className="track-index-detailed">
-        <ol className="tracks">
+        <ul className="tracks">
           {this.props.tracks.map((track, idx) => (
             <TrackIndexItemContainer
               key={track.id}
@@ -20,7 +20,7 @@ class TrackIndex extends React.Component {
               isOwnTrack={this.props.isOwnTrack}
             />
           ))}
-        </ol>
+        </ul>
       </div>
     );
   }

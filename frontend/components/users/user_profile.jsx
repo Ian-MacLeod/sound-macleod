@@ -5,6 +5,7 @@ import BigTrackIndex from "../tracks/big/track_index";
 import ImageDefault from "../image_default";
 import ImageUploadForm from "../image_upload_form.jsx";
 import CommentIndex from "../comments/comment_index";
+import LikeIndex from "../likes/like_index";
 
 class UserProfile extends React.Component {
   componentWillMount() {
@@ -97,6 +98,7 @@ class UserProfile extends React.Component {
                 </p>
               </Link>
             </nav>
+            <LikeIndex trackIds={user.likedTrackIds} numToShow={5} />
             <CommentIndex commentIds={user.commentIds} numToShow={5} />
             {user.commentIds &&
               user.commentIds.length > 0 && (

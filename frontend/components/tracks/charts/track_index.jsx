@@ -11,16 +11,23 @@ class TrackIndex extends React.Component {
 
   render() {
     return (
-      <div className="track-index-small">
-        <ul className="tracks">
+      <div className="track-index">
+        <ol className="tracks">
+          <li className="title">
+            <div className="left">
+              <div className="number">#</div>
+              <div className="info">Track</div>
+            </div>
+            <div className="length">Length</div>
+          </li>
           {this.props.tracks.map((track, idx) => (
             <TrackIndexItemContainer
               key={track.id}
               track={track}
-              isOwnTrack={this.props.isOwnTrack}
+              idx={idx + 1}
             />
           ))}
-        </ul>
+        </ol>
       </div>
     );
   }

@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router-dom";
 
 import { AuthRoute, ProtectedRoute } from "../../utils/auth_utils";
 import Home from "./home_container";
-import SmallTrackIndex from "../tracks/small/track_index_container";
+import ChartsTrackIndex from "../tracks/charts/track_index_container";
 import TrackForm from "../tracks/track_form_container";
 import TrackShow from "../tracks/track_show_container";
 import UserProfile from "../users/user_profile_container";
@@ -13,7 +13,7 @@ const Main = () => (
     <div className="content">
       <Switch>
         <ProtectedRoute path="/tracks/:trackId" component={TrackShow} />
-        <ProtectedRoute path="/tracks" component={SmallTrackIndex} />
+        <ProtectedRoute path="/tracks" component={ChartsTrackIndex} />
         <ProtectedRoute path="/upload" component={TrackForm} />
         <ProtectedRoute path="/users/:userId" component={UserProfile} />
         <AuthRoute path="/" component={Home} />

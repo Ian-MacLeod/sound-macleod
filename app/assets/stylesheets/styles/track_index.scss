@@ -191,3 +191,66 @@
     }
   }
 }
+
+.track-index-small {
+  li {
+    display: flex;
+    align-items: center;
+    height: 6.4rem;
+  }
+  .play-pause-button {
+    height: 3rem;
+    width: 3rem;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    display: none;
+  }
+
+  li:hover .play-pause-button {
+    display: block;
+  }
+
+  .track-img {
+    width: 5rem;
+    height: 5rem;
+    margin-right: 1.2rem;
+    position: relative;
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .track-details {
+    font-size: 1.4rem;
+  }
+
+  .username a {
+    color: #999;
+  }
+
+  .username a:hover {
+    color: #333;
+  }
+
+  .stats {
+    font-size: 1.2rem;
+    color: #999;
+    display: flex;
+
+    .single-stat {
+      display: flex;
+      align-items: center;
+      margin-left: 0.3rem;
+      margin-right: 0.8rem;
+    }
+
+    .icon {
+      width: 1.6rem;
+      height: 1.2rem;
+      margin-right: 0.4rem;
+    }
+  }
+}

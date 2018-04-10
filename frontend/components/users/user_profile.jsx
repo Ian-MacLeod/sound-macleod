@@ -2,6 +2,7 @@ import React from "react";
 import { Link, Switch, Route, NavLink } from "react-router-dom";
 
 import BigTrackIndex from "../tracks/big/track_index";
+import BigTrackIndexContainer from "../tracks/big/track_index_container";
 import ImageDefault from "../image_default";
 import ImageUploadForm from "../image_upload_form.jsx";
 import CommentIndex from "../comments/comment_index";
@@ -62,6 +63,14 @@ class UserProfile extends React.Component {
                 Comments
               </NavLink>
             </li>
+            <li>
+              <NavLink
+                activeClassName="selected"
+                to={`/users/${user.id}/likes`}
+              >
+                Likes
+              </NavLink>
+            </li>
           </ul>
         </nav>
         <div className="main">
@@ -71,6 +80,12 @@ class UserProfile extends React.Component {
                 path={`/users/${user.id}/tracks`}
                 render={() => (
                   <BigTrackIndex tracks={tracks} isOwnTrack={isOwnProfile} />
+                )}
+              />
+              <Route
+                path={`/users/${user.id}/likes`}
+                render={() => (
+                  <BigTrackIndexContainer trackIds={user.likedTrackIds} />
                 )}
               />
               <Route

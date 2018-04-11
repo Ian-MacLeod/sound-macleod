@@ -4,7 +4,7 @@ import { Link, Switch, Route, NavLink } from "react-router-dom";
 import BigTrackIndex from "../tracks/big/track_index";
 import BigTrackIndexContainer from "../tracks/big/track_index_container";
 import ImageDefault from "../image_default";
-import ImageUploadForm from "../image_upload_form.jsx";
+import ImageUploadForm from "../image_upload_form";
 import CommentIndex from "../comments/comment_index";
 import LikeIndex from "../likes/like_index";
 

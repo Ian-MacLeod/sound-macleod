@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import ImageDefault from "../image_default";
 import PlayPauseButton from "../play_pause_button/play_pause_button_container";
-import CommentForm from "../comments/comment_form_container.js";
+import CommentForm from "../comments/comment_form_container";
 import CommentIndex from "../comments/comment_index";
 import WaveForm from "../wave_form/wave_form_container";
 

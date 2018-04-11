@@ -2,6 +2,7 @@ import React from "react";
 import { SortableContainer, arrayMove } from "react-sortable-hoc";
 import { Link } from "react-router-dom";
 
+import LikeButton from "../like_button/like_button_container";
 import ImageDefault from "../image_default";
 import PlayPauseButton from "../play_pause_button/play_pause_button_container";
 import NextUpIndexItem from "./next_up_index_item_container";
@@ -65,11 +66,7 @@ class NextUpComponent extends React.Component {
                 </Link>
               </p>
             </div>
-            {track.isLiked ? (
-              <i className={"icon like-icon liked"} onClick={unlikeTrack} />
-            ) : (
-              <i className={"icon like-icon"} onClick={likeTrack} />
-            )}
+            <LikeButton trackId={track.id} />
           </div>
           <NextUpList
             distance={2}

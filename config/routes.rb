@@ -7,6 +7,8 @@ Rails.application.routes.draw do
       resources :likes, only: :create
       delete '/likes', to: 'likes#destroy'
     end
+    resources :playlists, only: %i(create destroy index show) do
+    end
     resources :comments, only: %i(create destroy)
   end
   root to: "static_pages#root"

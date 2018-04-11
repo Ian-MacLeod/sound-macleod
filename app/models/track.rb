@@ -29,4 +29,8 @@ class Track < ApplicationRecord
   has_many :likers,
            through: :likes,
            source: :user
+  has_many :playlist_memberships
+  has_many :playlists,
+           through: :playlist_memberships,
+           source: :playlist
 end

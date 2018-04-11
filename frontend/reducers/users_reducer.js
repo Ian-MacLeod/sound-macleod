@@ -1,4 +1,4 @@
-import { mapValues } from "lodash";
+import { mapValues, merge } from "lodash";
 
 import {
   RECEIVE_TRACK,
@@ -8,6 +8,10 @@ import {
 import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
 import { RECEIVE_USER } from "../actions/user_actions";
 import { RECEIVE_LIKE, REMOVE_LIKE } from "../actions/like_actions";
+import {
+  RECEIVE_PLAYLIST,
+  RECEIVE_PLAYLISTS
+} from "../actions/playlist_actions";
 
 const userReducer = (state, action) => {
   switch (action.type) {
@@ -63,6 +67,10 @@ const usersReducer = (state = {}, action) => {
       return mapValues(state, user => userReducer(user, action));
     case REMOVE_LIKE:
       return mapValues(state, user => userReducer(user, action));
+    case RECEIVE_PLAYLIST:
+      return merge({}, state, action.payload.users);
+    case RECEIVE_PLAYLISTS:
+      return merge({}, state, action.payload.users);
     default:
       return state;
   }

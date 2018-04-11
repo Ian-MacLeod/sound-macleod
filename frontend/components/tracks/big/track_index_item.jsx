@@ -17,8 +17,8 @@ const TrackIndexItem = ({
   unlikeTrack
 }) => (
   <li className={isPlaying ? "playing" : ""}>
-    <Link to={`/tracks/${track.id}`}>
-      <ImageDefault className="track-img" src={track.image.url} />
+    <Link className="track-img" to={`/tracks/${track.id}`}>
+      <ImageDefault src={track.image.url} />
     </Link>
     <div className="track-details">
       <div className="top-info">

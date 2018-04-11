@@ -42,6 +42,8 @@
     width: 5rem;
     margin-left: 2rem;
     position: relative;
+    display: inline-block;
+    line-height: 0;
   }
 
   .play-pause-button {
@@ -95,6 +97,13 @@
     .track-img {
       width: 16rem;
       height: 16rem;
+      display: inline-block;
+      line-height: 0;
+
+      img {
+        width: 16rem;
+        height: 16rem;
+      }
     }
 
     .track-img:hover {

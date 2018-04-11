@@ -6,6 +6,10 @@ i.icon {
   width: 1.4rem;
 }
 
+i.icon:hover {
+  cursor: pointer;
+}
+
 .delete-icon {
   background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+SW1wb3J0ZWQgTGF5ZXJzPC90aXRsZT48cGF0aCBkPSJNOS45NjggM2gxLjAxNEMxMyAzIDEzIDUgMTMgNUgzcy4wOS0yIDIuMDg4LTJoLjk0M0M2LjU1MSAyLjM4NSA3LjM1NSAxLjk5OSA4IDEuOTk5Yy42NDMgMCAxLjQ0Ny4zODYgMS45NjggMS4wMDF6TTQgNnY2LjAwMkM0IDEzLjEwNSA0Ljg4NyAxNCA1Ljk5OCAxNGg0LjAwNEExLjk5MyAxLjk5MyAwIDAgMCAxMiAxMi4wMDJWNkg0eiIgZmlsbD0iIzIyMiIgZmlsbC1ydWxlPSJldmVub2RkIi8+PC9zdmc+);
 }

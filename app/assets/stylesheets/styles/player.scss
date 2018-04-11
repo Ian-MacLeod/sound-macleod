@@ -157,6 +157,15 @@
     a:hover {
       color: black;
     }
+
+    .buttons {
+      display: flex;
+      align-items: center;
+
+      i {
+        padding: 0.5rem;
+      }
+    }
   }
 }
 

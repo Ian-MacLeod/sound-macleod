@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 import ImageDefault from "../image_default";
 import NextUpIndex from "./next_up_index_container";
+import LikeButton from "../like_button/like_button_container";
 
 class PlayerTrackDetails extends React.Component {
   constructor(props) {
@@ -32,6 +33,7 @@ class PlayerTrackDetails extends React.Component {
           </p>
         </div>
         <div className="buttons">
+          <LikeButton trackId={track.id} />
           <div className="next-up">
             <svg
               onClick={this.toggleNextUpShow}

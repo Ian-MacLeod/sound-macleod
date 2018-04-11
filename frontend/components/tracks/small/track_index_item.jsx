@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import { formatDuration } from "../../../utils/time_utils";
 import ImageDefault from "../../image_default";
+import LikeButton from "../../like_button/like_button_container";
 import PlayPauseButton from "../../play_pause_button/play_pause_button_container";
 
 const TrackIndexItem = ({
@@ -37,6 +38,8 @@ const TrackIndexItem = ({
           {track.numComments}
         </div>
       </div>
+
+      <LikeButton trackId={track.id} isButtonWrap={true} />
     </div>
   </li>
 );

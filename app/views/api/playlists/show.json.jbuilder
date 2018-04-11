@@ -1,9 +1,11 @@
-tracks = @playlist.tracks.includes(:user).order(:ord)
+tracks = @playlist.tracks.includes(:user).ordered
 
 json.playlist do
   json.extract! @playlist, :user_id
 
-  json.trackIds json.array! tracks.pluck(:id).uniq
+  json.track_ids do
+    json.array! tracks.pluck(:id).uniq
+  end
 end
 
 json.tracks do
@@ -15,9 +17,9 @@ json.tracks do
 end
 
 json.users do
-  tracks.pluck(:user).each do |user|
-    json.set! user.id do
-      json.extract! user, :username, :id
+  tracks.each do |track|
+    json.set! track.user.id do
+      json.extract! track.user, :username, :id
     end
   end
 end

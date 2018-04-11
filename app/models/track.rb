@@ -13,12 +13,15 @@
 #
 
 class Track < ApplicationRecord
-  validates :title, :user_id, :length, presence: true
+  validates :title, :user, :length, presence: true
 
   mount_uploader :data, AudioUploader
   validates_integrity_of :data
 
   mount_uploader :image, ImageUploader
+
+  scope :ordered,
+        -> { includes(:playlist_memberships, :user).order('playlist_memberships.ord') }
 
   belongs_to :user
   has_many :comments, dependent: :destroy
@@ -29,7 +32,9 @@ class Track < ApplicationRecord
   has_many :likers,
            through: :likes,
            source: :user
-  has_many :playlist_memberships
+  has_many :playlist_memberships,
+           dependent: :destroy,
+           inverse_of: :track
   has_many :playlists,
            through: :playlist_memberships,
            source: :playlist

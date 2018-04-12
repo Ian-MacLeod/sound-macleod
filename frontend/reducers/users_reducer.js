@@ -70,11 +70,16 @@ const usersReducer = (state = {}, action) => {
     case RECEIVE_PLAYLIST:
       const newState = merge({}, state, action.payload.users);
       let user = newState[action.payload.playlist.userId];
-      user = Object.assign({}, user, {
-        playlistIds: (user.playlistIds || []).concat([
-          action.payload.playlist.id
-        ])
-      });
+      if (user.playListIds) {
+        if (!user.playlistIds.includes(action.payload.playlist.id)) {
+          user = Object.assign({}, user, {
+            playlistIds: user.playlistIds.concat([action.payload.playlist.id])
+          });
+        }
+      } else {
+        user.playListIds = [action.payload.playlist.id];
+      }
+
       newState[action.payload.playlist.userId] = user;
       return newState;
     case RECEIVE_PLAYLISTS:

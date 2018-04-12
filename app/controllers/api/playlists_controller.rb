@@ -7,7 +7,8 @@ class Api::PlaylistsController < ApplicationController
   end
 
   def index
-    if params[:user_id]
+    @user_id = params[:user_id]
+    if @user_id
       @playlists = Playlist.where(user_id: params[:user_id])
     else
       @playlists = Playlist.all

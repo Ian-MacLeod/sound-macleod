@@ -10,6 +10,13 @@ export const fetchPlaylist = id =>
     method: "GET"
   });
 
+export const fetchPlaylistsForUser = userId =>
+  $.ajax({
+    url: `/api/playlists`,
+    method: "GET",
+    data: { user_id: userId }
+  });
+
 export const createPlaylist = playlist => {
   const formData = new FormData();
   formData.append("playlist[title]", playlist.title);

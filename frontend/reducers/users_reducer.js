@@ -37,6 +37,8 @@ const userReducer = (state, action) => {
 };
 
 const usersReducer = (state = {}, action) => {
+  let newState;
+
   switch (action.type) {
     case RECEIVE_USER:
       return merge({}, state, action.payload.users);
@@ -46,9 +48,9 @@ const usersReducer = (state = {}, action) => {
         [action.user.id]: action.user
       });
     case RECEIVE_TRACK:
-      return Object.assign({}, state, action.payload.users);
+      return merge({}, state, action.payload.users);
     case RECEIVE_TRACKS:
-      return Object.assign({}, state, action.payload.users);
+      return merge({}, state, action.payload.users);
     case REMOVE_TRACK:
       if (Object.keys(state).includes(action.track.userId.toString())) {
         const user = state[action.track.userId];
@@ -68,7 +70,7 @@ const usersReducer = (state = {}, action) => {
     case REMOVE_LIKE:
       return mapValues(state, user => userReducer(user, action));
     case RECEIVE_PLAYLIST:
-      const newState = merge({}, state, action.payload.users);
+      newState = merge({}, state, action.payload.users);
       let user = newState[action.payload.playlist.userId];
       if (user.playListIds) {
         if (!user.playlistIds.includes(action.payload.playlist.id)) {
@@ -83,7 +85,12 @@ const usersReducer = (state = {}, action) => {
       newState[action.payload.playlist.userId] = user;
       return newState;
     case RECEIVE_PLAYLISTS:
-      return merge({}, state, action.payload.users);
+      newState = merge({}, state, action.payload.users);
+      if (action.payload.queriedUser) {
+        const { userId, playlistIds } = action.payload.queriedUser;
+        newState[userId] = Object.assign({}, newState[userId], { playlistIds });
+      }
+      return newState;
     default:
       return state;
   }

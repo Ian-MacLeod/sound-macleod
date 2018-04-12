@@ -36,3 +36,9 @@ export const updatePlaylist = playlist => dispatch =>
     newPlaylist => dispatch(receivePlaylist(newPlaylist)),
     error => console.log(error)
   );
+
+export const fetchPlaylistsForUser = userId => dispatch =>
+  PlaylistAPIUtils.fetchPlaylistsForUser(userId).then(
+    playlists => dispatch(receivePlaylists(playlists)),
+    error => console.log(error)
+  );

@@ -9,15 +9,11 @@ import { matchPath } from "react-router-dom";
 
 document.addEventListener("DOMContentLoaded", () => {
   let preloadedState;
-  const userId = window.currentUser.id;
   if (window.currentUser) {
     preloadedState = { session: { currentUser: window.currentUser } };
     delete window.currentUser;
   }
   const store = configureStore(preloadedState);
-  if (userId !== undefined) {
-    store.dispatch(fetchUser(userId));
-  }
 
   window.store = store;
   window.matchPath = matchPath;

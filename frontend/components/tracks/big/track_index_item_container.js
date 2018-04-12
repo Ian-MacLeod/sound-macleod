@@ -4,7 +4,7 @@ import { deleteTrack } from "../../../actions/track_actions";
 import { addToNextUp } from "../../../actions/player_actions";
 import { createLike, deleteLike } from "../../../actions/like_actions";
 import { openModal } from "../../../actions/modal_actions";
-import AddToPlaylistForm from "../../playlists/form/add_to_playlist_form";
+import AddToPlaylistForm from "../../playlists/form/add_to_playlist_form_container";
 import TrackIndexItem from "./track_index_item";
 
 const mapStateToProps = (state, ownProps) => ({

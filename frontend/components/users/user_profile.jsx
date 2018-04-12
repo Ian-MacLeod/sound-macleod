@@ -87,6 +87,10 @@ class UserProfile extends React.Component {
             <Switch>
               <Route
                 path={`/users/${user.id}/tracks`}
+                isActive={(match, location) =>
+                  location.pathname === `/users/${user.id}/tracks` ||
+                  location.pathname === `/users/${user.id}`
+                }
                 render={() => (
                   <BigTrackIndex tracks={tracks} isOwnTrack={isOwnProfile} />
                 )}

@@ -35,3 +35,10 @@ else
     end
   end
 end
+
+if @user_id
+  json.queried_user do
+    json.user_id @user_id
+    json.playlist_ids @playlists.pluck(:id)
+  end
+end

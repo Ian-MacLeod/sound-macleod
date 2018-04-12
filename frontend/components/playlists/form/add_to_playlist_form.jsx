@@ -6,7 +6,11 @@ import CreatePlaylistForm from "./create_playlist_form_container";
 class AddToPlaylistForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { loading: true, tab: "add" };
+    this.state = { tab: "add" };
+  }
+
+  componentWillMount() {
+    this.props.fetchPlaylists();
   }
 
   selectTab(tab) {

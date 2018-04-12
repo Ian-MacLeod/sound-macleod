@@ -9,6 +9,10 @@ const mapStateToProps = (state, ownProps) => {
   if (user && user.trackIds) {
     tracks = user.trackIds.map(id => state.entities.tracks[id]);
   }
+  let playlists = [];
+  if (user && user.playlistIds) {
+    playlists = user.playlistIds.map(id => state.entities.tracks[id]);
+  }
   return {
     user,
     tracks,

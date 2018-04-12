@@ -29,6 +29,7 @@ class User < ApplicationRecord
   has_many :liked_tracks,
            through: :likes,
            source: :track
+  has_many :playlists
 
   def self.find_by_credentials(username, password)
     user = self.find_by(username: username)

@@ -2,7 +2,10 @@ import React from "react";
 
 export default ({ isLiked, likeTrack, unlikeTrack, isButtonWrap }) =>
   isButtonWrap ? (
-    <div className="button" onClick={isLiked ? unlikeTrack : likeTrack}>
+    <div
+      className="button like-button"
+      onClick={isLiked ? unlikeTrack : likeTrack}
+    >
       <i className={"icon like-icon " + (isLiked ? "liked" : "")} />
     </div>
   ) : (

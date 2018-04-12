@@ -7,6 +7,7 @@ import ImageDefault from "../image_default";
 import ImageUploadForm from "../image_upload_form";
 import CommentIndex from "../comments/comment_index";
 import LikeIndex from "../likes/like_index";
+import PlaylistIndex from "../playlists/playlist_index";
 
 class UserProfile extends React.Component {
   componentWillMount() {
@@ -58,6 +59,14 @@ class UserProfile extends React.Component {
             <li>
               <NavLink
                 activeClassName="selected"
+                to={`/users/${user.id}/playlists`}
+              >
+                Playlists
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                activeClassName="selected"
                 to={`/users/${user.id}/comments`}
               >
                 Comments
@@ -80,6 +89,15 @@ class UserProfile extends React.Component {
                 path={`/users/${user.id}/tracks`}
                 render={() => (
                   <BigTrackIndex tracks={tracks} isOwnTrack={isOwnProfile} />
+                )}
+              />
+              <Route
+                path={`/users/${user.id}/playlists`}
+                render={() => (
+                  <PlaylistIndex
+                    playlistIds={user.playlistIds || []}
+                    isOwnPlaylist={isOwnProfile}
+                  />
                 )}
               />
               <Route

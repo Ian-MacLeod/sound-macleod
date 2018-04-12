@@ -13,6 +13,8 @@
 class Playlist < ApplicationRecord
   validates :title, :user, presence: true
 
+  mount_uploader :image, ImageUploader
+
   belongs_to :user
   has_many :playlist_memberships,
            dependent: :destroy,

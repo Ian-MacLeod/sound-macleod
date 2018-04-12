@@ -24,7 +24,10 @@ class CreatePlaylistForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form
+        className="create-playlist playlist-form"
+        onSubmit={this.handleSubmit}
+      >
         <label>Playlist Title</label>
         <input
           type="text"

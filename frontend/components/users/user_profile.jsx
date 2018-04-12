@@ -51,6 +51,10 @@ class UserProfile extends React.Component {
             <li>
               <NavLink
                 activeClassName="selected"
+                isActive={(match, location) =>
+                  location.pathname === `/users/${user.id}/tracks` ||
+                  location.pathname === `/users/${user.id}`
+                }
                 to={`/users/${user.id}/tracks`}
               >
                 Tracks
@@ -85,16 +89,6 @@ class UserProfile extends React.Component {
         <div className="main">
           <section>
             <Switch>
-              <Route
-                path={`/users/${user.id}/tracks`}
-                isActive={(match, location) =>
-                  location.pathname === `/users/${user.id}/tracks` ||
-                  location.pathname === `/users/${user.id}`
-                }
-                render={() => (
-                  <BigTrackIndex tracks={tracks} isOwnTrack={isOwnProfile} />
-                )}
-              />
               <Route
                 path={`/users/${user.id}/playlists`}
                 render={() => (

@@ -13,10 +13,11 @@ export const pausePlayer = () => ({
   type: PAUSE_PLAYER
 });
 
-export const playPausePlayer = (trackId, progress) => ({
+export const playPausePlayer = (trackId, progress, playlistId) => ({
   type: PLAY_PAUSE_PLAYER,
   trackId,
-  progress
+  progress,
+  playlistId: playlistId || null
 });
 
 export const playerSeek = progress => ({

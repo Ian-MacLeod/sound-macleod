@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import ImageDefault from "../image_default";
-import PlayPauseButton from "../play_pause_button/play_pause_button_container";
+import PlaylistPlayPauseButton from "../play_pause_button/playlist_play_pause_button_container";
 import PlaylistTrackIndex from "./playlist_track_index";
 
 const playlistIndexItem = ({ playlist, user, editPlaylist }) => (
@@ -14,7 +14,7 @@ const playlistIndexItem = ({ playlist, user, editPlaylist }) => (
     <div className="info">
       <div className="top-info">
         <p className="created-at">{playlist.createdAt}</p>
-        <PlayPauseButton />
+        <PlaylistPlayPauseButton playlistId={playlist.id} />
         <p className="username">
           <Link to={`/users/${user.id}`}>{user.username}</Link>
         </p>

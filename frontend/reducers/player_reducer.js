@@ -35,16 +35,21 @@ const playerReducer = (state = defaultState, action) => {
           playing: true,
           lastPlayerSeek: state.progressByTrackId[action.trackId] || 0,
           lastWaveFormSeek: state.progressByTrackId[action.trackId] || 0,
-          progressByTrackId: { [state.trackId]: action.progress }
+          progressByTrackId: { [state.trackId]: action.progress },
+          currentPlaylistId: action.playlistId
         });
       }
       if (state.playing) {
         return merge({}, state, {
           playing: false,
-          progressByTrackId: { [action.trackId]: action.progress }
+          progressByTrackId: { [action.trackId]: action.progress },
+          currentPlaylistId: action.playlistId
         });
       }
-      return Object.assign({}, state, { playing: !state.playing });
+      return Object.assign({}, state, {
+        playing: !state.playing,
+        currentPlaylistId: action.playlistId
+      });
     case PLAYER_SEEK:
       return Object.assign({}, state, { lastPlayerSeek: action.progress });
     case WAVE_FORM_SEEK:

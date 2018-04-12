@@ -1,4 +1,4 @@
-import * as PlaylistAPIUtils from "../utils/track_api_utils";
+import * as PlaylistAPIUtils from "../utils/playlist_api_utils";
 
 export const RECEIVE_PLAYLIST = "RECEIVE_PLAYLIST";
 export const RECEIVE_PLAYLISTS = "RECEIVE_PLAYLISTS";
@@ -28,5 +28,11 @@ export const fetchPlaylists = () => dispatch =>
 export const createPlaylist = track => dispatch =>
   PlaylistAPIUtils.createPlaylist(track).then(
     newPlaylist => dispatch(receivePlaylist(newPlaylist)),
+    error => console.log(error)
+  );
+
+export const fetchPlaylistsForUser = userId => dispatch =>
+  PlaylistAPIUtils.fetchPlaylistsForUser(userId).then(
+    playlists => dispatch(receivePlaylists),
     error => console.log(error)
   );

@@ -1,5 +1,7 @@
 import { connect } from "react-redux";
 
+import { openModal } from "../../actions/modal_actions";
+import EditPlaylistForm from "./form/edit_playlist_form_container";
 import PlaylistIndexItem from "./playlist_index_item";
 
 const mapStateToProps = (state, ownProps) => {
@@ -11,4 +13,9 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps)(PlaylistIndexItem);
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  editPlaylist: () =>
+    dispatch(openModal(EditPlaylistForm, { playlistId: ownProps.playlistId }))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(PlaylistIndexItem);

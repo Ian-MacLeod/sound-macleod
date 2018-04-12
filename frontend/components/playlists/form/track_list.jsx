@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import TrackItem from "./track_item_container";
 
 const TrackList = SortableContainer(({ trackIds }) => (
-  <ol className="playlist-track-index">
+  <ol className="playlist-track-index in-form">
     {trackIds.map((id, index) => (
       <TrackItem key={index} index={index} trackNum={index + 1} trackId={id} />
     ))}

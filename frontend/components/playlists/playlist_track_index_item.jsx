@@ -7,7 +7,7 @@ import ImageDefault from "../image_default";
 import PlayPauseButton from "../play_pause_button/play_pause_button_container";
 
 const PlaylistTrackIndexItem = ({ track, user, trackNum, isPlaying }) => (
-  <li className={isPlaying ? "playing" : ""}>
+  <li className={"playlist-track-index-item " + (isPlaying ? "playing" : "")}>
     <div className="track-img">
       <Link to={`/tracks/${track.id}`}>
         <ImageDefault src={track.image.url} />

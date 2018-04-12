@@ -7,7 +7,11 @@ class Api::PlaylistsController < ApplicationController
   end
 
   def index
-    @playlists = Playlist.all
+    if params[:user_id]
+      @playlists = Playlist.where(user_id: params[:user_id])
+    else
+      @playlists = Playlist.all
+    end
   end
 
   def create
@@ -18,7 +22,8 @@ class Api::PlaylistsController < ApplicationController
         PlaylistMembership.create(
           playlist_id: @playlist.id,
           track_id: track_id,
-          ord: idx)
+          ord: idx
+        )
       end
       render "api/playlists/show"
     else
@@ -30,7 +35,19 @@ class Api::PlaylistsController < ApplicationController
     @playlist = Playlist.find(params[:id])
     if @playlist == nil
       render json: "That playist does not exist".to_json, status: 404
-    elsif @playlist.save
+    end
+
+    @playlist.title ||= parms[:playlist][:title]
+    if params[:playlist][:track_ids]
+      params[:playlist][:track_ids].each_with_index do |track_id, idx|
+        PlaylistMembership.create(
+          playlist_id: @playlist.id,
+          track_id: track_id,
+          ord: idx
+        )
+      end
+    end
+    if @playlist.save
       render "api/playlists/show"
     else
       render json: @playlist.errors.full_messages, status: 422

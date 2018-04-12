@@ -43,7 +43,7 @@ class SignInModal extends React.Component {
       );
     }
     return (
-      <div>
+      <div className="session-form">
         <h2>{this.props.formType}</h2>
         <a className="close" onClick={this.props.closeModal} href="#">
           &times;

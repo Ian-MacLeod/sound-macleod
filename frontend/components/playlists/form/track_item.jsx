@@ -1,8 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { SortableElement } from "react-sortable-hoc";
 
+import ImageDefault from "../../image_default";
+
 const TrackItem = SortableElement(({ track, user, trackNum }) => (
-  <li>
+  <li class="playlist-track-index-item in-form">
     <div className="track-img">
       <Link to={`/tracks/${track.id}`}>
         <ImageDefault src={track.image.url} />
@@ -10,13 +13,9 @@ const TrackItem = SortableElement(({ track, user, trackNum }) => (
     </div>
     <p className="details">
       <span className="track-num">{trackNum}</span>
-      <Link className="username" to={`/users/${user.id}`}>
-        {user.username}
-      </Link>
+      <span className="username">{user.username}</span>
       <span className="dash">—</span>
-      <Link className="title" to={`/tracks/${track.id}`}>
-        {track.title}
-      </Link>
+      <span className="title">{track.title}</span>
     </p>
     <div className="actions">
       <div class="remove" />

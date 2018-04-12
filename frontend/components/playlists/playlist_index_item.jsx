@@ -5,7 +5,7 @@ import ImageDefault from "../image_default";
 import PlayPauseButton from "../play_pause_button/play_pause_button_container";
 import PlaylistTrackIndex from "./playlist_track_index";
 
-const playlistIndexItem = ({ playlist, user }) => (
+const playlistIndexItem = ({ playlist, user, editPlaylist }) => (
   <li class="playlist-item">
     {console.log(playlist)}
     <Link className="playlist-img" to={`/playlists/${playlist.id}`}>
@@ -24,7 +24,9 @@ const playlistIndexItem = ({ playlist, user }) => (
       </div>
       <PlaylistTrackIndex trackIds={playlist.trackIds} />
       <div className="action-buttons">
-        <button className="edit">Edit Playlist</button>
+        <button onClick={editPlaylist} className="edit">
+          Edit Playlist
+        </button>
         <button className="next-up">Add to Next Up</button>
       </div>
     </div>

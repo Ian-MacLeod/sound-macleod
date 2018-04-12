@@ -1,0 +1,23 @@
+.playlist-form {
+  label {
+    font-size: 1.8rem;
+    display: inline-block;
+  }
+
+  input[type="text"] {
+    margin-bottom: 2rem;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: -1rem;
+  }
+
+  input[type="submit"] {
+    margin-top: 2.5rem;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    width: auto;
+  }
+}

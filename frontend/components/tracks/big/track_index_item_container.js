@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { deleteTrack } from "../../../actions/track_actions";
 import { addToNextUp } from "../../../actions/player_actions";
 import { createLike, deleteLike } from "../../../actions/like_actions";
+import { openModal } from "../../../actions/modal_actions";
+import AddToPlaylistForm from "../../playlists/form/add_to_playlist_form_container";
 import TrackIndexItem from "./track_index_item";
 
 const mapStateToProps = (state, ownProps) => ({
@@ -15,7 +17,8 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   deleteTrack: () => dispatch(deleteTrack(ownProps.track.id)),
   addToNextUp: () => dispatch(addToNextUp([ownProps.track.id])),
   likeTrack: () => dispatch(createLike(ownProps.track.id)),
-  unlikeTrack: () => dispatch(deleteLike(ownProps.track.id))
+  unlikeTrack: () => dispatch(deleteLike(ownProps.track.id)),
+  addToPlaylist: () => dispatch(openModal(AddToPlaylistForm))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TrackIndexItem);

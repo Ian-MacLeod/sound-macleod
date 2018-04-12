@@ -14,7 +14,8 @@ const TrackIndexItem = ({
   isPlaying,
   addToNextUp,
   likeTrack,
-  unlikeTrack
+  unlikeTrack,
+  addToPlaylist
 }) => (
   <li className={isPlaying ? "playing" : ""}>
     <Link className="track-img" to={`/tracks/${track.id}`}>
@@ -45,6 +46,7 @@ const TrackIndexItem = ({
           </button>
         )}
         <button onClick={addToNextUp}>Add to Next Up</button>
+        <button onClick={addToPlaylist}>Add to playlist</button>
         {isOwnTrack ? (
           <button onClick={deleteTrack}>
             <i className="icon delete-icon" />

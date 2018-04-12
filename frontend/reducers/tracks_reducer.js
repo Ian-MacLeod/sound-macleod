@@ -7,7 +7,7 @@ import {
 } from "../actions/track_actions";
 import { RECEIVE_LIKE, REMOVE_LIKE } from "../actions/like_actions";
 import { RECEIVE_USER } from "../actions/user_actions";
-import { RECEIVE_COMMENT } from "../actions/comment_actions";
+import { RECEIVE_COMMENT, REMOVE_COMMENT } from "../actions/comment_actions";
 import {
   RECEIVE_PLAYLIST,
   RECEIVE_PLAYLISTS
@@ -21,6 +21,13 @@ const trackReducer = (state = {}, action) => {
       if (action.comment.trackId === state.id) {
         return Object.assign({}, state, {
           commentIds: [action.comment.id].concat(state.commentIds)
+        });
+      }
+      return state;
+    case REMOVE_COMMENT:
+      if (action.comment.trackId === state.id && state.commentIds) {
+        return Object.assign({}, state, {
+          commentIds: state.commentIds.filter(id => id !== action.comment.id)
         });
       }
       return state;
@@ -66,6 +73,8 @@ const tracksReducer = (state = {}, action) => {
       delete newState[action.track.id];
       return newState;
     case RECEIVE_COMMENT:
+      return mapValues(state, track => trackReducer(track, action));
+    case REMOVE_COMMENT:
       return mapValues(state, track => trackReducer(track, action));
     case RECEIVE_LIKE:
       return mapValues(state, track => trackReducer(track, action));

@@ -12,6 +12,7 @@ import {
   RECEIVE_PLAYLIST,
   RECEIVE_PLAYLISTS
 } from "../actions/playlist_actions";
+import { RECEIVE_COMMENT, REMOVE_COMMENT } from "../actions/comment_actions";
 
 const userReducer = (state, action) => {
   switch (action.type) {
@@ -28,6 +29,20 @@ const userReducer = (state, action) => {
           likedTrackIds: state.likedTrackIds.filter(
             id => id !== action.like.trackId
           )
+        });
+      }
+      return state;
+    case RECEIVE_COMMENT:
+      if (state.id === action.comment.userId) {
+        return Object.assign({}, state, {
+          commentIds: [action.comment.id].concat(state.commentIds || [])
+        });
+      }
+      return state;
+    case REMOVE_COMMENT:
+      if (state.id === action.comment.userId && state.commentIds) {
+        return Object.assign({}, state, {
+          commentIds: state.commentIds.filter(id => id !== action.comment.id)
         });
       }
       return state;
@@ -68,6 +83,10 @@ const usersReducer = (state = {}, action) => {
     case RECEIVE_LIKE:
       return mapValues(state, user => userReducer(user, action));
     case REMOVE_LIKE:
+      return mapValues(state, user => userReducer(user, action));
+    case RECEIVE_COMMENT:
+      return mapValues(state, user => userReducer(user, action));
+    case REMOVE_COMMENT:
       return mapValues(state, user => userReducer(user, action));
     case RECEIVE_PLAYLIST:
       newState = merge({}, state, action.payload.users);

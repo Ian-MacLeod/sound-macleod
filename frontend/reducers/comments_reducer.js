@@ -11,7 +11,7 @@ const commentsReducer = (state = {}, action) => {
       return Object.assign({}, state, action.payload.comments);
     case REMOVE_COMMENT:
       newState = Object.assign({}, state);
-      delete newState[action.id];
+      delete newState[action.comment.id];
       return newState;
     case REMOVE_TRACK:
       newState = Object.assign({}, state);

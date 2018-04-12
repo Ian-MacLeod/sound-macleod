@@ -9,14 +9,21 @@ const receiveComment = comment => ({
   comment
 });
 
-const removeComment = id => ({
+const removeComment = comment => ({
   type: REMOVE_COMMENT,
-  id
+  comment
 });
 
 export const createComment = comment => dispatch =>
   CommentAPIUtil.createComment(comment).then(newComment =>
     dispatch(receiveComment(newComment), err =>
+      dispatch(receiveCommentFormErrors(err.responseJSON))
+    )
+  );
+
+export const deleteComment = id => dispatch =>
+  CommentAPIUtil.deleteComment(id).then(newComment =>
+    dispatch(removeComment(newComment), err =>
       dispatch(receiveCommentFormErrors(err.responseJSON))
     )
   );

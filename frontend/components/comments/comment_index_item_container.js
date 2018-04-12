@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 
+import { deleteComment } from "../../actions/comment_actions";
 import CommentIndexItem from "./comment_index_item";
 
 const mapStateToProps = (state, ownProps) => {
@@ -17,4 +18,8 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps)(CommentIndexItem);
+const mapDispatchToProps = dispatch => ({
+  deleteComment: id => dispatch(deleteComment(id))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CommentIndexItem);

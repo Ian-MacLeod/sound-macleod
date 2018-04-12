@@ -8,6 +8,8 @@ class PlaylistForm extends React.Component {
     super(props);
     this.state = this.props.playlist;
     this.onSortEnd = this.onSortEnd.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.removeTrack = this.removeTrack.bind(this);
   }
 
   onSortEnd({ oldIndex, newIndex }) {
@@ -16,32 +18,46 @@ class PlaylistForm extends React.Component {
     });
   }
 
+  removeTrack(idx) {
+    return () => {
+      console.log(idx);
+      this.setState({
+        trackIds: this.state.trackIds
+          .slice(0, idx)
+          .concat(this.state.trackIds.slice(idx + 1))
+      });
+    };
+  }
+
   handleInput(key) {
     return e => this.setState({ [key]: e.target.value });
   }
 
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.updatePlaylist(this.state).then(() => this.props.closeModal());
+  }
+
   render() {
     return (
-      <div class="playlist-form">
+      <div className="playlist-form">
         <h2>Edit Playlist</h2>
-        <a className="close" onClick={this.props.closeModal} href="#">
-          &times;
-        </a>
-        <label htmlFor="playlist-title-input">Title</label>
-        <input
-          onChange={this.handleInput("title")}
-          type="text"
-          id="playlist-title-input"
-          value={this.state.title}
-        />
-        <label>Tracks</label>
-        <form>
+        <form onSubmit={this.handleSubmit}>
+          <label htmlFor="playlist-title-input">Title</label>
+          <input
+            onChange={this.handleInput("title")}
+            type="text"
+            id="playlist-title-input"
+            value={this.state.title}
+          />
+          <label>Tracks</label>
           <TrackList
             distance={2}
             trackIds={this.state.trackIds}
             onSortEnd={this.onSortEnd}
+            removeTrack={this.removeTrack}
           />
-          <div class="buttons">
+          <div className="buttons">
             <input type="submit" value="Save changes" />
           </div>
         </form>

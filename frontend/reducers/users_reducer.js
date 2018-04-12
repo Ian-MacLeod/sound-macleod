@@ -39,7 +39,7 @@ const userReducer = (state, action) => {
 const usersReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_USER:
-      return Object.assign({}, state, action.payload.users);
+      return merge({}, state, action.payload.users);
     case RECEIVE_CURRENT_USER:
       if (action.user === null) return state;
       return Object.assign({}, state, {
@@ -68,7 +68,15 @@ const usersReducer = (state = {}, action) => {
     case REMOVE_LIKE:
       return mapValues(state, user => userReducer(user, action));
     case RECEIVE_PLAYLIST:
-      return merge({}, state, action.payload.users);
+      const newState = merge({}, state, action.payload.users);
+      let user = newState[action.payload.playlist.userId];
+      user = Object.assign({}, user, {
+        playlistIds: (user.playlistIds || []).concat([
+          action.payload.playlist.id
+        ])
+      });
+      newState[action.payload.playlist.userId] = user;
+      return newState;
     case RECEIVE_PLAYLISTS:
       return merge({}, state, action.payload.users);
     default:

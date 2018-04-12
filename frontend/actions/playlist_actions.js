@@ -25,14 +25,14 @@ export const fetchPlaylists = () => dispatch =>
     error => console.log(error)
   );
 
-export const createPlaylist = track => dispatch =>
-  PlaylistAPIUtils.createPlaylist(track).then(
+export const createPlaylist = playlist => dispatch =>
+  PlaylistAPIUtils.createPlaylist(playlist).then(
     newPlaylist => dispatch(receivePlaylist(newPlaylist)),
     error => console.log(error)
   );
 
-export const fetchPlaylistsForUser = userId => dispatch =>
-  PlaylistAPIUtils.fetchPlaylistsForUser(userId).then(
-    playlists => dispatch(receivePlaylists),
+export const updatePlaylist = playlist => dispatch =>
+  PlaylistAPIUtils.updatePlaylist(playlist).then(
+    newPlaylist => dispatch(receivePlaylist(newPlaylist)),
     error => console.log(error)
   );

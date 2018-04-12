@@ -1,9 +1,6 @@
 import { connect } from "react-redux";
 
-import {
-  addTrackToPlayist,
-  removeTrackFromPlaylist
-} from "../../../actions/playlist_actions";
+import { updatePlaylist } from "../../../actions/playlist_actions";
 import AddToPlaylistIndexItem from "./add_to_playlist_index_item";
 
 const mapStateToProps = (state, ownProps) => ({
@@ -11,9 +8,24 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, { trackId, playlistId }) => ({
-  addToPlaylist: () => dispatch(addTrackToPlayist(trackId, playlistId)),
-  removeFromPlaylist: () =>
-    dispatch(removeTrackFromPlaylist(trackId, playlistId))
+  updatePlaylist: playlist => dispatch(updatePlaylist(playlist))
 });
 
-export default connect(mapStateToProps)(AddToPlaylistIndexItem);
+const mergeProps = ({ playlist }, dispatchProps, { trackId }) => {
+  const newProps = { trackId, playlist };
+  newProps.addToPlaylist = () => {
+    const newPlaylist = { id: playlist.id };
+    newPlaylist.trackIds = playlist.trackIds.concat([trackId]);
+    dispatchProps.updatePlaylist(newPlaylist);
+  };
+  newProps.removeFromPlaylist = () => {
+    const newPlaylist = { id: playlist.id };
+    newPlaylist.trackIds = playlist.trackIds.filter(id => id !== trackId);
+    dispatchProps.updatePlaylist(newPlaylist);
+  };
+  return newProps;
+};
+
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(
+  AddToPlaylistIndexItem
+);

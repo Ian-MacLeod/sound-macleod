@@ -11,8 +11,8 @@
 
 .modal-bg.open {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: flex-start;
 }
 
 .modal-holder {
@@ -21,6 +21,7 @@
   border-radius: 1rem;
   box-shadow: rgba(0, 0, 0, 0.5) 0px 0.2rem 1rem;
   position: relative;
+  margin-top: 8rem;
 
   .close {
     position: absolute;

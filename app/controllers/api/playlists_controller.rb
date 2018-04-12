@@ -18,7 +18,8 @@ class Api::PlaylistsController < ApplicationController
     @playlist = Playlist.new(title: params[:playlist][:title])
     @playlist.user = current_user
     if @playlist.save
-      params[:playlist][:track_ids].each_with_index do |track_id, idx|
+      track_ids = JSON.parse(params[:playlist][:track_ids])
+      track_ids.each_with_index do |track_id, idx|
         PlaylistMembership.create(
           playlist_id: @playlist.id,
           track_id: track_id,
@@ -37,9 +38,11 @@ class Api::PlaylistsController < ApplicationController
       render json: "That playist does not exist".to_json, status: 404
     end
 
-    @playlist.title ||= parms[:playlist][:title]
+    @playlist.title ||= params[:playlist][:title]
     if params[:playlist][:track_ids]
-      params[:playlist][:track_ids].each_with_index do |track_id, idx|
+      track_ids = JSON.parse(params[:playlist][:track_ids])
+      PlaylistMembership.where(playlist_id: @playlist.id).destroy_all
+      track_ids.each_with_index do |track_id, idx|
         PlaylistMembership.create(
           playlist_id: @playlist.id,
           track_id: track_id,

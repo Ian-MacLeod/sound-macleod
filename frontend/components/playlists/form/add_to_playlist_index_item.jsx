@@ -1,13 +1,31 @@
 import React from "react";
 
-const AddToPlaylistIndexItem = ({ playlist, trackId }) => (
+import ImageDefault from "../../image_default";
+
+const AddToPlaylistIndexItem = ({
+  playlist,
+  trackId,
+  addToPlaylist,
+  removeFromPlaylist
+}) => (
   <li>
-    <ImageDefault src={playlist.data.url} />
+    <div className="playlist-img">
+      <ImageDefault src={playlist.image.url} />
+    </div>
     <div className="details">
       <p>{playlist.title}</p>
-      <p>{playlist.tracks.length}</p>
+      <p className="tracks">
+        <i className="icon tracks-icon" />
+        {playlist.trackIds.length}
+      </p>
     </div>
-    <button>Add to playlist</button>
+    {playlist.trackIds.includes(trackId) ? (
+      <button onClick={removeFromPlaylist} className="highlight">
+        Added
+      </button>
+    ) : (
+      <button onClick={addToPlaylist}>Add to playlist</button>
+    )}
   </li>
 );
 

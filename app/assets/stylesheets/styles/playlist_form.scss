@@ -6,6 +6,7 @@
 
   input[type="text"] {
     margin-bottom: 2rem;
+    padding: 0.6rem 1rem;
   }
 
   .buttons {
@@ -19,5 +20,89 @@
     padding-right: 2rem;
     padding-left: 2rem;
     width: auto;
+  }
+}
+
+.add-to-playlist {
+  width: 45rem;
+
+  .add-to-playlist-index {
+    max-height: 36rem;
+    overflow: scroll;
+  }
+
+  li {
+    display: flex;
+    border-bottom: 1px solid $very-light-border;
+    height: 7rem;
+    align-items: center;
+  }
+
+  li:last-child {
+    border-bottom: none;
+  }
+
+  header {
+    border-bottom: 1px solid $very-light-border;
+    display: flex;
+
+    h2 {
+      height: 100%;
+      font-size: 2.4rem;
+      font-weight: 400;
+      margin: 0 3rem 0 0;
+    }
+
+    .option {
+      display: inline-block;
+      height: 100%;
+      border-bottom: 1px solid transparent;
+    }
+
+    .option:hover {
+      border-bottom: 1px solid #333;
+      cursor: pointer;
+    }
+
+    .option.active {
+      color: $primary-orange;
+      border-color: $primary-orange;
+    }
+  }
+
+  .playlist-img {
+    width: 5rem;
+    height: 5rem;
+    margin-right: 1rem;
+  }
+
+  .details {
+    flex: 1;
+    font-size: 1.4rem;
+  }
+
+  .tracks {
+    display: flex;
+    align-items: center;
+    color: #666;
+  }
+
+  .tracks-icon {
+    margin-right: 0.5rem;
+  }
+
+  button {
+    font-size: 1.4rem;
+    padding: 0.4rem 0.8rem 0.2rem 0.8rem;
+    border: 1px solid $light-border;
+  }
+
+  button:hover {
+    border: 1px solid #ccc;
+  }
+
+  button.highlight {
+    border-color: $primary-orange;
+    color: $primary-orange;
   }
 }

@@ -2,7 +2,7 @@ import React from "react";
 
 const NextUpButton = ({ addToNextUp, isButtonWrap }) =>
   isButtonWrap ? (
-    <div class="button">Add to Next Up</div>
+    <div className="button">Add to Next Up</div>
   ) : (
     <button onClick={addToNextUp}>Add to Next Up</button>
   );

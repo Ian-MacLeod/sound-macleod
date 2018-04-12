@@ -6,12 +6,12 @@ import PlayPauseButton from "../play_pause_button/play_pause_button_container";
 import PlaylistTrackIndex from "./playlist_track_index";
 
 const playlistIndexItem = ({ playlist, user, editPlaylist }) => (
-  <li class="playlist-item">
+  <li className="playlist-item">
     {console.log(playlist)}
     <Link className="playlist-img" to={`/playlists/${playlist.id}`}>
       <ImageDefault src={playlist.image.url} />
     </Link>
-    <div class="info">
+    <div className="info">
       <div className="top-info">
         <p className="created-at">{playlist.createdAt}</p>
         <PlayPauseButton />

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import ImageDefault from "../image_default";
 import PlaylistPlayPauseButton from "../play_pause_button/playlist_play_pause_button_container";
 import PlaylistTrackIndex from "./playlist_track_index";
+import NextUpButton from "../next_up_button/next_up_button_container";
 
 const playlistIndexItem = ({ playlist, user, editPlaylist }) => (
   <li className="playlist-item">
@@ -27,7 +28,7 @@ const playlistIndexItem = ({ playlist, user, editPlaylist }) => (
         <button onClick={editPlaylist} className="edit">
           Edit Playlist
         </button>
-        <button className="next-up">Add to Next Up</button>
+        <NextUpButton trackIds={playlist.trackIds} />
       </div>
     </div>
   </li>

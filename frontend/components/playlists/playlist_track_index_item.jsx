@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import LikeButton from "../like_button/like_button_container";
-import NextUpButton from "../next_up_button/next_up_button";
+import NextUpButton from "../next_up_button/next_up_button_container";
 import ImageDefault from "../image_default";
 import PlayPauseButton from "../play_pause_button/play_pause_button_container";
 
@@ -26,7 +26,7 @@ const PlaylistTrackIndexItem = ({ track, user, trackNum, isPlaying }) => (
     </p>
     <div className="actions">
       <LikeButton isButtonWrap={true} trackId={track.id} />
-      <NextUpButton isButtonWrap={true} trackId={track.id} />
+      <NextUpButton isButtonWrap={true} trackIds={[track.id]} />
     </div>
   </li>
 );

@@ -4,5 +4,7 @@ import { addToNextUp } from "../../actions/player_actions";
 import NextUpButton from "./next_up_button";
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  addToNextUp: dispatch(addToNextUp(ownProps.trackId))
+  addToNextUp: () => dispatch(addToNextUp(ownProps.trackIds))
 });
+
+export default connect(null, mapDispatchToProps)(NextUpButton);

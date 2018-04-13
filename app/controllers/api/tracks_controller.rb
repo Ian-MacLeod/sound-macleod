@@ -11,7 +11,6 @@ class Api::TracksController < ApplicationController
   def create
     @track = Track.new(track_params)
     @track.user = current_user
-    @track.length ||= 123
     if @track.save
       render "api/tracks/show"
     else
@@ -36,7 +35,7 @@ class Api::TracksController < ApplicationController
 
   def track_params
     params.require(:track).permit(
-      :title, :user_id, :image, :length, :data
+      :title, :user_id, :image, :data
     )
   end
 end

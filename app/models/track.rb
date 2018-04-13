@@ -13,7 +13,7 @@
 #
 
 class Track < ApplicationRecord
-  validates :title, :user, :length, presence: true
+  validates :title, :user, presence: true
 
   mount_uploader :data, AudioUploader
   validates_integrity_of :data

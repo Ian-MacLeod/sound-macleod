@@ -58,7 +58,8 @@ To extend the seamless listening experience, if a user wants to have additional 
 
 Users can comment on tracks and delete their own comments
 
-###Likes
+### Likes
+
 Users can Like tracks. Tracks that they have liked are visible in their profile.
 
 ### Playlists

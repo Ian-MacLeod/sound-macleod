@@ -28,7 +28,7 @@ class ModalHolder extends React.Component {
     const Component = this.props.component;
     return (
       <div
-        className={this.props.isOpen ? "open modal-bg" : "modal-bg"}
+        className={"modal-bg " + (this.props.isOpen ? "open" : "")}
         onClick={this.props.closeModal}
       >
         {this.props.isOpen && (

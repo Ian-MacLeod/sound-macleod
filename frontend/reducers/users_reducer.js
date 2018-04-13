@@ -26,7 +26,7 @@ const userReducer = (state, action) => {
     case REMOVE_LIKE:
       if (state.id === action.like.userId) {
         return Object.assign({}, state, {
-          likedTrackIds: state.likedTrackIds.filter(
+          likedTrackIds: (state.likedTrackIds || []).filter(
             id => id !== action.like.trackId
           )
         });

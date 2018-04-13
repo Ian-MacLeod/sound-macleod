@@ -36,6 +36,8 @@ gem 'fog-aws'
 
 gem 'figaro'
 
+gem 'faker'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

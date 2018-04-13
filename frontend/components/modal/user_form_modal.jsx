@@ -45,7 +45,7 @@ class SignInModal extends React.Component {
     return (
       <div className="session-form">
         <h2>{this.props.formType}</h2>
-        <a className="close" onClick={this.props.closeModal} href="#">
+        <a className="close" onClick={this.props.closeModal}>
           &times;
         </a>
         {this.props.errors.length > 0 ? (

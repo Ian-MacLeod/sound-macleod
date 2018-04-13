@@ -21,7 +21,7 @@ class Charts extends React.Component {
         <TrackIndex
           tracks={this.props.tracks
             .sort((x, y) => y.numLikes - x.numLikes)
-            .slice(0, 10)}
+            .slice(0, 6)}
         />
       </div>
     );

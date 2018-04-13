@@ -1,7 +1,9 @@
 import React from "react";
 
+import Charts from "../charts/charts_container";
+
 const Home = ({ signInDemoUser }) => (
-  <div>
+  <div className="home">
     <div className="splash-image">
       <div className="overlay">
         <div className="cta">
@@ -13,6 +15,7 @@ const Home = ({ signInDemoUser }) => (
         </div>
       </div>
     </div>
+    <Charts />
   </div>
 );
 

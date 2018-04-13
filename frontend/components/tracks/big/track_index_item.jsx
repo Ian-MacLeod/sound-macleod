@@ -15,9 +15,23 @@ const TrackIndexItem = ({
   addToNextUp,
   likeTrack,
   unlikeTrack,
-  addToPlaylist
+  addToPlaylist,
+  isLoggedIn,
+  openSignUpModal,
+  signInDemoUser
 }) => (
   <li className={isPlaying ? "playing" : ""}>
+    {isLoggedIn || (
+      <div onClick={openSignUpModal} className="logged-out-overlay">
+        <p>
+          Sign up or use a{" "}
+          <span onClick={signInDemoUser} className="demo-login">
+            demo account
+          </span>{" "}
+          to listen
+        </p>
+      </div>
+    )}
     <Link className="track-img" to={`/tracks/${track.id}`}>
       <ImageDefault src={track.image.url} />
     </Link>

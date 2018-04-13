@@ -93,6 +93,37 @@
   .tracks li {
     display: flex;
     margin-bottom: 4rem;
+    position: relative;
+
+    .logged-out-overlay:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
+
+    .logged-out-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.85);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      z-index: 2;
+      opacity: 0;
+      transition: opacity 0.2s;
+
+      .demo-login {
+        color: $primary-orange;
+      }
+
+      .demo-login:hover {
+        text-decoration: underline;
+      }
+    }
 
     .track-img {
       width: 16rem;

@@ -33,7 +33,7 @@ class Player extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (!prevProps.track) return;
+    if (!prevProps.track || !this.props.track) return;
     if (this.props.track.id !== prevProps.track.id) {
       this.setState({ startTime: this.props.player.lastWaveFormSeek });
     } else if (

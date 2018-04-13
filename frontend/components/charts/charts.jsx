@@ -18,7 +18,11 @@ class Charts extends React.Component {
     return (
       <div className="charts">
         <h1>Top Tracks</h1>
-        <TrackIndex tracks={this.props.tracks.slice(0, 10)} />
+        <TrackIndex
+          tracks={this.props.tracks
+            .sort((x, y) => y.numLikes - x.numLikes)
+            .slice(0, 10)}
+        />
       </div>
     );
   }

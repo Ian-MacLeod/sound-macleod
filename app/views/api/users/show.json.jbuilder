@@ -29,6 +29,12 @@ json.users do
       json.partial! "api/users/user", user: track.user
     end
   end
+
+  playlists_tracks.each do |track|
+    json.set! track.user.id do
+      json.partial! "api/users/user", user: track.user
+    end
+  end
 end
 
 json.tracks do

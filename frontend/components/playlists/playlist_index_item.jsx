@@ -8,7 +8,6 @@ import NextUpButton from "../next_up_button/next_up_button_container";
 
 const playlistIndexItem = ({ playlist, user, editPlaylist }) => (
   <li className="playlist-item">
-    {console.log(playlist)}
     <Link className="playlist-img" to={`/playlists/${playlist.id}`}>
       <ImageDefault src={playlist.image.url} />
     </Link>

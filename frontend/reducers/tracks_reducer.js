@@ -53,7 +53,7 @@ const trackReducer = (state = {}, action) => {
 };
 
 const tracksReducer = (state = {}, action) => {
-  let newState, newTrack, newTracks;
+  let newState, newTrack, newTracks, withoutData;
 
   switch (action.type) {
     case RECEIVE_TRACK:
@@ -65,9 +65,21 @@ const tracksReducer = (state = {}, action) => {
         [newTrack.id]: newTrack
       });
     case RECEIVE_TRACKS:
-      return Object.assign({}, action.payload.tracks, state);
+      withoutData = mapValues(action.payload.tracks, track => {
+        if (state.hasOwnProperty(track.id)) {
+          return Object.assign({}, track, { data: state[track.id].data });
+        }
+        return track;
+      });
+      return Object.assign({}, state, withoutData);
     case RECEIVE_USER:
-      return Object.assign({}, action.payload.tracks, state);
+      withoutData = mapValues(action.payload.tracks, track => {
+        if (state.hasOwnProperty(track.id)) {
+          return Object.assign({}, track, { data: state[track.id].data });
+        }
+        return track;
+      });
+      return Object.assign({}, state, withoutData);
     case REMOVE_TRACK:
       newState = Object.assign({}, state);
       delete newState[action.track.id];

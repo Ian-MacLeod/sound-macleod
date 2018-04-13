@@ -10,8 +10,12 @@ import LikeIndex from "../likes/like_index";
 import PlaylistIndex from "../playlists/playlist_index";
 
 class UserProfile extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { loading: true };
+  }
   componentWillMount() {
-    this.props.fetchUser();
+    this.props.fetchUser().then(() => this.setState({ loading: false }));
   }
 
   componentWillReceiveProps(nextProps) {
@@ -25,7 +29,7 @@ class UserProfile extends React.Component {
   }
 
   render() {
-    if (this.props.user === undefined) {
+    if (this.state.loading) {
       return <div className="loading" />;
     }
 

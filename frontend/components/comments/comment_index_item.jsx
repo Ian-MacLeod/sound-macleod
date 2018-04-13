@@ -3,9 +3,16 @@ import { Link } from "react-router-dom";
 
 import ImageDefault from "../image_default";
 
-const CommentIndexItem = ({ comment, user, track, forPage, deleteComment }) => {
+const CommentIndexItem = ({
+  comment,
+  user,
+  track,
+  forPage,
+  deleteComment,
+  isOwnComment
+}) => {
   return (
-    <li>
+    <li className={isOwnComment ? "own-comment" : ""}>
       <Link to={`/users/${user.id}`}>
         <ImageDefault src={user.profilePic.url} />
       </Link>

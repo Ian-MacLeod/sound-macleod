@@ -14,7 +14,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     comment,
     user,
-    track
+    track,
+    isOwnComment: comment.userId === state.session.currentUser.id
   };
 };
 

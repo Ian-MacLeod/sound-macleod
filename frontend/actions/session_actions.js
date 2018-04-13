@@ -20,10 +20,7 @@ export const signIn = user => dispatch =>
   );
 
 export const signOut = () => dispatch =>
-  SessionAPIUtils.signOut().then(
-    () => dispatch(logOut()),
-    error => console.log(error)
-  );
+  SessionAPIUtils.signOut().then(() => dispatch(logOut()));
 
 export const signUp = user => dispatch =>
   SessionAPIUtils.signUp(user).then(

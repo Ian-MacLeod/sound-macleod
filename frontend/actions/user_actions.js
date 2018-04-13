@@ -9,13 +9,9 @@ const receiveUser = payload => ({
 });
 
 export const fetchUser = id => dispatch =>
-  UserAPIUtils.fetchUser(id).then(
-    payload => dispatch(receiveUser(payload)),
-    error => console.log(error)
-  );
+  UserAPIUtils.fetchUser(id).then(payload => dispatch(receiveUser(payload)));
 
 export const updateUser = user => dispatch =>
-  UserAPIUtils.updateUser(user).then(
-    payload => dispatch(receiveCurrentUser(payload)),
-    error => console.log(error)
+  UserAPIUtils.updateUser(user).then(payload =>
+    dispatch(receiveCurrentUser(payload))
   );

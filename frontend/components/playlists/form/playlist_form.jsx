@@ -20,7 +20,6 @@ class PlaylistForm extends React.Component {
 
   removeTrack(idx) {
     return () => {
-      console.log(idx);
       this.setState({
         trackIds: this.state.trackIds
           .slice(0, idx)

@@ -22,21 +22,13 @@ const removeTrack = ({ track, deletedCommentIds }) => ({
 });
 
 export const fetchTrack = id => dispatch =>
-  TrackAPIUtils.fetchTrack(id).then(
-    track => dispatch(receiveTrack(track)),
-    error => console.log(error)
-  );
+  TrackAPIUtils.fetchTrack(id).then(track => dispatch(receiveTrack(track)));
 
 export const fetchTracks = () => dispatch =>
-  TrackAPIUtils.fetchTracks().then(
-    tracks => dispatch(receiveTracks(tracks)),
-    error => console.log(error)
-  );
+  TrackAPIUtils.fetchTracks().then(tracks => dispatch(receiveTracks(tracks)));
 
 export const deleteTrack = id => dispatch =>
-  TrackAPIUtils.deleteTrack(id).then(trackId =>
-    dispatch(removeTrack(trackId), error => console.log(error))
-  );
+  TrackAPIUtils.deleteTrack(id).then(trackId => dispatch(removeTrack(trackId)));
 
 export const createTrack = track => dispatch =>
   TrackAPIUtils.createTrack(track).then(

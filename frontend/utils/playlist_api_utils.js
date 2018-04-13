@@ -6,7 +6,7 @@ export const fetchPlaylists = () =>
 
 export const fetchPlaylist = id =>
   $.ajax({
-    url: `/api/tracks/${id}`,
+    url: `/api/playlists/${id}`,
     method: "GET"
   });
 

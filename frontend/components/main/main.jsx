@@ -7,6 +7,7 @@ import ChartsTrackIndex from "../tracks/charts/track_index_container";
 import TrackForm from "../tracks/track_form_container";
 import TrackShow from "../tracks/track_show_container";
 import UserProfile from "../users/user_profile_container";
+import PlaylistShow from "../playlists/playlist_show_container";
 
 const Main = () => (
   <main>
@@ -16,6 +17,10 @@ const Main = () => (
         <ProtectedRoute path="/tracks" component={ChartsTrackIndex} />
         <ProtectedRoute path="/upload" component={TrackForm} />
         <ProtectedRoute path="/users/:userId" component={UserProfile} />
+        <ProtectedRoute
+          path="/playlists/:playlistId"
+          component={PlaylistShow}
+        />
         <AuthRoute path="/" component={Home} />
       </Switch>
     </div>

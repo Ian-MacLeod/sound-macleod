@@ -1,30 +1,26 @@
-////////////////////////
-
-///////////////////////
-
 import React from "react";
 import { Link } from "react-router-dom";
 
+import PlayPauseButton from "../play_pause_button/playlist_play_pause_button_container";
+import PlaylistIndexItem from "./playlist_index_item_container";
 import ImageDefault from "../image_default";
-import PlayPauseButton from "../play_pause_button/play_pause_button_container";
-import CommentForm from "../comments/comment_form_container";
-import CommentIndex from "../comments/comment_index";
-import WaveForm from "../wave_form/wave_form_container";
 
-class TrackShow extends React.Component {
+class PlaylistShow extends React.Component {
   componentWillMount() {
-    this.props.fetchTrack();
+    this.props.fetchPlaylist();
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.match.params.trackId !== nextProps.match.params.trackId) {
-      nextProps.fetchTrack();
+    if (
+      this.props.match.params.playlistId !== nextProps.match.params.playlistId
+    ) {
+      nextProps.fetchPlaylist();
     }
   }
 
   render() {
-    const { track, user, commentIds } = this.props;
-    if (!track || !user) {
+    const { user, playlist } = this.props;
+    if (!playlist || !user) {
       return <div className="loading" />;
     }
     return (
@@ -33,23 +29,22 @@ class TrackShow extends React.Component {
           <div className="splash-left">
             <div className="top-info">
               <div className="play-info">
-                <PlayPauseButton trackId={track.id} />
+                <PlayPauseButton playlistId={playlist.id} />
                 <div className="username">
                   <Link className="highlight" to={`/users/${user.id}`}>
                     {user.username}
                   </Link>
                 </div>
                 <div className="title">
-                  <span className="highlight">{track.title}</span>
+                  <span className="highlight">{playlist.title}</span>
                 </div>
               </div>
-              <div className="created-at">{track.createdAt} ago</div>
+              <div className="created-at">{playlist.createdAt} ago</div>
             </div>
-            <WaveForm track={track} height={100} waveColor="#fff" />
           </div>
           <div className="splash-right">
             <div className="img">
-              <ImageDefault src={track.image.url} />
+              <ImageDefault src={playlist.image.url} />
             </div>
           </div>
         </div>
@@ -68,9 +63,12 @@ class TrackShow extends React.Component {
               </Link>
             </p>
           </section>
-          <section className="comments-details">
-            <CommentForm trackId={track.id} />
-            <CommentIndex commentIds={commentIds} forPage="track" />
+          <section className="playlist-show">
+            <div className="playlist-index">
+              <ul>
+                <PlaylistIndexItem playlistId={playlist.id} />
+              </ul>
+            </div>
           </section>
         </section>
       </div>
@@ -78,4 +76,4 @@ class TrackShow extends React.Component {
   }
 }
 
-export default TrackShow;
+export default PlaylistShow;

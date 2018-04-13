@@ -21,7 +21,7 @@ end
 json.users do
   tracks.each do |track|
     json.set! track.user.id do
-      json.extract! track.user, :username, :id
+      json.extract! track.user, :username, :id, :profile_pic
     end
   end
 end

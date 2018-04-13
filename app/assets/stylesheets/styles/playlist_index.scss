@@ -61,15 +61,19 @@
 
 .playlist-track-index {
   border: 1px solid $very-light-border;
-  margin-top: 0.3rem;
+  margin-top: 0.8rem;
   position: relative;
   z-index: 0;
 }
 
-.playlist-track-index-item.playing {
+.playlist-track-index-item.playlist.playing {
   color: $primary-orange;
 
   .username {
+    color: $primary-orange;
+  }
+
+  .title {
     color: $primary-orange;
   }
 }
@@ -79,39 +83,38 @@
   width: 50rem;
 }
 
-.playlist-track-index-item.in-form:hover {
+.playlist-track-index-item.playlist.in-form:hover {
   cursor: move;
 }
 
-.playlist-track-index-item.in-form .username {
+.playlist-track-index-item.playlist.in-form .username {
   color: #333;
 }
 
-.playlist-track-index li.playlist-track-index-item {
+.playlist-track-index li.playlist-track-index-item.playlist {
   border: none;
   border-top: 1px solid $very-light-border;
 }
 
-li.playlist-track-index-item:hover {
+li.playlist-track-index-item.playlist:hover {
   background: #f2f2f2;
 }
 
-li.playlist-track-index-item:first-child {
+li.playlist-track-index-item.playlist:first-child {
   border-top: none;
 }
 
-li.playlist-track-index-item:hover .play-pause-button {
+li.playlist-track-index-item.playlist:hover .play-pause-button {
   display: block;
 }
 
-li.playlist-track-index-item {
+li.playlist-track-index-item.playlist {
   display: flex;
   align-items: center;
   font-size: 1.3rem;
   height: 4.5rem;
   position: relative;
   z-index: 25;
-  cursor: pointer;
   background: white;
   border: 1px solid $light-border;
 
@@ -147,10 +150,12 @@ li.playlist-track-index-item {
 
   .dash {
     margin: 0 0.5rem;
+    font-size: 1.4rem;
   }
 
   .username {
     color: #999;
+    font-size: 1.4rem;
   }
   .username:hover {
     color: #333;
@@ -158,6 +163,8 @@ li.playlist-track-index-item {
 
   .title {
     display: inline;
+    color: #333;
+    font-size: 1.4rem;
   }
 
   .actions {
@@ -205,5 +212,20 @@ li.playlist-track-index-item {
 
   .remove:hover {
     cursor: pointer;
+  }
+}
+
+.playlist-show {
+  flex: 1;
+
+  .playlist-track-index-item.playlist {
+    .actions {
+      border: none;
+      position: static;
+      display: block;
+      display: flex;
+      align-items: center;
+      margin-right: 2rem;
+    }
   }
 }

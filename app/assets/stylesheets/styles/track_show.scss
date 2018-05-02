@@ -93,6 +93,7 @@
     float: left;
     height: 6rem;
     width: 6rem;
+    margin-bottom: 1rem;
   }
 
   .highlight {
@@ -117,6 +118,7 @@
   .title {
     font-size: 2.2rem;
     color: white;
+    word-break: break-word;
 
     .highlight {
       padding: 0.5rem 0.6rem 0.3rem;

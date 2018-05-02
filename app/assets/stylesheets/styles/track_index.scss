@@ -15,6 +15,7 @@
     color: #999;
     border-bottom: 1px solid $very-light-border;
     margin-bottom: 1rem;
+    word-break: break-word;
   }
 
   .tracks li.title:hover {
@@ -73,6 +74,7 @@
 
   .track-title {
     font-size: 1.5rem;
+    word-break: break-word;
   }
 
   .length {
@@ -172,7 +174,8 @@
     }
 
     .track-title {
-      font-size: 15px;
+      font-size: 1.5rem;
+      word-break: break-word;
     }
 
     .created-at {
@@ -261,8 +264,13 @@
     }
   }
 
+  .track-title {
+    word-break: break-word;
+  }
+
   .track-details {
     font-size: 1.4rem;
+    flex: 1;
   }
 
   .username a {
@@ -303,6 +311,7 @@
     height: 1.4rem;
     width: 1.4rem;
     display: none;
+    background: white;
   }
 
   .button:hover {

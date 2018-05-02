@@ -7,6 +7,7 @@ class TrackForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.blankState();
+    this.maxTitleLength = 35;
     this.clearForm = this.clearForm.bind(this);
     this.handleFileChange = this.handleFileChange.bind(this);
   }
@@ -36,15 +37,13 @@ class TrackForm extends React.Component {
     }
 
     this.setState({ disabled: true });
-    setTimeout(() => {
-      this.props.action(this.state).then(
-        action => {
-          this.setState({ disabled: false });
-          this.setState({ redirect: action.payload.track.id });
-        },
-        () => this.setState({ disabled: false })
-      );
-    }, 5000);
+    this.props.action(this.state).then(
+      action => {
+        this.setState({ disabled: false });
+        this.setState({ redirect: action.payload.track.id });
+      },
+      () => this.setState({ disabled: false })
+    );
   }
 
   handleFileChange(key) {
@@ -66,7 +65,15 @@ class TrackForm extends React.Component {
   }
 
   handleInput(key) {
-    return e => this.setState({ [key]: e.target.value });
+    return e => {
+      let value = e.target.value;
+      if (value.length > this.maxTitleLength) {
+        console.log(value);
+        value = value.slice(0, this.maxTitleLength);
+        console.log(value);
+      }
+      this.setState({ [key]: value });
+    };
   }
 
   render() {

@@ -14,6 +14,7 @@
 
 class Track < ApplicationRecord
   validates :title, :user, presence: true
+  validates :title, length: { maximum: 35 }
 
   mount_uploader :data, AudioUploader
   validates_integrity_of :data

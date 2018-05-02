@@ -5,8 +5,6 @@ import { fetchUser } from "./actions/user_actions";
 import configureStore from "./store";
 import Root from "./components/root";
 
-import { matchPath } from "react-router-dom";
-
 document.addEventListener("DOMContentLoaded", () => {
   let preloadedState;
   if (window.currentUser) {
@@ -14,9 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
     delete window.currentUser;
   }
   const store = configureStore(preloadedState);
-
-  window.store = store;
-  window.matchPath = matchPath;
 
   const rootEl = document.getElementById("root");
   ReactDOM.render(<Root store={store} />, rootEl);

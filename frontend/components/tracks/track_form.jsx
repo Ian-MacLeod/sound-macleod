@@ -68,9 +68,7 @@ class TrackForm extends React.Component {
     return e => {
       let value = e.target.value;
       if (value.length > this.maxTitleLength) {
-        console.log(value);
         value = value.slice(0, this.maxTitleLength);
-        console.log(value);
       }
       this.setState({ [key]: value });
     };

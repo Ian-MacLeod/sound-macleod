@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :playlists, only: %i(create update index show) do
     end
     resources :comments, only: %i(create destroy)
+    get '/search/:model', to: 'search#index'
+    get '/search', to: 'search#index'
   end
   root to: "static_pages#root"
 end

@@ -3,7 +3,7 @@ import * as searchAPIUtils from "../utils/search_api_utils";
 export const RECEIVE_SEARCH_RESULTS = "RECEIVE_SEARCH_RESULTS";
 
 const receiveSearchResults = payload => ({
-  TYPE: RECEIVE_SEARCH_RESULTS,
+  type: RECEIVE_SEARCH_RESULTS,
   payload
 });
 

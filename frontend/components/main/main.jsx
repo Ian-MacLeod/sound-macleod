@@ -8,6 +8,7 @@ import TrackForm from "../tracks/track_form_container";
 import TrackShow from "../tracks/track_show_container";
 import UserProfile from "../users/user_profile_container";
 import PlaylistShow from "../playlists/playlist_show_container";
+import SearchIndex from "../search/search_index_container";
 
 const Main = () => (
   <main>
@@ -21,6 +22,7 @@ const Main = () => (
           path="/playlists/:playlistId"
           component={PlaylistShow}
         />
+        <ProtectedRoute path="/search" component={SearchIndex} />
         <AuthRoute path="/" component={Home} />
       </Switch>
     </div>

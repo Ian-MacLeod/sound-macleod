@@ -2,7 +2,7 @@ import React from "react";
 import { Link, matchPath } from "react-router-dom";
 
 import ImageDefault from "../image_default";
-import SearchBar from "../search/search_bar_container";
+import SearchBar from "../search/search_bar";
 
 const LoggedInHeader = ({ location, currentUser, signOut }) => (
   <header className="site-header">

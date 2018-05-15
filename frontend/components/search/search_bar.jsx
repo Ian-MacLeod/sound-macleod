@@ -1,16 +1,20 @@
 import React from "react";
+import { withRouter, Redirect } from "react-router-dom";
 
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = { query: "" };
     this.handleChange = this.handleChange.bind(this);
-    this.performSearch = this.performSearch.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  performSearch(e) {
+  handleSubmit(e) {
     e.preventDefault();
-    this.props.performSearch(this.state.query);
+    this.setState({
+      query: ""
+    });
+    this.props.history.push(`/search/${this.state.query}`)
   }
 
   handleChange(e) {
@@ -19,7 +23,7 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.performSearch} className="header-search">
+      <form onSubmit={this.handleSubmit} className="header-search">
         <input
           onChange={this.handleChange}
           name="query"
@@ -32,4 +36,4 @@ class SearchBar extends React.Component {
   }
 }
 
-export default SearchBar;
+export default withRouter(SearchBar);

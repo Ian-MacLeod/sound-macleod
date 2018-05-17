@@ -13,6 +13,7 @@ import {
   RECEIVE_PLAYLISTS
 } from "../actions/playlist_actions";
 import { RECEIVE_COMMENT, REMOVE_COMMENT } from "../actions/comment_actions";
+import { RECEIVE_SEARCH_RESULTS } from "../actions/search_actions";
 
 const userReducer = (state, action) => {
   switch (action.type) {
@@ -63,6 +64,8 @@ const usersReducer = (state = {}, action) => {
         [action.user.id]: action.user
       });
     case RECEIVE_TRACK:
+      return merge({}, state, action.payload.users);
+    case RECEIVE_SEARCH_RESULTS:
       return merge({}, state, action.payload.users);
     case RECEIVE_TRACKS:
       return merge({}, state, action.payload.users);

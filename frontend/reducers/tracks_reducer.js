@@ -12,6 +12,7 @@ import {
   RECEIVE_PLAYLIST,
   RECEIVE_PLAYLISTS
 } from "../actions/playlist_actions";
+import { RECEIVE_SEARCH_RESULTS } from "../actions/search_actions";
 
 const trackReducer = (state = {}, action) => {
   switch (action.type) {
@@ -55,6 +56,16 @@ const trackReducer = (state = {}, action) => {
 const tracksReducer = (state = {}, action) => {
   let newState, newTrack, newTracks, withoutData;
 
+  const mergeTracks = () => {
+    withoutData = mapValues(action.payload.tracks, track => {
+      if (state.hasOwnProperty(track.id)) {
+        return Object.assign({}, track, { data: state[track.id].data });
+      }
+      return track;
+    });
+    return Object.assign({}, state, withoutData);
+  };
+
   switch (action.type) {
     case RECEIVE_TRACK:
       newTrack = action.payload.track;
@@ -65,21 +76,11 @@ const tracksReducer = (state = {}, action) => {
         [newTrack.id]: newTrack
       });
     case RECEIVE_TRACKS:
-      withoutData = mapValues(action.payload.tracks, track => {
-        if (state.hasOwnProperty(track.id)) {
-          return Object.assign({}, track, { data: state[track.id].data });
-        }
-        return track;
-      });
-      return Object.assign({}, state, withoutData);
+      return mergeTracks();
     case RECEIVE_USER:
-      withoutData = mapValues(action.payload.tracks, track => {
-        if (state.hasOwnProperty(track.id)) {
-          return Object.assign({}, track, { data: state[track.id].data });
-        }
-        return track;
-      });
-      return Object.assign({}, state, withoutData);
+      return mergeTracks();
+    case RECEIVE_SEARCH_RESULTS:
+      return mergeTracks();
     case REMOVE_TRACK:
       newState = Object.assign({}, state);
       delete newState[action.track.id];

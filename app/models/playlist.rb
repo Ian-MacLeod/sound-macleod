@@ -17,6 +17,7 @@ class Playlist < ApplicationRecord
 
   belongs_to :user
   has_many :playlist_memberships,
+           -> { order(:ord) },
            dependent: :destroy,
            inverse_of: :playlist
   has_many :tracks,

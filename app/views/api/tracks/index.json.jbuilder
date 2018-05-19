@@ -1,5 +1,8 @@
+tracks = @tracks.includes(:user)
+users = tracks.collect(&:user).flatten
+
 json.tracks do
-  @tracks.includes(:likes, :comments).each do |track|
+  tracks.includes(:likes, :comments).each do |track|
     json.set! track.id do
       json.partial! "api/tracks/track", track: track
     end
@@ -7,7 +10,7 @@ json.tracks do
 end
 
 json.users do
-  @users.each do |user|
+  users.each do |user|
     json.set! user.id do
       json.partial! "api/users/user", user: user
     end

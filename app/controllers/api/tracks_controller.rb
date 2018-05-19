@@ -4,8 +4,7 @@ class Api::TracksController < ApplicationController
   end
 
   def index
-    @tracks = Track.all.includes(:user)
-    @users = @tracks.collect(&:user).flatten
+    @tracks = Track.all
   end
 
   def create

@@ -7,9 +7,11 @@ import PlaylistIndexItem from "./playlist_index_item";
 const mapStateToProps = (state, ownProps) => {
   const playlist = state.entities.playlists[ownProps.playlistId];
   const user = state.entities.users[playlist.userId];
+  const isOwnPlaylist = state.session.currentUser.id === user.id;
   return {
     playlist,
-    user
+    user,
+    isOwnPlaylist
   };
 };
 

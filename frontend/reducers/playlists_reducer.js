@@ -1,3 +1,5 @@
+import { merge } from "lodash";
+
 import {
   RECEIVE_PLAYLIST,
   RECEIVE_PLAYLISTS
@@ -14,7 +16,7 @@ const playlistsReducer = (state = {}, action) => {
     case RECEIVE_PLAYLISTS:
       return Object.assign({}, state, action.payload.playlists);
     case RECEIVE_SEARCH_RESULTS:
-      return merge({}, state, action.payload.playlists)
+      return merge({}, state, action.payload.playlists);
     case RECEIVE_USER:
       return Object.assign({}, state, action.payload.playlists);
     default:

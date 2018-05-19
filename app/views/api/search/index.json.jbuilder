@@ -8,13 +8,13 @@ playlist_tracks = playlists.collect(&:tracks).flatten
 
 json.results do
   json.track_ids do
-    json.array! tracks.pluck(:id)
+    json.array! tracks.pluck(:id).uniq
   end
   json.user_ids do
-    json.array! users.pluck(:id)
+    json.array! users.pluck(:id).uniq
   end
   json.playlist_ids do
-    json.array! playlists.pluck(:id)
+    json.array! playlists.pluck(:id).uniq
   end
 end
 

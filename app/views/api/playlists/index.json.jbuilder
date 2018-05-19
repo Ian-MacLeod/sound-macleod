@@ -1,18 +1,18 @@
-@playlists.includes({ tracks: %i(user likes) }, :user)
+playlists = @playlists.includes({ tracks: %i(user likes comments) }, :user)
 
-if @playlists.empty?
+if playlists.empty?
   json.playlists({})
   json.tracks({})
   json.users({})
 else
-  tracks = @playlists.includes(tracks: %i(user likes)).collect(&:tracks).flatten
+  tracks = playlists.collect(&:tracks).flatten
 
   json.playlists do
-    @playlists.each do |playlist|
+    playlists.each do |playlist|
       json.set! playlist.id do
         json.partial! "api/playlists/playlist", playlist: playlist
         json.trackIds do
-          json.array! playlist.tracks.ordered.pluck(:id).uniq
+          json.array! tracks.pluck(:id).uniq
         end
         json.created_at time_ago_in_words(playlist.created_at).sub('about ', '')
       end
@@ -39,6 +39,6 @@ end
 if @user_id
   json.queried_user do
     json.user_id @user_id
-    json.playlist_ids @playlists.pluck(:id)
+    json.playlist_ids playlists.pluck(:id)
   end
 end

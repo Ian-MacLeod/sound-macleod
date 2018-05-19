@@ -1,4 +1,4 @@
-tracks = @playlist.tracks.includes(:user).ordered
+tracks = @playlist.tracks.includes(:user, :likes, :comments).ordered
 
 json.playlist do
   json.partial! "api/playlists/playlist", playlist: @playlist

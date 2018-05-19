@@ -1,5 +1,6 @@
-comments = @user.comments.includes(track: :comments)
-liked_tracks = @user.liked_tracks.includes(:user, :comments)
+comments = @user.comments.includes(:track)
+tracks = @user.tracks.includes(:likes, :comments)
+liked_tracks = @user.liked_tracks.includes(:user, :comments, :likes)
 playlists = @user.playlists.includes(tracks: %i(user likes))
 playlists_tracks = playlists.collect(&:tracks).flatten
 
@@ -26,19 +27,19 @@ json.users do
 
   liked_tracks.each do |track|
     json.set! track.user.id do
-      json.partial! "api/users/user", user: track.user
+      json.extract! track.user, :username, :id, :profile_pic
     end
   end
 
   playlists_tracks.each do |track|
     json.set! track.user.id do
-      json.partial! "api/users/user", user: track.user
+      json.extract! track.user, :username, :id, :profile_pic
     end
   end
 end
 
 json.tracks do
-  @user.tracks.each do |track|
+  tracks.each do |track|
     json.set! track.id do
       json.partial! "api/tracks/track", track: track
     end
@@ -52,13 +53,18 @@ json.tracks do
 
   comments.each do |comment|
     json.set! comment.track.id do
-      json.partial! "api/tracks/track", track: comment.track
+      json.extract! comment.track, :id, :title, :image
     end
   end
 
   playlists_tracks.each do |track|
     json.set! track.id do
-      json.partial! "api/tracks/track", track: track
+      json.extract! track, :id, :title, :image, :user_id, :data
+      if logged_in?
+        json.is_liked track.likes.pluck(:user_id).include?(current_user.id)
+      else
+        json.is_liked false
+      end
     end
   end
 end
@@ -76,7 +82,7 @@ json.playlists do
     json.set! playlist.id do
       json.partial! "api/playlists/playlist", playlist: playlist
       json.trackIds do
-        json.array! playlist.tracks.ordered.pluck(:id).uniq
+        json.array! playlist.tracks.pluck(:id).uniq
       end
       json.created_at time_ago_in_words(playlist.created_at).sub('about ', '')
     end

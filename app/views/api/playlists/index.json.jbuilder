@@ -12,7 +12,7 @@ else
       json.set! playlist.id do
         json.partial! "api/playlists/playlist", playlist: playlist
         json.trackIds do
-          json.array! tracks.pluck(:id).uniq
+          json.array! playlist.tracks.pluck(:id).uniq
         end
         json.created_at time_ago_in_words(playlist.created_at).sub('about ', '')
       end

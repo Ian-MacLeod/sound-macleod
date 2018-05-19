@@ -36,8 +36,12 @@ class Api::PlaylistsController < ApplicationController
   def update
     @playlist = Playlist.find(params[:id])
     if @playlist == nil
-      render json: "That playist does not exist".to_json, status: 404
+      return render json: "That playist does not exist".to_json, status: 404
     end
+    unless @playlist.user == current_user
+      return render json: "You cannot edit that playlist".to_json, status: 422
+    end
+
 
     @playlist.title ||= params[:playlist][:title]
     if params[:playlist][:track_ids]

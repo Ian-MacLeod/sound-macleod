@@ -7,10 +7,12 @@ import SearchBar from "../search/search_bar";
 const LoggedInHeader = ({ location, currentUser, signOut }) => (
   <header className="site-header">
     <div className="content">
-      <div id="logo">
-        <Link to="/tracks">SoundMacLeod</Link>
+      <div className="left">
+        <div id="logo">
+          <Link to="/tracks">SoundMacLeod</Link>
+        </div>
+        <SearchBar />
       </div>
-      <SearchBar />
       <div className="session-buttons">
         <Link
           className={

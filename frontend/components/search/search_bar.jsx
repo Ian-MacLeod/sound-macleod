@@ -14,7 +14,7 @@ class SearchBar extends React.Component {
     this.setState({
       query: ""
     });
-    this.props.history.push(`/search/tracks/${this.state.query}`)
+    this.props.history.push(`/search/tracks/${this.state.query}`);
   }
 
   handleChange(e) {
@@ -23,7 +23,11 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} className="header-search">
+      <form
+        className="search-bar"
+        onSubmit={this.handleSubmit}
+        className="header-search"
+      >
         <input
           onChange={this.handleChange}
           name="query"
@@ -31,6 +35,7 @@ class SearchBar extends React.Component {
           type="text"
           value={this.state.query}
         />
+        <i className="icon search-icon" onClick={this.handleSubmit} />
       </form>
     );
   }

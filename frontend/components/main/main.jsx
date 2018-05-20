@@ -14,6 +14,7 @@ const Main = () => (
   <main>
     <div className="content">
       <Switch>
+        <ProtectedRoute path="/search/:model/:query" component={SearchIndex} />
         <ProtectedRoute path="/tracks/:trackId" component={TrackShow} />
         <ProtectedRoute path="/tracks" component={Charts} />
         <ProtectedRoute path="/upload" component={TrackForm} />
@@ -22,7 +23,6 @@ const Main = () => (
           path="/playlists/:playlistId"
           component={PlaylistShow}
         />
-        <ProtectedRoute path="/search" component={SearchIndex} />
         <AuthRoute path="/" component={Home} />
       </Switch>
     </div>

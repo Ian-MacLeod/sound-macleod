@@ -63,7 +63,7 @@ const tracksReducer = (state = {}, action) => {
       }
       return track;
     });
-    return Object.assign({}, state, withoutData);
+    return merge({}, state, withoutData);
   };
 
   switch (action.type) {

@@ -1,0 +1,58 @@
+.search {
+  .ui {
+    position: fixed;
+    width: 100%;
+    top: $header-height;
+    z-index: 1;
+  }
+
+  h2 {
+    font-size: 2.4rem;
+    font-weight: 700;
+  }
+
+  header {
+    border-bottom: 1px solid $very-light-border;
+    background: white;
+    padding: 2.5rem 0 0;
+  }
+
+  .links {
+    position: absolute;
+    width: 20rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 2rem;
+
+    a {
+      display: block;
+      padding: 0 0.6rem;
+      height: 3rem;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    a.active:after {
+      position: absolute;
+      border: solid transparent;
+      border-left-color: $primary-orange;
+      left: 100%;
+      top: 0;
+      width: 0;
+      height: 0;
+      content: " ";
+      border-width: 1.5rem;
+    }
+
+    .active {
+      background: $primary-orange;
+      color: white;
+    }
+  }
+
+  .results {
+    margin-left: 25rem;
+    margin-top: 5.4rem;
+  }
+}

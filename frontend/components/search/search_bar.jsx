@@ -14,7 +14,7 @@ class SearchBar extends React.Component {
     this.setState({
       query: ""
     });
-    this.props.history.push(`/search/${this.state.query}`)
+    this.props.history.push(`/search/tracks/${this.state.query}`)
   }
 
   handleChange(e) {

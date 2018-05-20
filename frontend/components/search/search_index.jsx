@@ -14,21 +14,30 @@ class SearchIndex extends React.Component {
     this.props.performSearch(this.props.match.params.query);
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.match.params.query !== prevProps.match.params.query) {
+      this.props.performSearch(this.props.match.params.query);
+    }
+  }
+
   render() {
     const { trackIds, playlistIds, userIds } = this.props;
     const { query, model } = this.props.match.params;
 
-    let searchResults;
+    let searchResults, numResults;
 
     switch (model) {
       case "playlists":
         searchResults = <PlaylistIndex playlistIds={playlistIds} />;
-        break
+        numResults = playlistIds.length;
+        break;
       case "users":
         searchResults = <UserIndex userIds={userIds} />;
-        break
+        numResults = userIds.length;
+        break;
       default:
         searchResults = <TrackIndex trackIds={trackIds} />;
+        numResults = trackIds.length;
     }
 
     return (
@@ -50,6 +59,9 @@ class SearchIndex extends React.Component {
           </ul>
         </div>
         <section className="results">
+          <p className="num-results">
+            Found {numResults} {model}{" "}
+          </p>
           {searchResults}
         </section>
       </div>

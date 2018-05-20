@@ -19,6 +19,9 @@ class WaveForm extends React.Component {
       cursorWidth: 0
     });
     this.wavesurfer.setMute(true);
+    if (this.props.track.data === undefined) {
+      return;
+    }
     this.wavesurfer.load(this.props.track.data.url);
     let startAt;
     if (this.props.playerRef && this.props.playing) {
